@@ -1,0 +1,8 @@
+CR01-normal PASS
+CR02-commit-succeeded-response-lost PASS
+CR03-double-click PASS
+CR04-timeout-then-query PASS
+CR05-not-committed-safe-retry PASS
+CR06-multiple-retries-unknown PASS
+CR07-refresh-recovers-server-result PASS
+CR08-unknown-after-refresh-no-resubmit PASS

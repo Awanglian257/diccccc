@@ -1,0 +1,20 @@
+✔ second batch changing one meal reuses 27 exact calculations with provenance (145.854726ms)
+✔ deferred confirmation does not complete before persistence acknowledgment (69.638165ms)
+✔ failed persistence preserves retryable draft and same confirmation token (46.940392ms)
+✔ acknowledgment is idempotent and foreign receipts are rejected (46.99578ms)
+✔ backend persistence failure is explicit and cannot complete task (44.309776ms)
+✔ wrong context revision, expired and cancelled drafts cannot confirm (84.697635ms)
+✔ HTTP deferred confirm, persistence failure 503, retry and duplicate acknowledgment (76.635318ms)
+✔ HTTP mismatched draft revision is conflict and cannot complete (16.621661ms)
+✔ transaction verifies every write and rolls back partial failures (2.058788ms)
+✔ failed rollback keeps journal and consistent old read view until recovery (0.317376ms)
+✔ guard failure rolls back all keys; success preserves existing value formats (0.223565ms)
+✔ prepared journal recovers old values and committed journal recovers new values (0.187131ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 843.289736

@@ -1,0 +1,8 @@
+RR01-normal-submit-restart PASS
+RR02-success-response-discarded-restart PASS
+RR03-unconfirmed-draft-restart PASS
+RR04-running-task-interrupted PASS
+RR05-repeat-confirmation-after-restart PASS
+RR06-prepared-query-and-retry-after-restart PASS
+RR07-durable-integrity-and-no-raw-token PASS
+RR08-real-disk-write-failure-not-success PASS

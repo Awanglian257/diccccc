@@ -1,0 +1,5 @@
+
+> health-manager-agent-upgrade@2.1.1 evaluate
+> node tests/evaluate.cjs
+
+{"food_exact":1,"plan":["needs_confirmation","needs_confirmation","needs_input"],"weekly_evidence":1,"safety":1}

@@ -1,0 +1,13 @@
+
+> health-manager-agent-upgrade@2.1.1 test:phase2
+> node tests/phase2-regression.cjs
+
+B01 PASS
+B02 PASS
+B03 PASS
+B04 PASS
+B05 PASS
+B06 PASS
+B07 PASS
+B08 PASS
+B09 PASS

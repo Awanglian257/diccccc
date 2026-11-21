@@ -1,0 +1,32 @@
+
+> health-manager-agent-upgrade@2.1.1 test:phase3:unit
+> node --test tests/phase3-confirm.test.cjs tests/phase3-storage.test.cjs tests/phase3-http.test.cjs tests/phase3-cache.test.cjs
+
+✔ second batch changing one meal reuses 27 exact calculations with provenance (457.066857ms)
+✔ food database revision invalidates identical batch cache and preserves exact math (11.637673ms)
+✔ deferred confirmation does not complete before persistence acknowledgment (111.817437ms)
+✔ failed persistence preserves retryable draft and same confirmation token (123.295568ms)
+✔ acknowledgment is idempotent and foreign receipts are rejected (113.283132ms)
+✔ backend persistence failure is explicit and cannot complete task (186.044437ms)
+✔ wrong context revision, expired and cancelled drafts cannot confirm (207.833586ms)
+✔ concurrent acknowledgments call persistence adapter only once (167.998201ms)
+✔ HTTP deferred confirm, persistence failure 503, retry and duplicate acknowledgment (244.015587ms)
+✔ HTTP mismatched draft revision is conflict and cannot complete (20.960387ms)
+✔ transaction verifies every write and rolls back partial failures (4.667826ms)
+✔ failed rollback keeps journal and consistent old read view until recovery (15.467403ms)
+✔ guard failure rolls back all keys; success preserves existing value formats (0.620378ms)
+✔ prepared journal recovers old values and committed journal recovers new values (0.315477ms)
+✔ silent dropped writes are detected, not acknowledged as success (0.28447ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3314.773006
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

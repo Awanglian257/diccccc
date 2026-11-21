@@ -1,0 +1,5 @@
+
+> health-manager-agent-upgrade@2.1.1 test:browser
+> node tests/browser.cjs
+
+{"passed":12,"script_errors":[]}

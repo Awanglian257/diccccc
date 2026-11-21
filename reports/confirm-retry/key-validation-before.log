@@ -1,0 +1,28 @@
+✔ stable submission key binds prepare, status and idempotent persisted result (274.585734ms)
+✔ definite failure can retry same key; unknown and mismatched requests never create new submissions (167.016871ms)
+✔ in-flight persistence is queryable without success or duplicate adapter writes (120.598238ms)
+✖ invalid or conflicting submission keys are rejected without changing the original binding (119.478353ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1077.633849
+
+✖ failing tests:
+
+test at tests/confirm-retry.test.cjs:6:1
+✖ invalid or conflicting submission keys are rejected without changing the original binding (119.478353ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/confirm-retry.test.cjs:6:193)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }

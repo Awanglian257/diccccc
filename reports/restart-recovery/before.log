@@ -1,0 +1,7 @@
+RR01-normal-submit-restart FAIL
+RR02-success-response-discarded-restart FAIL
+RR03-unconfirmed-draft-restart FAIL
+RR04-running-task-interrupted FAIL
+RR05-repeat-confirmation-after-restart FAIL
+RR06-prepared-query-and-retry-after-restart FAIL
+RR07-durable-integrity-and-no-raw-token FAIL

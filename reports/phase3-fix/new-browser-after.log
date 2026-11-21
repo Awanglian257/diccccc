@@ -1,0 +1,7 @@
+R01-partial-write-rollback-and-retry PASS
+R02-ack-failure-retry PASS
+R03-stale-target PASS
+R03-stale-preference PASS
+R03-stale-stage PASS
+R04-calendar-retry PASS
+R05-refresh-after-local-commit PASS

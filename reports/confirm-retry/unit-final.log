@@ -1,0 +1,12 @@
+✔ stable submission key binds prepare, status and idempotent persisted result (138.11959ms)
+✔ definite failure can retry same key; unknown and mismatched requests never create new submissions (152.7213ms)
+✔ in-flight persistence is queryable without success or duplicate adapter writes (109.361432ms)
+✔ invalid or conflicting submission keys are rejected without changing the original binding (120.61738ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 916.148758

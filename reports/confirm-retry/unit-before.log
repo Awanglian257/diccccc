@@ -1,0 +1,40 @@
+✖ stable submission key binds prepare, status and idempotent persisted result (66.75102ms)
+✖ definite failure can retry same key; unknown and mismatched requests never create new submissions (48.770114ms)
+✖ in-flight persistence is queryable without success or duplicate adapter writes (44.560473ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 221.693565
+
+✖ failing tests:
+
+test at tests/confirm-retry.test.cjs:3:1
+✖ stable submission key binds prepare, status and idempotent persisted result (66.75102ms)
+  TypeError [Error]: e.commitStatus is not a function
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/confirm-retry.test.cjs:3:236)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/confirm-retry.test.cjs:4:1
+✖ definite failure can retry same key; unknown and mismatched requests never create new submissions (48.770114ms)
+  Error: 持久化回执与草稿不一致
+      at fail (/workspace/github/diccccc-phase2/agent-core.js:7:36)
+      at Orchestrator.commitReceipt (/workspace/github/diccccc-phase2/agent-core.js:207:92)
+      at Orchestrator.acknowledgeCommit (/workspace/github/diccccc-phase2/agent-core.js:205:260)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/confirm-retry.test.cjs:4:292)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'CONFIRMATION',
+    data: undefined
+  }
+
+test at tests/confirm-retry.test.cjs:5:1
+✖ in-flight persistence is queryable without success or duplicate adapter writes (44.560473ms)
+  TypeError [Error]: e.commitStatus is not a function
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/confirm-retry.test.cjs:5:483)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

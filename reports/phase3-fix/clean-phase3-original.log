@@ -1,0 +1,18 @@
+
+> health-manager-agent-upgrade@2.1.1 test:phase3:original
+> node tests/phase3-original.cjs
+
+P01-confirm-and-reload PASS
+P02-reject PASS
+P03-cancel-before-confirm PASS
+P04-all-storage-fails PASS
+P05-selective-plan-storage-fails PASS
+P06-double-confirm PASS
+P07-cancel-during-confirm PASS
+P08-calendar-draft-isolation PASS
+P09-dismiss-calendar-confirm PASS
+P10-calendar-write-fails PASS
+P11-stale-during-await PASS
+P12-reject-preserves-previous-plan PASS
+P13-explicit-actual-conversion PASS
+P14-cancel-reload PASS

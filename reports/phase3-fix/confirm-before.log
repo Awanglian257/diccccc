@@ -1,0 +1,75 @@
+✖ deferred confirmation does not complete before persistence acknowledgment (69.423491ms)
+✖ failed persistence preserves retryable draft and same confirmation token (50.386066ms)
+✖ acknowledgment is idempotent and foreign receipts are rejected (47.108092ms)
+✖ backend persistence failure is explicit and cannot complete task (45.70046ms)
+✖ wrong context revision, expired and cancelled drafts cannot confirm (44.4479ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 320.13565
+
+✖ failing tests:
+
+test at tests/phase3-confirm.test.cjs:3:1
+✖ deferred confirmation does not complete before persistence acknowledgment (69.423491ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'completed'
+  - 'needs_confirmation'
+  
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:3:233)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'completed',
+    expected: 'needs_confirmation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/phase3-confirm.test.cjs:4:1
+✖ failed persistence preserves retryable draft and same confirmation token (50.386066ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:4:239)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/phase3-confirm.test.cjs:5:1
+✖ acknowledgment is idempotent and foreign receipts are rejected (47.108092ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at /workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:5:235
+      at waitForActual (node:assert:632:21)
+      at strict.rejects (node:assert:769:31)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:5:221)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/phase3-confirm.test.cjs:6:1
+✖ backend persistence failure is explicit and cannot complete task (45.70046ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at assert.rejects.code (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:6:298)
+      at waitForActual (node:assert:632:21)
+      at strict.rejects (node:assert:769:31)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:6:284)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/phase3-confirm.test.cjs:7:1
+✖ wrong context revision, expired and cancelled drafts cannot confirm (44.4479ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-confirm.test.cjs:7:112)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { code: 'CONTEXT_CHANGED' },
+    operator: 'rejects',
+    diff: 'simple'
+  }

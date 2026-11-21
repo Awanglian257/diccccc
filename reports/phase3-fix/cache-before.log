@@ -1,0 +1,28 @@
+✖ second batch changing one meal reuses 27 exact calculations with provenance (71.216234ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 167.325954
+
+✖ failing tests:
+
+test at tests/phase3-cache.test.cjs:2:1
+✖ second batch changing one meal reuses 27 exact calculations with provenance (71.216234ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  56 !== 29
+  
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-cache.test.cjs:2:973)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 56,
+    expected: 29,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

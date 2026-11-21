@@ -1,0 +1,196 @@
+✔ second batch changing one meal reuses 27 exact calculations with provenance (317.51837ms)
+✖ deferred confirmation does not complete before persistence acknowledgment (154.145061ms)
+✖ failed persistence preserves retryable draft and same confirmation token (78.226823ms)
+✖ acknowledgment is idempotent and foreign receipts are rejected (85.05379ms)
+✖ backend persistence failure is explicit and cannot complete task (51.573166ms)
+✖ wrong context revision, expired and cancelled drafts cannot confirm (85.345335ms)
+✖ HTTP deferred confirm, persistence failure 503, retry and duplicate acknowledgment (178.489319ms)
+✖ HTTP mismatched draft revision is conflict and cannot complete (64.844631ms)
+✖ transaction verifies every write and rolls back partial failures (1.364908ms)
+✖ failed rollback keeps journal and consistent old read view until recovery (0.387475ms)
+✖ guard failure rolls back all keys; success preserves existing value formats (0.189846ms)
+✖ prepared journal recovers old values and committed journal recovers new values (0.249827ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 1
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1623.89277
+
+✖ failing tests:
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:3:1
+✖ deferred confirmation does not complete before persistence acknowledgment (154.145061ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'completed'
+  - 'needs_confirmation'
+  
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:3:233)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'completed',
+    expected: 'needs_confirmation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:4:1
+✖ failed persistence preserves retryable draft and same confirmation token (78.226823ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:4:239)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:5:1
+✖ acknowledgment is idempotent and foreign receipts are rejected (85.05379ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at /workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:5:235
+      at waitForActual (node:assert:632:21)
+      at strict.rejects (node:assert:769:31)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:5:221)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:6:1
+✖ backend persistence failure is explicit and cannot complete task (51.573166ms)
+  TypeError [Error]: e.acknowledgeCommit is not a function
+      at assert.rejects.code (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:6:298)
+      at waitForActual (node:assert:632:21)
+      at strict.rejects (node:assert:769:31)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:6:284)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:7:1
+✖ wrong context revision, expired and cancelled drafts cannot confirm (85.345335ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-confirm.test.cjs:7:112)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { code: 'CONTEXT_CHANGED' },
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-http.test.cjs:2:1
+✖ HTTP deferred confirm, persistence failure 503, retry and duplicate acknowledgment (178.489319ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'completed'
+  - 'needs_confirmation'
+  
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-http.test.cjs:2:277)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'completed',
+    expected: 'needs_confirmation',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-http.test.cjs:3:1
+✖ HTTP mismatched draft revision is conflict and cannot complete (64.844631ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 409
+  
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-http.test.cjs:3:229)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:3:1
+✖ transaction verifies every write and rolls back partial failures (1.364908ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:3:86) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs' ]
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:4:1
+✖ failed rollback keeps journal and consistent old read view until recovery (0.387475ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:4:95) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs' ]
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:5:1
+✖ guard failure rolls back all keys; success preserves existing value formats (0.189846ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:5:97) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs' ]
+  }
+
+test at ../../reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:6:1
+✖ prepared journal recovers old values and committed journal recovers new values (0.249827ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs:6:145) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/reports/phase3-fix/red-check/tests/phase3-storage.test.cjs' ]
+  }

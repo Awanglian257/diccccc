@@ -1,0 +1,90 @@
+✖ transaction verifies every write and rolls back partial failures (1.308486ms)
+✖ failed rollback keeps journal and consistent old read view until recovery (0.382107ms)
+✖ guard failure rolls back all keys; success preserves existing value formats (0.275706ms)
+✖ prepared journal recovers old values and committed journal recovers new values (0.258971ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.614475
+
+✖ failing tests:
+
+test at tests/phase3-storage.test.cjs:3:1
+✖ transaction verifies every write and rolls back partial failures (1.308486ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:3:86) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs' ]
+  }
+
+test at tests/phase3-storage.test.cjs:4:1
+✖ failed rollback keeps journal and consistent old read view until recovery (0.382107ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:4:95) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs' ]
+  }
+
+test at tests/phase3-storage.test.cjs:5:1
+✖ guard failure rolls back all keys; success preserves existing value formats (0.275706ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:5:97) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs' ]
+  }
+
+test at tests/phase3-storage.test.cjs:6:1
+✖ prepared journal recovers old values and committed journal recovers new values (0.258971ms)
+  Error: Cannot find module '../agent-storage.js'
+  Require stack:
+  - /workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+      at Module._load (node:internal/modules/cjs/loader:1341:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+      at Module.require (node:internal/modules/cjs/loader:1674:12)
+      at require (node:internal/modules/helpers:157:16)
+      at setup (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:2:26)
+      at TestContext.<anonymous> (/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs:6:145) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ '/workspace/github/diccccc-phase2/tests/phase3-storage.test.cjs' ]
+  }
