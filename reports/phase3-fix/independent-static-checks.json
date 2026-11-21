@@ -1,0 +1,26 @@
+[
+  {
+    "check": "embedded agent-core.js",
+    "passed": true
+  },
+  {
+    "check": "embedded agent-ui.js",
+    "passed": true
+  },
+  {
+    "check": "embedded agent-storage.js",
+    "passed": true
+  },
+  {
+    "check": "baseline matches audited HEAD",
+    "passed": true
+  },
+  {
+    "check": "existing test sources unchanged",
+    "passed": true
+  },
+  {
+    "check": "no whitespace errors",
+    "passed": true
+  }
+]

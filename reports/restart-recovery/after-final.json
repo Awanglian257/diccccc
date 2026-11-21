@@ -1,0 +1,77 @@
+{
+  "mode": "real child process SIGKILL + restart; no real API; no UI simulation",
+  "results": [
+    {
+      "id": "RR01-normal-submit-restart",
+      "status": "PASS",
+      "pids": [
+        34364,
+        34373
+      ],
+      "state_file": "/tmp/hm-restart-ZA68jN/state.json"
+    },
+    {
+      "id": "RR02-success-response-discarded-restart",
+      "status": "PASS",
+      "pids": [
+        34380,
+        34387
+      ],
+      "state_file": "/tmp/hm-restart-x8Kd9w/state.json"
+    },
+    {
+      "id": "RR03-unconfirmed-draft-restart",
+      "status": "PASS",
+      "pids": [
+        34394,
+        34401
+      ],
+      "state_file": "/tmp/hm-restart-mbcDhC/state.json"
+    },
+    {
+      "id": "RR04-running-task-interrupted",
+      "status": "PASS",
+      "pids": [
+        34408,
+        34415
+      ],
+      "state_file": "/tmp/hm-restart-sMtcNL/state.json"
+    },
+    {
+      "id": "RR05-repeat-confirmation-after-restart",
+      "status": "PASS",
+      "pids": [
+        34422,
+        34429
+      ],
+      "state_file": "/tmp/hm-restart-wzQprC/state.json"
+    },
+    {
+      "id": "RR06-prepared-query-and-retry-after-restart",
+      "status": "PASS",
+      "pids": [
+        34436,
+        34443
+      ],
+      "state_file": "/tmp/hm-restart-NuLXRA/state.json"
+    },
+    {
+      "id": "RR07-durable-integrity-and-no-raw-token",
+      "status": "PASS",
+      "pids": [
+        34450,
+        34457
+      ],
+      "state_file": "/tmp/hm-restart-Lvn3jS/state.json"
+    },
+    {
+      "id": "RR08-real-disk-write-failure-not-success",
+      "status": "PASS",
+      "pids": [
+        34464,
+        34471
+      ],
+      "state_file": "/tmp/hm-restart-SAS0Qt/state.json"
+    }
+  ]
+}

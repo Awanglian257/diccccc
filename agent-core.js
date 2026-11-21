@@ -132,7 +132,7 @@ function guardResult(c,kind,result){
 }
 
 class Orchestrator{
- constructor(context,adapter={}){this.context=normalizeContext(context,adapter.foods);this.adapter=adapter;this.tasks=new Map();this.drafts=new Map();this.maxCalls=adapter.maxCalls||120;}
+ constructor(context,adapter={}){this.context=normalizeContext(context,adapter.foods);this.adapter=adapter;this.tasks=new Map();this.drafts=new Map();this.confirmations=new Map();this.acknowledgments=new Map();this.maxCalls=adapter.maxCalls||120;}
  transition(t,status){if(['needs_input','needs_confirmation','completed'].includes(status)&&t.result){t.validation=guardResult(this.context,t.kind,t.result);if(!t.steps.some(s=>s.agent==='Guardian'&&s.tool==='validate_agent_result'))t.steps.push({id:ID('guard'),agent:'Guardian',tool:'validate_agent_result',status:'completed',at:NOW(),summary:'独立结构、来源与数值复核',duration_ms:0});}if(!STATES[t.status]?.includes(status))fail('STATE','不允许状态转换 '+t.status+' → '+status);t.status=status;t.requires_confirmation=status==='needs_confirmation';t.updated_at=NOW();this.emit(t);}
  emit(t){this.adapter.onUpdate?.(clone(t));}
  check(t){if(t.cancelled||t.status==='cancelled')fail('CANCELLED','任务已取消');if(Date.now()-t.started_ms>(this.adapter.timeoutMs||45000))fail('TIMEOUT','任务已超时');if(t.calls>=this.maxCalls)fail('CALL_LIMIT','工具调用次数达到上限');}
@@ -178,7 +178,7 @@ class Orchestrator{
   const draft=(await this.tool(t,'Planning','create_plan_draft',{plan})).data;t.agent_results.Planning=draft;if(input.base_plan||input.previous_plan)t.differences=comparePlans(input.base_plan||input.previous_plan,draft);return draft;
  }
  async run(kind,input={}){
-  const t={id:ID('task'),kind,status:'pending',created_at:NOW(),updated_at:NOW(),started_ms:Date.now(),input_summary:String(input.text||kind).slice(0,120),steps:[],calls:0,result:null,agent_results:{},mode:'local_tools',validation:null,cancelled:false,requires_confirmation:false};this.tasks.set(t.id,t);this.emit(t);await new Promise(r=>setTimeout(r,0));if(t.cancelled)return t;this.transition(t,'running');
+  const t={context_revision:ID('context'),expires_at:new Date(Date.now()+86400000).toISOString(),id:ID('task'),kind,status:'pending',created_at:NOW(),updated_at:NOW(),started_ms:Date.now(),input_summary:String(input.text||kind).slice(0,120),steps:[],calls:0,result:null,agent_results:{},mode:'local_tools',validation:null,cancelled:false,requires_confirmation:false};this.tasks.set(t.id,t);this.emit(t);await new Promise(r=>setTimeout(r,0));if(t.cancelled)return t;this.transition(t,'running');
   try{if(!['nutrition','planning','metabolism','weekly','behavior','memory','semantic','simulation'].includes(kind))fail('INPUT','未知任务');safeText(String(input.text||''));
    if(this.adapter.model&&input.use_model){t.mode='model_and_tools';try{const model=await this.adapter.model({kind,input,context:this.context,task:t,callTool:(agent,name,args)=>this.tool(t,agent,name,args)});t.model_usage=model.usage||null;t.model_output=model.output||null;t.model_contribution='tool_assisted_context_only';
     if(kind==='nutrition'&&model.output?.items){schemaCheck({items:model.output.items},toolSchemas.calculate_meal_nutrition);input={...input,items:model.output.items};t.model_contribution='validated_food_items';}
@@ -194,12 +194,28 @@ class Orchestrator{
    t.result=await this.planning(t,input);this.transition(t,'needs_confirmation');return t;
   }catch(e){if(t.status==='cancelled')return t;t.error={code:e.code||'FAILED',message:e.message};t.result=e.data||t.result;this.transition(t,e.code==='CANCELLED'?'cancelled':e.code==='NEEDS_INPUT'?'needs_input':'failed');return t;}
  }
- cancel(id){const t=this.tasks.get(id);if(!t)fail('NOT_FOUND','找不到任务');if(!STATES[t.status].includes('cancelled'))fail('STATE','该任务不能取消');t.cancelled=true;this.adapter.abort?.(id);this.transition(t,'cancelled');return clone(t);}
- async confirm(id,choice,planChoice){const t=this.tasks.get(id);if(!t||t.status!=='needs_confirmation')fail('CONFIRMATION','任务当前不可确认');if(choice!==true)fail('CONFIRMATION','必须明确确认');t.confirmation={at:NOW()};t.started_ms=Date.now();
+ cancel(id){const t=this.tasks.get(id);if(!t)fail('NOT_FOUND','找不到任务');if(t.persistence_status==='committing')fail('STATE','保存回执正在确认，请稍后重试');if(!STATES[t.status].includes('cancelled'))fail('STATE','该任务不能取消');t.cancelled=true;this.adapter.abort?.(id);this.transition(t,'cancelled');return clone(t);}
+ async prepareConfirmation(id,choice,planChoice,options={}){const t=this.tasks.get(id);if(!t||t.status!=='needs_confirmation')fail('CONFIRMATION','任务当前不可确认');if(choice!==true)fail('CONFIRMATION','必须明确确认');if(options.deferCommit&&options.contextRevision!==t.context_revision)fail('CONTEXT_CHANGED','草稿依据版本不一致，请重新生成');if(Date.parse(t.expires_at)<=Date.now())fail('DRAFT_EXPIRED','草稿已过期，请重新生成');if(options.idempotencyKey!==undefined&&(typeof options.idempotencyKey!=='string'||!/^[a-zA-Z0-9_-]{8,100}$/.test(options.idempotencyKey)))fail('CONFIRMATION','提交标识无效');if(options.idempotencyKey&&t.confirmation?.id&&options.idempotencyKey!==t.confirmation.id)fail('CONFIRMATION','该任务已经绑定其他提交标识');if(options.deferCommit&&t.commit_pending){if(planChoice&&planChoice!==t.confirmation.plan_id)fail('CONFIRMATION','请先完成当前方案确认');return clone(t);}t.confirmation={id:options.idempotencyKey||ID('confirmation'),at:NOW()};t.started_ms=Date.now();
   let plan=t.result?.plan_id?t.result:t.result?.planning||t.result?.alternative;if(planChoice){if(t.kind!=='simulation'||![t.result.baseline.plan_id,t.result.alternative.plan_id].includes(planChoice))fail('CONFIRMATION','选择的方案不属于本次模拟');plan=planChoice===t.result.baseline.plan_id?t.result.baseline:t.result.alternative;}
   if(plan){t.confirmation.plan_id=plan.plan_id;const oldLimit=this.maxCalls;this.maxCalls=Math.max(oldLimit,t.calls+5);try{const v=validatePlan(this.context,plan);if(!v.valid)fail('PLAN_INVALID',v.issues.join('；'));t.confirmed_action=(await this.tool(t,'Orchestrator','apply_confirmed_plan',{plan_id:plan.plan_id})).data;}finally{this.maxCalls=oldLimit;}}
   else t.confirmed_action={type:t.kind==='memory'?'memory':'nutrition',data:clone(t.result),requires_local_commit:true};
-  this.transition(t,'completed');return clone(t);
+  if(options.deferCommit){t.commit_pending=true;t.persistence_status='pending';this.emit(t);}else{t.persistence_status='not_requested';this.transition(t,'completed');}return clone(t);
+ }
+ async confirm(id,choice,planChoice,options={}){if(this.confirmations.has(id))return this.confirmations.get(id);const promise=this.prepareConfirmation(id,choice,planChoice,options);this.confirmations.set(id,promise);try{return await promise;}finally{this.confirmations.delete(id);}}
+ commitStatus(id,key){
+  const t=this.tasks.get(id);if(!t)return {state:'unknown',task_id:id};
+  if(typeof key!=='string'||!/^[a-zA-Z0-9_-]{8,100}$/.test(key))fail('CONFIRMATION','提交标识无效');
+  if(t.confirmation?.id&&t.confirmation.id!==key)fail('CONFIRMATION','提交标识与任务不一致');
+  const state=t.persistence_status==='persisted'&&t.status==='completed'?'committed':t.persistence_status==='committing'?'committing':t.status==='needs_confirmation'?'not_committed':'unknown';
+  return {state,task_id:id,confirmation_id:key,prepared:!!t.commit_pending,task:clone(t)};
+ }
+
+ async acknowledgeCommit(id,receipt){if(this.acknowledgments.has(id)){const t=this.tasks.get(id);if(receipt?.confirmation_id!==t?.confirmation?.id||receipt.persisted!==true)fail('CONFIRMATION','确认正在提交');return this.acknowledgments.get(id);}const promise=this.commitReceipt(id,receipt);this.acknowledgments.set(id,promise);try{return await promise;}finally{this.acknowledgments.delete(id);}}
+ async commitReceipt(id,receipt){
+  const t=this.tasks.get(id);if(!t||!receipt||receipt.confirmation_id!==t.confirmation?.id)fail('CONFIRMATION','持久化回执与草稿不一致');if(t.status==='completed'&&t.persistence_status==='persisted'&&receipt.persisted===true)return clone(t);if(t.status!=='needs_confirmation'||!t.commit_pending)fail('STATE','任务当前不可提交');
+  if(receipt.persisted!==true){t.persistence_status='failed';this.emit(t);return clone(t);}
+  t.persistence_status='committing';try{await this.adapter.persistConfirmation?.(clone(t),clone(receipt));if(t.cancelled)fail('CANCELLED','任务已取消');}catch(e){t.persistence_status='failed';this.emit(t);fail('PERSISTENCE','持久化确认失败，草稿已保留，可重试');}
+  t.persistence_status='persisted';t.commit_pending=false;t.persisted_at=NOW();this.transition(t,'completed');return clone(t);
  }
 }
 function comparePlans(a,b){const diffs=[];for(let i=0;i<a.days.length;i++)for(const meal of a.days[i].meals){const other=b.days[i]?.meals.find(m=>m.slot===meal.slot);if(JSON.stringify(meal.items)!==JSON.stringify(other?.items))diffs.push({date:a.days[i].date,slot:meal.slot,before:meal.items,after:other?.items,cost_before:meal.cost,cost_after:other?.cost,prep_before:meal.prep_minutes,prep_after:other?.prep_minutes});}return {changed_meals:diffs.length,details:diffs,note:'成本或准备时间缺少用户输入时为null，不能据此宣称更便宜或更方便'};}

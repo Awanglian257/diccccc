@@ -1,0 +1,102 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--cache",
+      "/workspace/reports/phase3-fix/npm-cache"
+    ],
+    "exit_code": 0,
+    "seconds": 0.48,
+    "log": "/workspace/reports/phase3-fix/clean-install.log"
+  },
+  {
+    "name": "node",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 1.83,
+    "log": "/workspace/reports/phase3-fix/clean-node.log"
+  },
+  {
+    "name": "phase3-unit",
+    "command": [
+      "npm",
+      "run",
+      "test:phase3:unit"
+    ],
+    "exit_code": 0,
+    "seconds": 1.07,
+    "log": "/workspace/reports/phase3-fix/clean-phase3-unit.log"
+  },
+  {
+    "name": "browser",
+    "command": [
+      "npm",
+      "run",
+      "test:browser"
+    ],
+    "exit_code": 0,
+    "seconds": 16.96,
+    "log": "/workspace/reports/phase3-fix/clean-browser.log"
+  },
+  {
+    "name": "phase2",
+    "command": [
+      "npm",
+      "run",
+      "test:phase2"
+    ],
+    "exit_code": 0,
+    "seconds": 13.5,
+    "log": "/workspace/reports/phase3-fix/clean-phase2.log"
+  },
+  {
+    "name": "phase2-independent",
+    "command": [
+      "npm",
+      "run",
+      "test:acceptance"
+    ],
+    "exit_code": 0,
+    "seconds": 57.16,
+    "log": "/workspace/reports/phase3-fix/clean-phase2-independent.log"
+  },
+  {
+    "name": "phase3-original",
+    "command": [
+      "npm",
+      "run",
+      "test:phase3:original"
+    ],
+    "exit_code": 0,
+    "seconds": 29.33,
+    "log": "/workspace/reports/phase3-fix/clean-phase3-original.log"
+  },
+  {
+    "name": "phase3-browser",
+    "command": [
+      "npm",
+      "run",
+      "test:phase3:browser"
+    ],
+    "exit_code": 0,
+    "seconds": 22.47,
+    "log": "/workspace/reports/phase3-fix/clean-phase3-browser.log"
+  },
+  {
+    "name": "evaluate",
+    "command": [
+      "npm",
+      "run",
+      "evaluate"
+    ],
+    "exit_code": 0,
+    "seconds": 2.27,
+    "log": "/workspace/reports/phase3-fix/clean-evaluate.log"
+  }
+]

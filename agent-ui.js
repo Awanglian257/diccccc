@@ -1,10 +1,12 @@
 /* Incremental adapter: all existing health/storage/UI functions remain in place. */
 var AGENT_APP={engine:null,current:null,remote:null,tasks:[],snapshot:null,slot:null,host:'agentResult',lastPlan:null,backend:null,abort:null,history:[]};
-var AGENT_MEM='hm_agent_memories_v1',AGENT_PLANS='hm_agent_plans_v1',AGENT_HISTORY='hm_agent_tasks_v1';
+var AGENT_MEM='hm_agent_memories_v1',AGENT_PLANS='hm_agent_plans_v1',AGENT_HISTORY='hm_agent_tasks_v1',AGENT_RECEIPTS='hm_agent_commit_receipts_v1',AGENT_PENDING='hm_agent_pending_confirm_v1';
+function agentStorage(){return HealthAgentStorage.create(window.localStorage);}
+function agentPersist(updates,guard){return agentStorage().transaction(updates,{guard:guard});}
 function agentJson(key,fallback){try{var x=JSON.parse(lsGet(key)||'null');return x===null?fallback:x;}catch(e){return fallback;}}
 function agentMemories(){var a=agentJson(AGENT_MEM,[]);return Array.isArray(a)?a.filter(function(m){return m&&typeof m.id==='string'&&typeof m.value==='string'&&m.confirmed===true;}).slice(-100):[];}
 function agentPlans(){var a=agentJson(AGENT_PLANS,[]);return Array.isArray(a)?a.filter(function(p){return p&&p.plan_id&&p.days;}).slice(-20):[];}
-function agentFingerprint(){return JSON.stringify([lsGet('hm_diary'),lsGet('hm_weight'),lsGet('hm_profile'),lsGet('hm_tdee_cal'),lsGet(AGENT_MEM)]);}
+function agentFingerprint(){return JSON.stringify({饮食记录:lsGet('hm_diary'),体重记录:lsGet('hm_weight'),目标与阶段:lsGet('hm_profile'),消耗校准:lsGet('hm_tdee_cal'),饮食偏好:lsGet(AGENT_MEM),日期:todayStr(),阶段:agentContext('planning').stage});}
 function agentContext(kind){
  var profile=loadProfile(),stage=currentStage(),ctx={today:todayStr(),foods:FOODS,diary:[],weights:[],preferences:[],profile:null,stage:null,plan:null};
  if(['planning','simulation','weekly','metabolism','semantic'].includes(kind)){
@@ -31,7 +33,7 @@ function agentKindLabel(kind){return ({nutrition:'记一餐',semantic:'找食物
 function agentStepLabel(tool){var labels={parse_meal_description:'理解餐食描述',search_foods:'查找食物',calculate_meal_nutrition:'计算这一餐的营养',validate_agent_result:'核对结果',read_user_profile:'查看身体资料',read_diary:'查看饮食记录',read_weight_history:'查看体重记录',get_preferences:'查看饮食喜好',calculate_tdee:'估算每日消耗',calculate_plan_nutrition:'计算餐单营养',generate_weekly_report:'整理本周变化'};return labels[tool]||'整理与核对资料';}
 function agentProgress(t){
  AGENT_APP.current=t;agentStoreTask(t);
- var box=$('#agentTaskStatus');if(box){var steps=t.steps||[];box.innerHTML='<div class="agent-job-head"><b>'+escHtml(AGENT_STATUS[t.status]||t.status)+'</b><small>已完成 '+steps.filter(function(s){return s.status==='completed';}).length+' 项处理</small></div><ol class="agent-step-list">'+steps.slice(-5).map(function(s){return '<li><span class="step-state '+escHtml(s.status)+'"></span><span>'+escHtml(agentStepLabel(s.tool))+'</span><small>'+escHtml(s.status==='completed'?'已完成':s.status==='failed'?'未完成':'处理中')+'</small></li>';}).join('')+'</ol>'+(t.fallback?'<p class="agent-warning">'+(t.fallback.code==='LOCAL_SELECTED'?'本次使用本地处理。':'在线 AI 暂未完成，已改用本地处理。')+'</p>':'')+'<details class="agent-technical"><summary>查看详细过程</summary><p>'+escHtml(t.id)+' · '+escHtml(t.mode)+'</p><ol>'+steps.map(function(s){return '<li>'+escHtml(s.agent+' / '+s.tool+' / '+s.status)+'<br>'+escHtml(s.error_code||s.summary||s.input_summary||'')+'</li>';}).join('')+'</ol>'+(t.fallback?'<p>'+escHtml(t.fallback.message)+' ('+escHtml(t.fallback.code)+')</p>':'')+'</details>';}
+ var box=$('#agentTaskStatus');if(box){var steps=t.steps||[];box.innerHTML='<div class="agent-job-head"><b>'+escHtml(({submitting:'提交中',succeeded:'提交成功',failed:'提交失败',awaiting_result:'等待结果确认'}[t.submission_state])||AGENT_STATUS[t.status]||t.status)+'</b><small>已完成 '+steps.filter(function(s){return s.status==='completed';}).length+' 项处理</small></div><ol class="agent-step-list">'+steps.slice(-5).map(function(s){return '<li><span class="step-state '+escHtml(s.status)+'"></span><span>'+escHtml(agentStepLabel(s.tool))+'</span><small>'+escHtml(s.status==='completed'?'已完成':s.status==='failed'?'未完成':'处理中')+'</small></li>';}).join('')+'</ol>'+(t.fallback?'<p class="agent-warning">'+(t.fallback.code==='LOCAL_SELECTED'?'本次使用本地处理。':'在线 AI 暂未完成，已改用本地处理。')+'</p>':'')+'<details class="agent-technical"><summary>查看详细过程</summary><p>'+escHtml(t.id)+' · '+escHtml(t.mode)+'</p><ol>'+steps.map(function(s){return '<li>'+escHtml(s.agent+' / '+s.tool+' / '+s.status)+'<br>'+escHtml(s.error_code||s.summary||s.input_summary||'')+'</li>';}).join('')+'</ol>'+(t.fallback?'<p>'+escHtml(t.fallback.message)+' ('+escHtml(t.fallback.code)+')</p>':'')+'</details>';}
  var cancel=$('#agentCancel');if(cancel)cancel.disabled=!['pending','running','needs_input','needs_confirmation'].includes(t.status);
  var compact=$('#quickAgentStatus');if(compact&&AGENT_APP.host==='quickAgentOutput')compact.textContent=(AGENT_STATUS[t.status]||t.status)+' · '+t.calls+' 步处理';
  agentRenderHistory();
@@ -66,7 +68,7 @@ function agentRenderResult(t){
  host.innerHTML=h||'<p>暂无结果。请查看任务状态或补充约束。</p>';normalizeIcons(host);
 }
 async function agentRemoteRequest(url,body,method){
- var response=await fetch(url,{method:method||'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+AGENT_APP.backend.token},cache:'no-store',...(body?{body:JSON.stringify(body)}:{})});var data=await response.json();if(!response.ok||!data.success)throw new Error(data.message||data.error_code||'Agent 请求失败');return data;
+ var controller=new AbortController(),timer=/\/(?:confirm|commit|commit-status)(?:\?|$)/.test(url)?setTimeout(function(){controller.abort();},10000):null;try{var response=await fetch(url,{method:method||'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+AGENT_APP.backend.token},cache:'no-store',signal:controller.signal,...(body?{body:JSON.stringify(body)}:{})});var data;try{data=await response.json();}catch(e){e.uncertain=true;throw e;}if(!response.ok||!data.success){var error=new Error(data.message||data.error_code||'Agent 请求失败');error.code=data.error_code;throw error;}return data;}catch(e){if(!e.code)e.uncertain=true;throw e;}finally{clearTimeout(timer);}
 }
 function agentIntent(text){if(/(吃了|喝了|一碗|一个).*(饭|肉|蛋|菜|奶)/.test(text))return 'nutrition';if(/如果|假设|模拟/.test(text))return 'simulation';if(/复盘|下周调整|执行/.test(text))return 'weekly';if(/计划|菜单|餐单/.test(text))return 'planning';if(/代谢|TDEE|体重|停滞/i.test(text))return 'metabolism';if(/不喜欢|记住|偏好/.test(text))return 'memory';if(/食物|高蛋白|晚餐/.test(text))return 'semantic';return null;}
 function agentReadConstraints(){
@@ -96,37 +98,91 @@ async function agentRun(kind,input,options){
  }catch(e){$('#'+AGENT_APP.host).innerHTML='<p class="agent-warning">'+escHtml(agentNormalizeError(e))+'。原有记录与非AI功能仍可使用。</p>';return null;}
 }
 function agentCompatibilityPlan(plan){return {id:plan.plan_id,createdAt:new Date().toISOString(),data:{summary:'Agent工具验证后的用户确认计划；所有餐食仍为计划草稿。',facts:[],suggestions:[],limitations:plan.uncertainties,days:plan.days.map(function(d){return {date:d.date,meals:d.meals.map(function(m){return {slot:{breakfast:'早餐',lunch:'午餐',dinner:'晚餐',snack:'加餐'}[m.slot],items:m.items.map(function(it){var f=FOODS.find(function(f){return f.id===it.food_id;});return {name:f.n,amount:String(it.grams),unit:'g',kcal:Math.round(f.k*it.grams/100)};})};})};})}};}
-function agentCommitNutrition(t){
+function agentCommitNutrition(t,stageOnly){
  HealthAgents.schemaCheck(t.result,HealthAgents.resultSchemas.nutrition);var items=t.result.items;if(items.some(function(i){return i.unresolved;}))throw new Error('仍有待澄清食物');var date=AGENT_APP.slot.date;if(!HealthAgents.validDate(date))throw new Error('日期无效');
  var diary=loadDiary();if(Object.values(diary).some(function(rows){return rows.some(function(e){return e.agentTaskId===t.id;});}))throw new Error('该任务已写入，不能重复记餐');
  var rows=items.map(function(it){var f=FOODS.find(function(f){return f.id===it.food_id;});if(!f)throw new Error('食物编号无效');var n=HealthAgents.nutrition(agentContext('nutrition'),[{food_id:it.food_id,grams:it.grams}]).totals;return {meal:AGENT_APP.slot.meal,name:f.n,foodId:f.id,grams:it.grams,qty:it.grams,unit:'g',kcal:n.kcal,p:n.protein,f:n.fat,c:n.carb,cat:f.cat,aiPlan:false,agentTaskId:t.id,loggedAt:new Date().toISOString(),nutritionSource:f.src,estimated:true,portionAssumption:it.assumption};});
- diary[date]=(diary[date]||[]).concat(rows);saveDiary(diary);if(JSON.stringify(loadDiary())!==JSON.stringify(diary))throw new Error('本机存储失败，未确认写入');t.local_committed=true;
+ diary[date]=(diary[date]||[]).concat(rows);var error=diaryValidationError(diary);if(error)throw new Error(error);if(stageOnly)return diary;saveDiary(diary);if(JSON.stringify(loadDiary())!==JSON.stringify(diary))throw new Error('本机存储失败，未确认写入');t.local_committed=true;
+}
+function agentAssertCurrent(t){
+ if(AGENT_APP.current?.id!==t.id||AGENT_APP.current?.status==='cancelled')throw new Error('任务已取消或已更换，未写入');
+ var current=agentFingerprint();if(current!==AGENT_APP.snapshot){var a=JSON.parse(AGENT_APP.snapshot||'{}'),b=JSON.parse(current),changed=Object.keys(b).filter(function(k){return JSON.stringify(a[k])!==JSON.stringify(b[k]);});throw new Error('草稿依据已变化：'+changed.join('、')+'。请重新生成并审核。');}
+ if(Date.parse(t.expires_at)<=Date.now())throw new Error('草稿已过期，请重新生成');
+}
+function agentSubmissionState(t,state){t.submission_state=state;agentProgress(t);var label={submitting:'提交中',succeeded:'提交成功',failed:'提交失败',awaiting_result:'等待结果确认'}[state];appNotice(label);}
+function agentRememberSubmission(t,entry){
+ AGENT_APP.pendingCommits=AGENT_APP.pendingCommits||{};AGENT_APP.pendingCommits[t.id]=entry;
+ if(AGENT_APP.remote){var all=agentJson(AGENT_PENDING,{});all[t.id]={...entry,task:JSON.parse(JSON.stringify(t)),remote:true};var updates={};updates[AGENT_PENDING]=JSON.stringify(all);agentPersist(updates);if(AGENT_APP.backend?.token)sessionStorage.setItem('hm_agent_resume_'+t.id,AGENT_APP.backend.token);}
+}
+function agentForgetSubmission(t){if(!AGENT_APP.remote){delete AGENT_APP.pendingCommits?.[t.id];return;}try{var all=agentJson(AGENT_PENDING,{});delete all[t.id];var updates={};updates[AGENT_PENDING]=JSON.stringify(all);agentPersist(updates);sessionStorage.removeItem('hm_agent_resume_'+t.id);}catch{/* Durable receipt remains; repeat status query is safe. */}}
+async function agentQuerySubmission(t,key){
+ var status;try{status=AGENT_APP.remote?await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/commit-status?confirmation_id='+encodeURIComponent(key),null,'GET'):AGENT_APP.engine.commitStatus(t.id,key);}catch(e){e.uncertain=true;throw e;}
+ if(!['committed','not_committed'].includes(status.state)){var e=new Error('提交状态尚未确定，请稍后查询；不会创建新提交');e.uncertain=true;throw e;}
+ if(status.task?.id!==t.id||(status.task.confirmation?.id&&status.task.confirmation.id!==key))throw new Error('提交结果凭据不匹配');
+ return status;
+}
+async function agentRestoreSubmissions(){
+ var all=agentJson(AGENT_PENDING,{}),entry=Object.values(all).find(function(x){return x?.remote&&x.task?.id;});if(!entry)return;
+ var t=entry.task;t.status='needs_confirmation';t.submission_state='awaiting_result';AGENT_APP.current=t;AGENT_APP.remote=t.id;AGENT_APP.host='agentResult';AGENT_APP.pendingCommits=AGENT_APP.pendingCommits||{};AGENT_APP.pendingCommits[t.id]=entry;agentProgress(t);agentRenderResult(t);
+ var token=sessionStorage.getItem('hm_agent_resume_'+t.id);if(!token){appNotice('等待结果确认：原会话不可用，不会重复提交');return;}AGENT_APP.backend={token};
+ if(agentJson(AGENT_RECEIPTS,{})[t.id])await agentConfirm();else{try{var status=await agentQuerySubmission(t,entry.key);appNotice(status.state==='not_committed'?'原提交尚未完成，请重新核对草稿后操作':'本机缺少匹配回执，请核查已保存数据；不会重复提交');}catch(e){appNotice('等待结果确认：'+agentNormalizeError(e));}}
 }
 async function agentConfirm(){
- var t=AGENT_APP.current;if(!t||t.status!=='needs_confirmation')return;
- if(agentFingerprint()!==AGENT_APP.snapshot){alert('生成后档案、饮食、体重或偏好已变化。请重新执行并核对，避免应用过期结果。');return;}
- try{
-  var result=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/confirm',{confirmed:true,plan_id:AGENT_APP.simulationChoice||undefined})).task:await AGENT_APP.engine.confirm(t.id,true,AGENT_APP.simulationChoice||undefined);
-  if(result.kind==='nutrition')agentCommitNutrition(result);
-  else if(result.kind==='memory'){var memory={...result.result,confirmed:true,confirmed_at:new Date().toISOString()};var all=agentMemories();all.push(memory);lsSet(AGENT_MEM,JSON.stringify(all));agentRenderMemory();}
-  else if(result.confirmed_action?.plan){var plan=result.confirmed_action.plan;var validation=HealthAgents.validatePlan(agentContext('planning'),plan);if(!validation.valid)throw new Error(validation.issues.join('；'));plan.confirmed_at=new Date().toISOString();var plans=agentPlans();plans.push(plan);lsSet(AGENT_PLANS,JSON.stringify(plans));saveWeekPlan(agentCompatibilityPlan(plan));renderWeekPlan();AGENT_APP.lastPlan=plan;var accepted=agentMemories();accepted.push({id:HealthAgents.ID('memory'),kind:'accepted',value:'确认保存计划 '+plan.plan_id,source:'用户点击确认保存计划',at:plan.confirmed_at,confirmed:true});lsSet(AGENT_MEM,JSON.stringify(accepted));agentRenderMemory();}
-  agentProgress(result);agentRenderResult(result);renderCalendar();renderFitnessDashboard();if(result.kind==='nutrition'&&AGENT_APP.host==='quickAgentOutput'&&result.local_committed){$('#mealDialog').close();$('#quickText').value='';}appNotice(result.kind==='nutrition'?'已记录确认的实际餐食':'已保存用户确认的结果');
-  if(AGENT_APP.pendingFeedback&&result.confirmed_action?.plan){if(confirm('是否把本次单餐替换原因保存到可更正、可删除的偏好记忆？')){var feedback=agentMemories();feedback.push({id:HealthAgents.ID('memory'),kind:'replacement',value:AGENT_APP.pendingFeedback,source:'用户确认替换计划 '+result.confirmed_action.plan.plan_id,at:new Date().toISOString(),confirmed:true});lsSet(AGENT_MEM,JSON.stringify(feedback));agentRenderMemory();}AGENT_APP.pendingFeedback=null;}
- }catch(e){alert(agentNormalizeError(e));}
+ var t=AGENT_APP.current;if(!t||t.status!=='needs_confirmation'||AGENT_APP.confirming)return;
+ AGENT_APP.confirming=true;document.querySelectorAll('[data-agent-confirm]').forEach(function(b){b.disabled=true;});
+ var result,receipt,committed=false;
+ var pending=AGENT_APP.pendingCommits?.[t.id]||agentJson(AGENT_PENDING,{})[t.id]||{key:agentJson(AGENT_RECEIPTS,{})[t.id]?.confirmation_id||t.confirmation?.id||HealthAgents.ID('submission'),attempted:false};
+ agentSubmissionState(t,'submitting');
+ async function execute(){
+  agentStorage().recover();var receipts=agentJson(AGENT_RECEIPTS,{}),prior=receipts[t.id];
+  var status=null;
+  if(prior||pending.attempted){status=await agentQuerySubmission(t,pending.key);result=status.task;if(status.state==='committed'&&!prior)throw new Error('服务端已确认但本机回执缺失，请核查数据；不会重新写入');}
+  if(!prior)agentAssertCurrent(t);
+  if(!status||status.state==='not_committed'&&!status.prepared){
+   pending.attempted=true;agentRememberSubmission(t,pending);
+   result=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/confirm',{confirmed:true,plan_id:AGENT_APP.simulationChoice||undefined,defer_commit:true,context_revision:t.context_revision,idempotency_key:pending.key})).task:await AGENT_APP.engine.confirm(t.id,true,AGENT_APP.simulationChoice||undefined,{deferCommit:true,contextRevision:t.context_revision,idempotencyKey:pending.key});
+  }
+  receipt={confirmation_id:pending.key,persisted:true};
+  if(result.confirmation?.id!==pending.key||prior&&prior.confirmation_id!==pending.key)throw new Error('本机回执与待确认方案不一致，请保留数据后重新审核');
+  agentRememberSubmission(result,pending);
+  if(!prior){
+   agentAssertCurrent(t);var updates={};
+   if(result.kind==='nutrition'){
+    updates.hm_diary=JSON.stringify(agentCommitNutrition(result,true));
+   }else if(result.kind==='memory'){var all=agentMemories();all.push({...result.result,confirmed:true,confirmed_at:new Date().toISOString()});updates[AGENT_MEM]=JSON.stringify(all);}
+   else if(result.confirmed_action?.plan){
+    var plan=result.confirmed_action.plan,validation=HealthAgents.validatePlan(agentContext('planning'),plan);if(!validation.valid)throw new Error(validation.issues.join('；'));
+    plan.confirmed_at=new Date().toISOString();var plans=agentPlans();if(!plans.some(function(p){return p.plan_id===plan.plan_id;}))plans.push(plan);
+    updates[AGENT_PLANS]=JSON.stringify(plans);updates[WEEK_PLAN_KEY]=JSON.stringify(agentCompatibilityPlan(plan));var accepted=agentMemories();accepted.push({id:HealthAgents.ID('memory'),kind:'accepted',value:'确认保存计划 '+plan.plan_id,source:'用户点击确认保存计划',at:plan.confirmed_at,confirmed:true});if(AGENT_APP.pendingFeedback&&confirm('是否把本次单餐替换原因保存到可更正、可删除的偏好记忆？'))accepted.push({id:HealthAgents.ID('memory'),kind:'replacement',value:AGENT_APP.pendingFeedback,source:'用户确认替换计划 '+plan.plan_id,at:plan.confirmed_at,confirmed:true});updates[AGENT_MEM]=JSON.stringify(accepted);
+   }else throw new Error('没有可保存的确认结果');
+   receipts[t.id]={confirmation_id:receipt.confirmation_id,at:new Date().toISOString(),context_revision:t.context_revision};updates[AGENT_RECEIPTS]=JSON.stringify(receipts);
+   agentPersist(updates,function(){agentAssertCurrent(t);});
+  }
+  committed=true;AGENT_APP.pendingFeedback=null;
+  if(status?.state!=='committed')result=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/commit',receipt)).task:await AGENT_APP.engine.acknowledgeCommit(t.id,receipt);
+  if(result.status!=='completed'||result.persistence_status!=='persisted')throw new Error('保存状态尚未确认，请重试');
+  if(result.kind==='nutrition')result.local_committed=true;
+  result.submission_state='succeeded';agentForgetSubmission(t);agentProgress(result);agentRenderResult(result);if(result.confirmed_action?.plan){AGENT_APP.lastPlan=result.confirmed_action.plan;renderWeekPlan();}agentRenderMemory();renderCalendar();renderFitnessDashboard();
+  if(result.kind==='nutrition'&&AGENT_APP.host==='quickAgentOutput'){$('#mealDialog').close();$('#quickText').value='';}appNotice(result.kind==='nutrition'?'已记录确认的实际餐食':'已保存用户确认的结果');
+ }
+ try{if(navigator.locks)await navigator.locks.request('health-agent-persist',execute);else await execute();}
+ catch(e){if(!committed&&result?.confirmation){try{var failed={confirmation_id:result.confirmation.id,persisted:false};var failedTask=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/commit',failed)).task:await AGENT_APP.engine.acknowledgeCommit(t.id,failed);agentProgress(failedTask);}catch{/* Original draft remains retryable; never report success. */}}agentSubmissionState(AGENT_APP.current||t,committed||e.uncertain?'awaiting_result':'failed');alert((committed?'本机已保存，但确认状态未同步；请重试，不会重复写入。':'保存未完成，草稿已保留。')+agentNormalizeError(e));}
+ finally{AGENT_APP.confirming=false;document.querySelectorAll('[data-agent-confirm]').forEach(function(b){b.disabled=false;});}
 }
+
 function agentCalendarPlan(){
- var plan=AGENT_APP.current?.confirmed_action?.plan;if(!plan)return;if(!confirm('将已确认的七日计划加入日历草稿？这些草稿不计入实际摄入和TDEE；实际执行后需逐条确认。'))return;
+ var task=AGENT_APP.current,plan=task?.confirmed_action?.plan;if(!plan)return;var receipt=agentJson(AGENT_RECEIPTS,{})[task.id];if(task.status!=='completed'||!receipt||receipt.confirmation_id!==task.confirmation?.id||!agentPlans().some(function(p){return p.plan_id===plan.plan_id&&p.confirmed_at;})){appNotice('请先成功保存并确认这份计划，再加入日历');return;}if(!confirm('将已确认的七日计划加入日历草稿？这些草稿不计入实际摄入和TDEE；实际执行后需逐条确认。'))return;
  var diary=loadDiary();if(Object.values(diary).some(function(rows){return rows.some(function(e){return e.planId===plan.plan_id;});})){alert('此计划已有日历草稿，未重复添加');return;}
  for(var day of plan.days){diary[day.date]=diary[day.date]||[];for(var meal of day.meals)for(var it of meal.items){var f=FOODS.find(function(f){return f.id===it.food_id;}),n=HealthAgents.nutrition(agentContext('nutrition'),[it]).totals;diary[day.date].push({meal:meal.slot,name:f.n,foodId:f.id,grams:it.grams,qty:it.grams,unit:'g',kcal:n.kcal,p:n.protein,f:n.fat,c:n.carb,cat:f.cat,aiPlan:true,planId:plan.plan_id,estimated:true,nutritionSource:f.src});}}
- saveDiary(diary);renderCalendar();appNotice('计划已作为草稿加入日历，未计入实际摄入');
+ if(!saveDiary(diary)){appNotice('保存失败，计划未加入日历，请重试');return;}renderCalendar();appNotice('计划已作为草稿加入日历，未计入实际摄入');
 }
-function agentRenderHistory(){var host=$('#agentHistory');if(!host)return;var history=agentJson(AGENT_HISTORY,[]);if(!Array.isArray(history))history=[];host.innerHTML='<p class="agent-mode-note">保留最近的处理记录。未确认的结果不会自动保存。</p>'+history.slice(0,15).map(function(t){return '<details><summary>'+escHtml(agentKindLabel(t.kind))+' · '+escHtml(AGENT_STATUS[t.status]||t.status)+' · '+escHtml(t.created_at.slice(0,16))+'</summary><p>'+escHtml(t.input_summary||'')+'</p><small>'+escHtml(t.id)+' · '+(t.calls||0)+' 步处理 · '+escHtml(t.mode||'')+'</small><ul>'+(t.steps||[]).map(function(step){return '<li>'+escHtml(step.agent+' / '+step.tool+' / '+step.status)+'</li>';}).join('')+'</ul></details>';}).join('')||'<p>尚无任务记录。</p>';}
+function agentRenderHistory(){var host=$('#agentHistory');if(!host)return;var history=agentJson(AGENT_HISTORY,[]);if(!Array.isArray(history))history=[];host.innerHTML='<p class="agent-mode-note">保留最近的处理记录。未确认的结果不会自动保存。</p>'+history.slice(0,15).map(function(t){return '<details><summary>'+escHtml(agentKindLabel(t.kind))+' · '+escHtml(({submitting:'提交中',succeeded:'提交成功',failed:'提交失败',awaiting_result:'等待结果确认'}[t.submission_state])||AGENT_STATUS[t.status]||t.status)+' · '+escHtml(t.created_at.slice(0,16))+'</summary><p>'+escHtml(t.input_summary||'')+'</p><small>'+escHtml(t.id)+' · '+(t.calls||0)+' 步处理 · '+escHtml(t.mode||'')+'</small><ul>'+(t.steps||[]).map(function(step){return '<li>'+escHtml(step.agent+' / '+step.tool+' / '+step.status)+'</li>';}).join('')+'</ul></details>';}).join('')||'<p>尚无任务记录。</p>';}
 function agentRenderMemory(){var host=$('#agentMemoryList');if(!host)return;host.innerHTML=agentMemories().map(function(m){return '<article class="agent-memory"><label>'+escHtml(agentKindLabel(m.kind))+'<input type="text" data-memory-edit="'+escHtml(m.id)+'" value="'+escHtml(m.value)+'" maxlength="300"></label><small>'+escHtml(m.source)+' · '+escHtml(m.at)+'</small><button class="btn btn-ghost btn-sm" type="button" data-memory-save="'+escHtml(m.id)+'">确认更正</button><button class="btn btn-ghost btn-sm" type="button" data-memory-delete="'+escHtml(m.id)+'">删除</button></article>';}).join('')||'<p>还没有保存喜好，可添加忌口或饮食偏好。</p>';}
 function agentOpen(kind,text){switchTab('agents');$('#agentWorkflow').value=kind;$('#agentPrompt').value=text||'';$('#agentPrompt').focus();}
 function initAgentUpgrade(){
  var restored=agentJson(AGENT_HISTORY,[]);AGENT_APP.tasks=Array.isArray(restored)?restored.filter(function(t){return t&&typeof t.id==='string';}).slice(0,30).map(function(t){
   if(['pending','running','needs_confirmation'].includes(t.status)){
-    t.status='cancelled';t.error={code:'PAGE_INTERRUPTED',message:'页面已刷新，旧任务未恢复；请重新处理并确认。未自动写入记录或计划。'};
+    if(agentJson(AGENT_PENDING,{})[t.id]?.remote){t.status='needs_confirmation';t.submission_state='awaiting_result';return t;}if(agentJson(AGENT_RECEIPTS,{})[t.id]){t.status='completed';t.persistence_status='local_persisted';t.error={code:'ACK_INTERRUPTED',message:'本机保存已验证；页面刷新后后端确认状态未恢复。请查看已保存计划，不要重复生成。'};return t;}t.status='cancelled';t.error={code:'PAGE_INTERRUPTED',message:'页面已刷新，旧任务未恢复；请重新处理并确认。未自动写入记录或计划。'};
     t.updated_at=new Date().toISOString();
   }return t;
  }):[];
@@ -157,11 +213,11 @@ function initAgentUpgrade(){
   var del=e.target.closest('[data-memory-delete]');if(del&&confirm('删除这条已确认记忆？')){lsSet(AGENT_MEM,JSON.stringify(agentMemories().filter(function(m){return m.id!==del.dataset.memoryDelete;})));agentRenderMemory();}
   var edit=e.target.closest('[data-memory-save]');if(edit&&confirm('用编辑后的内容更正此记忆？')){var value=document.querySelector('[data-memory-edit="'+CSS.escape(edit.dataset.memorySave)+'"]').value.trim();if(!value)return;var all=agentMemories();all.forEach(function(m){if(m.id===edit.dataset.memorySave){m.value=value;m.at=new Date().toISOString();m.source='用户主动更正';}});lsSet(AGENT_MEM,JSON.stringify(all));agentRenderMemory();}
  });
- agentRenderMemory();agentRenderHistory();
+ agentRenderMemory();agentRenderHistory();setTimeout(function(){agentRestoreSubmissions().catch(function(e){appNotice('等待结果确认：'+agentNormalizeError(e));});},0);
  if(location.hash.slice(1)==='agents')switchTab('agents',true);
 }
 function agentHypothesis(){var text=$('#agentHypothesis').value,changes={};var budget=text.match(/(?:预算|每餐|单餐).{0,5}?(\d+(?:\.\d+)?)\s*元/),minutes=text.match(/(\d+)\s*分钟/),avoid=text.match(/(?:不要|不喜欢|不吃)([^，。；\n]{1,15})/);if(budget)changes.budget=Number(budget[1]);if(minutes)changes.max_prep=Number(minutes[1]);if(avoid)changes.avoid=[$('#agentAvoid').value,avoid[1]].filter(Boolean).join('、');if(/运动.*(下降|减少)/.test(text))changes.preference='运动量变化尚不可量化；不自动减少热量，保持当前目标';return changes;}
-async function agentCancel(){var t=AGENT_APP.current;if(!t)return;try{var result=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/cancel',{})).task:AGENT_APP.engine.cancel(t.id);agentProgress(result);agentRenderResult(result);}catch(e){appNotice(agentNormalizeError(e));}}
+async function agentCancel(){var t=AGENT_APP.current;if(!t)return;if(agentJson(AGENT_RECEIPTS,{})[t.id]){appNotice('此结果已保存到本机，不能再取消保存；请重试同步确认状态。');return;}try{var result=AGENT_APP.remote?(await agentRemoteRequest('/api/agents/tasks/'+encodeURIComponent(t.id)+'/cancel',{})).task:AGENT_APP.engine.cancel(t.id);agentProgress(result);agentRenderResult(result);}catch(e){appNotice(agentNormalizeError(e));}}
 async function agentReject(){var t=AGENT_APP.current;if(!t)return;var reason=prompt('可选：为什么拒绝这次结果？该原因将在再次确认后保存为反馈记忆。','');await agentCancel();if(reason&&confirm('将这条拒绝原因保存到可查看、可删除的记忆中？')){var memories=agentMemories();memories.push({id:HealthAgents.ID('memory'),kind:'rejected',value:reason.slice(0,300),source:'用户拒绝任务 '+t.id,at:new Date().toISOString(),confirmed:true});lsSet(AGENT_MEM,JSON.stringify(memories));agentRenderMemory();}}
 function agentReplace(index,slot){var base=AGENT_APP.lastPlan;if(!base)return;var reason=prompt('这餐想怎么换？例如：便宜点、不要鸡肉、没时间准备。','');if(reason===null)return;AGENT_APP.pendingFeedback=reason.slice(0,300);var con=JSON.parse(JSON.stringify(base.constraints));if(/便宜/.test(reason))con.preference='便宜';var avoid=reason.match(/(?:不要|不吃|不喜欢)([^，。；\n]{1,15})/);if(avoid)con.avoid=(Array.isArray(con.avoid)?con.avoid:[]).concat(avoid[1]).join('、');else con.avoid=Array.isArray(con.avoid)?con.avoid.join('、'):con.avoid;
  if(/没时间|更快/.test(reason))con.preference='快';agentRun('planning',{text:reason,base_plan:base,constraints:con,day_index:index,slot,variant:1});}

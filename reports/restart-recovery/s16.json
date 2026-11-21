@@ -1,0 +1,17 @@
+{
+  "root": "/workspace/github/diccccc-phase2",
+  "at": "2026-11-21T09:32:42.472Z",
+  "results": [
+    {
+      "id": "S16",
+      "bug": "process-restart",
+      "status": "PASS",
+      "evidence": {
+        "actualChildProcessRestart": true,
+        "originalSessionRecovered": true,
+        "missingTaskStatus": 404,
+        "foreignTokenStatus": 401
+      }
+    }
+  ]
+}

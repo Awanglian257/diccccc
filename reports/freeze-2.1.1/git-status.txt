@@ -1,0 +1,40 @@
+ M .gitignore
+ M agent-core.js
+ M agent-ui.js
+ M index.html
+ M package.json
+ M server/.env.example
+ M server/agent-router.js
+ M server/deepseek-model.cjs
+ M tests/phase2-independent.cjs
+?? BACKEND_RESTART_RECOVERY_REPORT.md
+?? CONFIRM_RETRY_FIX_REPORT.md
+?? CONFIRM_RETRY_REGRESSION_RESULTS.json
+?? FINAL_ACCEPTANCE_REPORT.md
+?? FINAL_BLOCKERS_ANALYSIS.md
+?? FINAL_KNOWN_ISSUES.md
+?? FREEZE_SNAPSHOT.json
+?? PHASE3_FIX_REPORT.md
+?? PHASE3_FOLLOWUP_AUDIT.md
+?? PHASE3_KNOWN_ISSUES.md
+?? PHASE3_REGRESSION_RESULTS.json
+?? RELEASE_CHECKLIST.md
+?? RESTART_RECOVERY_TESTS.json
+?? agent-storage.js
+?? reports/confirm-retry/
+?? reports/final-acceptance/
+?? reports/freeze-2.1.1/
+?? reports/phase3-fix/
+?? reports/restart-recovery/
+?? server/agent-state-store.cjs
+?? tests/agent-state-store.test.cjs
+?? tests/confirm-retry-browser.cjs
+?? tests/confirm-retry.test.cjs
+?? tests/phase3-cache.test.cjs
+?? tests/phase3-confirm.test.cjs
+?? tests/phase3-http.test.cjs
+?? tests/phase3-original.cjs
+?? tests/phase3-persistence.cjs
+?? tests/phase3-storage.test.cjs
+?? tests/restart-recovery.cjs
+?? tests/restart-worker.cjs

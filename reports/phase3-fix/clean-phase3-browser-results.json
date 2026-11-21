@@ -1,0 +1,156 @@
+{
+  "mode": "offline browser; all API requests blocked",
+  "unexpected_api_requests": [
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health",
+    "http://127.0.0.1:45605/api/ai/health"
+  ],
+  "results": [
+    {
+      "id": "R01-partial-write-rollback-and-retry",
+      "status": "PASS",
+      "expected": "第三项写失败回滚，恢复后同草稿重试只写一次",
+      "actual": {
+        "pass": true,
+        "failed": {
+          "plans": 0,
+          "week": false,
+          "task": "needs_confirmation"
+        },
+        "plans": 1,
+        "task": "completed",
+        "actual": 0
+      }
+    },
+    {
+      "id": "R02-ack-failure-retry",
+      "status": "PASS",
+      "expected": "写入后回执失败不重复保存，重试完成",
+      "actual": {
+        "pass": true,
+        "first": {
+          "plans": 1,
+          "status": "needs_confirmation"
+        },
+        "plans": 1,
+        "status": "completed",
+        "calls": 2
+      }
+    },
+    {
+      "id": "R03-stale-target",
+      "status": "PASS",
+      "expected": "确认等待期间修改关键依据阻止提交",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "status": "needs_confirmation"
+      }
+    },
+    {
+      "id": "R03-stale-preference",
+      "status": "PASS",
+      "expected": "确认等待期间修改关键依据阻止提交",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "status": "needs_confirmation"
+      }
+    },
+    {
+      "id": "R03-stale-stage",
+      "status": "PASS",
+      "expected": "确认等待期间修改关键依据阻止提交",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "status": "needs_confirmation"
+      }
+    },
+    {
+      "id": "R04-calendar-retry",
+      "status": "PASS",
+      "expected": "日历写失败后重试只增加一份草稿，实际记录隔离",
+      "actual": {
+        "pass": true,
+        "before": 0,
+        "once": 84,
+        "after": 84,
+        "actual": 0
+      }
+    },
+    {
+      "id": "R05-refresh-after-local-commit",
+      "status": "PASS",
+      "expected": "回执未同步时刷新保留本机计划并披露状态",
+      "actual": {
+        "pass": true,
+        "plans": 1,
+        "actual": 0,
+        "status": "local_persisted",
+        "error": "ACK_INTERRUPTED"
+      }
+    },
+    {
+      "id": "R06-storage-retry-nutrition",
+      "status": "PASS",
+      "expected": "记餐与偏好入口存储失败保留草稿且可幂等重试",
+      "actual": {
+        "pass": true,
+        "failed": {
+          "actual": 0,
+          "memories": 0,
+          "status": "needs_confirmation"
+        },
+        "status": "completed",
+        "actual": 1,
+        "memories": 0
+      }
+    },
+    {
+      "id": "R06-storage-retry-memory",
+      "status": "PASS",
+      "expected": "记餐与偏好入口存储失败保留草稿且可幂等重试",
+      "actual": {
+        "pass": true,
+        "failed": {
+          "actual": 0,
+          "memories": 0,
+          "status": "needs_confirmation"
+        },
+        "status": "completed",
+        "actual": 0,
+        "memories": 1
+      }
+    },
+    {
+      "id": "R07-unpersisted-plan-cannot-enter-calendar",
+      "status": "PASS",
+      "expected": "保存失败的计划不能经日历入口旁路写入",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "diary": 0,
+        "status": "needs_confirmation"
+      }
+    }
+  ]
+}

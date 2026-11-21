@@ -1,0 +1,117 @@
+{
+  "mode": "real child process SIGKILL + restart; no real API; no UI simulation",
+  "results": [
+    {
+      "id": "RR01-normal-submit-restart",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:12:128\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:12:1",
+      "pids": [
+        28908,
+        28920
+      ],
+      "state_file": "/tmp/hm-restart-Q2LbUK/state.json"
+    },
+    {
+      "id": "RR02-success-response-discarded-restart",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:13:325\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:13:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934
+      ],
+      "state_file": "/tmp/hm-restart-EWU4MS/state.json"
+    },
+    {
+      "id": "RR03-unconfirmed-draft-restart",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:14:134\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:14:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934,
+        28941,
+        28948
+      ],
+      "state_file": "/tmp/hm-restart-CdsVGV/state.json"
+    },
+    {
+      "id": "RR04-running-task-interrupted",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:15:352\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:15:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934,
+        28941,
+        28948,
+        28955,
+        28962
+      ],
+      "state_file": "/tmp/hm-restart-KOv96f/state.json"
+    },
+    {
+      "id": "RR05-repeat-confirmation-after-restart",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async commit (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:8:33)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:16:209\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:16:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934,
+        28941,
+        28948,
+        28955,
+        28962,
+        28969,
+        28976
+      ],
+      "state_file": "/tmp/hm-restart-xbACla/state.json"
+    },
+    {
+      "id": "RR06-prepared-query-and-retry-after-restart",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:17:124\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:17:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934,
+        28941,
+        28948,
+        28955,
+        28962,
+        28969,
+        28976,
+        28983,
+        28990
+      ],
+      "state_file": "/tmp/hm-restart-ZGN0ua/state.json"
+    },
+    {
+      "id": "RR07-durable-integrity-and-no-raw-token",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: {\"success\":false,\"error_code\":\"SESSION\",\"message\":\"会话已过期，请重试\"}\n    at request (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:5:235)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:18:159\n    at async check (/workspace/github/diccccc-phase2/tests/restart-recovery.cjs:10:105)\n    at async /workspace/github/diccccc-phase2/tests/restart-recovery.cjs:18:1",
+      "pids": [
+        28908,
+        28920,
+        28927,
+        28934,
+        28941,
+        28948,
+        28955,
+        28962,
+        28969,
+        28976,
+        28983,
+        28990,
+        28997,
+        29004
+      ],
+      "state_file": "/tmp/hm-restart-v9K2xc/state.json"
+    }
+  ]
+}

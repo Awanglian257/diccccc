@@ -1,0 +1,192 @@
+{
+  "mode": "real localhost HTTP + Chromium; model disabled; transport fault injection only",
+  "results": [
+    {
+      "id": "CR01-normal",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-7290efe2-52b8-46e5-8184-0c729ead3305",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 0
+      }
+    },
+    {
+      "id": "CR02-commit-succeeded-response-lost",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-97f21d28-e2b7-4206-9db8-c07d8b3a1544",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR03-double-click",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-b2d6bcda-4e54-49b7-8e21-cd6b301fbcf7",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 0
+      }
+    },
+    {
+      "id": "CR04-timeout-then-query",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-7a253ff9-5309-4ed1-ace1-f6f54ef80774",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR05-not-committed-safe-retry",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-5c933e93-2f8c-4119-8895-17dfa15f2928",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 2,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR06-multiple-retries-unknown",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-79502ca7-e86c-47e0-9813-051aebb5f346",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 3
+      }
+    },
+    {
+      "id": "CR07-refresh-recovers-server-result",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-c8b52814-6567-432c-b173-832da3fb11e9",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR08-unknown-after-refresh-no-resubmit",
+      "status": "PASS",
+      "actual": {
+        "status": "needs_confirmation",
+        "submission": "awaiting_result",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-e38ccfe7-ef15-4b29-bcae-7c303d29f813",
+        "pending": 1
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 2
+      }
+    },
+    {
+      "id": "CR09-expired-session-is-unknown",
+      "status": "PASS",
+      "actual": {
+        "status": "needs_confirmation",
+        "submission": "awaiting_result",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-eeb9f077-f594-4737-9bb9-ad83d4b30834",
+        "pending": 1
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR10-prepare-response-lost-stable-key",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-a9589b46-c74b-4185-985d-376b0d903f89",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 1,
+        "query": 1
+      }
+    },
+    {
+      "id": "CR11-refresh-before-server-commit-safe-retry",
+      "status": "PASS",
+      "actual": {
+        "status": "completed",
+        "submission": "succeeded",
+        "plans": 1,
+        "actual": 0,
+        "key": "submission-ccdff294-b664-40fb-8b55-4282e5bc8cb8",
+        "pending": 0
+      },
+      "requests": {
+        "confirm": 1,
+        "commit": 2,
+        "query": 1
+      }
+    }
+  ]
+}

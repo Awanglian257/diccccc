@@ -1,0 +1,54 @@
+{
+  "executed_at": "2026-11-21T08:51:25.359Z",
+  "checks": [
+    {
+      "name": "first-use baseline remains required",
+      "passed": true
+    },
+    {
+      "name": "existing home navigation unchanged",
+      "passed": true
+    },
+    {
+      "name": "inline smart recording needs explicit commit",
+      "passed": true
+    },
+    {
+      "name": "semantic search and escaping do not execute HTML",
+      "passed": true
+    },
+    {
+      "name": "seven-day planning and draft isolation",
+      "passed": true
+    },
+    {
+      "name": "counterfactual compares alternatives",
+      "passed": true
+    },
+    {
+      "name": "weekly agents execute tools and validate results",
+      "passed": true
+    },
+    {
+      "name": "confirmed memory is editable and deletable",
+      "passed": true
+    },
+    {
+      "name": "backend UI consent, scoped snapshot and honest fallback",
+      "passed": true
+    },
+    {
+      "name": "stale result is not applied",
+      "passed": true
+    },
+    {
+      "name": "mobile forms fit and reduced motion remains honored",
+      "passed": true
+    },
+    {
+      "name": "persisted data survives page reload and no duplicate ids",
+      "passed": true
+    }
+  ],
+  "script_errors": []
+}

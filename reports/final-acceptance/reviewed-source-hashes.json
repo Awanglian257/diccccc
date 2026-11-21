@@ -1,0 +1,9 @@
+{
+  "agent-core.js": "2030c516aa1674c8da1a51849f032c6ea6dec98ff8c2f90310a82e37013443c6",
+  "agent-ui.js": "8ed55497fe3bb8d86d2dd2051109daa2751f66c5a282b5e354307f7e94f27ef6",
+  "agent-storage.js": "1779a484590f5a8478b88650df2c9e24a7d3428227cdaa4b4b63d782e2f50be1",
+  "index.html": "63d980c4ecbb92ea7b022e64e5bcaa41e70ba5114f625e2bf4f93e51492b1490",
+  "package.json": "df6851536bb28c839033538531aa5d0a1605907c0e793747a79978a151a84e6d",
+  "server/agent-router.js": "22de8b917095baf801c441dff05ec453da4cb9aea36adc7aadfc21e108c42c39",
+  "server/deepseek-model.cjs": "5f7cf4c7a738726a468bf6152b18ae3c00fdfabc90f3274cd9dc7385be69ee60"
+}

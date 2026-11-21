@@ -1,0 +1,23 @@
+{
+  "mode": "offline browser; simulated transport response loss; no real API",
+  "results": [
+    {
+      "id": "FA01-commit-response-lost",
+      "status": "FAIL",
+      "expected": "服务端提交成功但响应丢失后重试应收敛为完成且不重复写入",
+      "actual": {
+        "pass": false,
+        "first": {
+          "frontend": "needs_confirmation",
+          "backend": "completed",
+          "plans": 1
+        },
+        "frontend": "needs_confirmation",
+        "backend": "completed",
+        "plans": 1,
+        "confirms": 2,
+        "acks": 1
+      }
+    }
+  ]
+}

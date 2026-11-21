@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ENV-Firefox",
+    "status": "BLOCKED",
+    "reason": "浏览器二进制未安装",
+    "executable": "/home/agent/.cache/ms-playwright/firefox-1538/firefox/firefox",
+    "exists_now": false
+  },
+  {
+    "id": "ENV-WebKit",
+    "status": "BLOCKED",
+    "reason": "浏览器二进制未安装",
+    "executable": "/home/agent/.cache/ms-playwright/webkit-2336/pw_run.sh",
+    "exists_now": false
+  }
+]

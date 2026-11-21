@@ -1,0 +1,11 @@
+{
+  "root": "/workspace/github/diccccc-phase2",
+  "at": "2026-11-21T09:28:39.374Z",
+  "results": [
+    {
+      "id": "ENV-WebKit",
+      "status": "PASS",
+      "evidence": "basic page smoke only"
+    }
+  ]
+}

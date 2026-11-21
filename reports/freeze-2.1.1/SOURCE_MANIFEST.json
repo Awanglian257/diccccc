@@ -1,0 +1,320 @@
+{
+  "snapshot_id": "health-manager-2.1.1-freeze-20261121-ddc60b1093bd",
+  "created_at": "2026-11-21T17:41:42.420026+08:00",
+  "product_version": "2.1.1",
+  "core_module_version": "2.0.0",
+  "git_base_commit": "989fb1e2abd224712204db63672ab196bc96a3ec",
+  "git_branch": "fix/phase2-quality",
+  "git_dirty": true,
+  "tree_sha256": "ddc60b1093bdfdca659fde65197b93fce97af01cfab248bb9fb7952e19baa86e",
+  "tree_hash_algorithm": "SHA256 over UTF-8 canonical JSON of sorted file entries; ensure_ascii=false, sort_keys=true, separators=(comma,colon)",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 46,
+      "sha256": "63a27e1336cdf6b49a2f5cfcfe94befd45964149674f403dc2704ad3010f1d0e"
+    },
+    {
+      "path": "CONFIGURE.bat",
+      "bytes": 139,
+      "sha256": "d809305edf1ea24c78f0e68231b17e5f252e2e1e9a7bb9adaba922fe18a1bfe4"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4382,
+      "sha256": "a1ae274c578d3037d8fee5b5d9fce423034675512059f39a7c42dd7eec709ca4"
+    },
+    {
+      "path": "START.bat",
+      "bytes": 166,
+      "sha256": "72a5f9daefe863580e15e49f13cf338b6afeda692f0a0df274a8429ac2a6f65e"
+    },
+    {
+      "path": "agent-core.js",
+      "bytes": 44170,
+      "sha256": "557f1e1982769c166e68c2196323feab08f46a90944988dcebafb6da1d7efee7"
+    },
+    {
+      "path": "agent-storage.js",
+      "bytes": 2233,
+      "sha256": "1779a484590f5a8478b88650df2c9e24a7d3428227cdaa4b4b63d782e2f50be1"
+    },
+    {
+      "path": "agent-ui.css",
+      "bytes": 10887,
+      "sha256": "48c81cbd01923b950f75e891e0df86872e9c65a36a5f64d7a30f83e081f6ab46"
+    },
+    {
+      "path": "agent-ui.js",
+      "bytes": 47975,
+      "sha256": "d4dce424ba98a98e85eb80bc4e5bfdfc9cd78952e758ebd7290b2b8edf7214b8"
+    },
+    {
+      "path": "frontend-source/button-art.js",
+      "bytes": 5977,
+      "sha256": "e32b74ed7c6b15bbb6137b5b1b184ca12b049124180d5934f5e827f29e75bb88"
+    },
+    {
+      "path": "frontend-source/friendly-ui.js",
+      "bytes": 8707,
+      "sha256": "7363e21a6f497025b183f48a00517040c8b3d5094a3a1edf6e966aaa8355ebee"
+    },
+    {
+      "path": "frontend-source/glass-theme.js",
+      "bytes": 11713,
+      "sha256": "95f3513f8b912b375cc269d27e6c62d19bdf4b904df45d6898905f4670e2ffa8"
+    },
+    {
+      "path": "frontend-source/health-gallery.js",
+      "bytes": 4435,
+      "sha256": "08c3b9ed7a9467a1f937936f1aa6f7b9578f2d47381cf6e26a0ed2db5781b789"
+    },
+    {
+      "path": "frontend-source/home-meals-layout.js",
+      "bytes": 3784,
+      "sha256": "952c8f98cc3ba481887ac20466a9ef0e07fcfb092c7ee679f3dc15df020d79e8"
+    },
+    {
+      "path": "frontend-source/voice-and-home.js",
+      "bytes": 13679,
+      "sha256": "641a2a522aebcfcf25b42485756756f1ac98ab104a17707459e9b413fab1a287"
+    },
+    {
+      "path": "index.html",
+      "bytes": 9636227,
+      "sha256": "e1c5f67518ba19e0c531d43ffd03488fb4e5fd1e6d34ac38ddec0cee10d0a11e"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 1819,
+      "sha256": "16e0e5d8aac632ed8081d13553a13c6c5e405d8a5ba40df04b27eaed4e8b7ed7"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1082,
+      "sha256": "df6851536bb28c839033538531aa5d0a1605907c0e793747a79978a151a84e6d"
+    },
+    {
+      "path": "server/.env.example",
+      "bytes": 1022,
+      "sha256": "51baa07ce5218c574e89d2c16656afce94a6b18a82ab6bb0482a6d96d52499b5"
+    },
+    {
+      "path": "server/agent-router.js",
+      "bytes": 8448,
+      "sha256": "1f736c48786621b75d00d14c7702c11fad60eae490898cbcc3cd280c8b47e734"
+    },
+    {
+      "path": "server/agent-state-store.cjs",
+      "bytes": 2383,
+      "sha256": "cc8a86920ad3212e6585ca95f5a38540e8ea7d9af79b9d8789f4df48bac5d238"
+    },
+    {
+      "path": "server/deepseek-check.cjs",
+      "bytes": 7104,
+      "sha256": "d1bcc3b1130704d15354d32c82b9050aaf98ba6cbc1fb76bfff18c3a546b122e"
+    },
+    {
+      "path": "server/deepseek-model.cjs",
+      "bytes": 13191,
+      "sha256": "5f7cf4c7a738726a468bf6152b18ae3c00fdfabc90f3274cd9dc7385be69ee60"
+    },
+    {
+      "path": "server/foods.json",
+      "bytes": 44912,
+      "sha256": "5a19e8f0fb6c70e6997a2530ef017d649737ba221f7b3803e34b22c60ef8d08e"
+    },
+    {
+      "path": "server/legacy-tdee.js",
+      "bytes": 5009,
+      "sha256": "012702665db360996f4f2a9dbfa44bc4c162afede5d4108eeebc50eb396b05dd"
+    },
+    {
+      "path": "server/package.json",
+      "bytes": 546,
+      "sha256": "c20bbc411691ff4939791e980b55c701d15ec41fdcaf2ecf6089c3bad8eb9c10"
+    },
+    {
+      "path": "server/server.js",
+      "bytes": 38096,
+      "sha256": "8608f8ce5cdf0d15f7ac6d6f68cee608c8a7d8f81a6346604b76bd8484d49cdf"
+    },
+    {
+      "path": "server/start.cjs",
+      "bytes": 1416,
+      "sha256": "ea80c8126f3c7b30f120551ed4cc86bf3b9a1ab3a7f104aa4662c185fe6640a5"
+    },
+    {
+      "path": "server/test.js",
+      "bytes": 20124,
+      "sha256": "ada4b3886d51c84eba0cf5f4d706f108402a33b5d8bdbc34eeeeafbbc9028f9d"
+    },
+    {
+      "path": "start.sh",
+      "bytes": 76,
+      "sha256": "caf7171a698eba9eba734fa4a0070c4c723a1a814412e30ee8eb4fee73633a2d"
+    },
+    {
+      "path": "tests/agent-state-store.test.cjs",
+      "bytes": 1369,
+      "sha256": "1db0df9b1d8a911f0b0efdea0a5278cb43de57ae43207f88a262162fab0ecd5b"
+    },
+    {
+      "path": "tests/browser.cjs",
+      "bytes": 8502,
+      "sha256": "4c275f67338c61f5569bf61f6084f595cd05130f1972d34ab9d307e51cd6b027"
+    },
+    {
+      "path": "tests/compact-records.cjs",
+      "bytes": 4192,
+      "sha256": "55682ff7d71ceb9ee7798efab344745690e4fd35a13dff73fb5174ab817b28eb"
+    },
+    {
+      "path": "tests/confirm-retry-browser.cjs",
+      "bytes": 7965,
+      "sha256": "a0d404ef51c091029f49004021893057ee3cd3685cb04e065f90e87e1c514d02"
+    },
+    {
+      "path": "tests/confirm-retry.test.cjs",
+      "bytes": 2971,
+      "sha256": "22b943c0d741442c0078fb7329f8e279557710c24b7f43e30632dbdb798e45a1"
+    },
+    {
+      "path": "tests/core.test.cjs",
+      "bytes": 10692,
+      "sha256": "f23900885999d650f1ac3155ef588cb586683a3f32f1f52753b323c8271393ad"
+    },
+    {
+      "path": "tests/deepseek-check.test.cjs",
+      "bytes": 2519,
+      "sha256": "c8dd060cf2c57b1700562315be91ff555c59d74c498def7409897c5a6ec87d4b"
+    },
+    {
+      "path": "tests/evaluate.cjs",
+      "bytes": 7031,
+      "sha256": "606d2fb78de80a64571d99d2f6b87b46ef08d8f1b0199a4d09e4af572ab26e10"
+    },
+    {
+      "path": "tests/evaluation-samples.json",
+      "bytes": 1245,
+      "sha256": "0a24f3f8a1d039c0cfa83ad11295fca5d25de11f7e9fc766453c170c467c0ddf"
+    },
+    {
+      "path": "tests/export-foods.cjs",
+      "bytes": 18349,
+      "sha256": "9e04cbed907222cfdcdd62e7443322f3f1bc63f41586f822c86d9ca9cd976334"
+    },
+    {
+      "path": "tests/fixtures.cjs",
+      "bytes": 958,
+      "sha256": "ca37bfb2e045c663d9502a17c4b4593c2b17a80e9d3d8de392fc79899edde7ec"
+    },
+    {
+      "path": "tests/model-limits.test.cjs",
+      "bytes": 6653,
+      "sha256": "42c56220d50d0069278122dcc0ef09125fdfeaa058b6fa4bd0105f3a738e11b6"
+    },
+    {
+      "path": "tests/model-schema.test.cjs",
+      "bytes": 3992,
+      "sha256": "7263690e143f64a52a2c2ac67090d42ad3e1a2de93c98578fe5d704d9a6b6ed5"
+    },
+    {
+      "path": "tests/phase2-independent.cjs",
+      "bytes": 21632,
+      "sha256": "c4c9d1e6649cd1c67357b110ea58bef8a064f1c0d05aacfb205c74c6a1b983ba"
+    },
+    {
+      "path": "tests/phase2-regression.cjs",
+      "bytes": 8771,
+      "sha256": "5a357187067d74e139388757c48d75b07d2e87ad5ae0ffd0679208f99be03bb6"
+    },
+    {
+      "path": "tests/phase3-cache.test.cjs",
+      "bytes": 2651,
+      "sha256": "4ad4abafa8e837b0a1cf956bc44d047c1daadb4eb15262ec7c3d08e3b5723a74"
+    },
+    {
+      "path": "tests/phase3-confirm.test.cjs",
+      "bytes": 3548,
+      "sha256": "52b80f85edc0b2f7a9c581970f0b0e6680ec39f341cbda874633f2e778c1685d"
+    },
+    {
+      "path": "tests/phase3-http.test.cjs",
+      "bytes": 2367,
+      "sha256": "40eaa00cd6670bd3c8b34ac6e0785bb587b21df379d071a706a11ba1cc288a4f"
+    },
+    {
+      "path": "tests/phase3-original.cjs",
+      "bytes": 10207,
+      "sha256": "378228dde5aefdc59465391ff3437903b75c1d938948d352cc6c51882ed9166d"
+    },
+    {
+      "path": "tests/phase3-persistence.cjs",
+      "bytes": 8121,
+      "sha256": "885bd0f8e2cd70dca5824034933d6630a380d5b408a9721284da9f161029c455"
+    },
+    {
+      "path": "tests/phase3-storage.test.cjs",
+      "bytes": 2128,
+      "sha256": "8af2a966becfb0672119c466b99fe09d170bfc457ac4a4ada7476da483218c56"
+    },
+    {
+      "path": "tests/real-api.cjs",
+      "bytes": 1439,
+      "sha256": "2ea84f1f628146d0fe1b08083d7f71cb84293efb1b16c5331f884ceb1c071384"
+    },
+    {
+      "path": "tests/refine.cjs",
+      "bytes": 6535,
+      "sha256": "0f4320e08bb58962ce1b20787c297b75bf7e32431dcb95b3ac20f03050ac9a24"
+    },
+    {
+      "path": "tests/restart-recovery.cjs",
+      "bytes": 6727,
+      "sha256": "7c504f2d47951710cb914ffdd47fbb671484e97219fe58c2f51be486a951b12a"
+    },
+    {
+      "path": "tests/restart-worker.cjs",
+      "bytes": 606,
+      "sha256": "c546cdadf75f6b80833f8cada9750504cd0ff071dbb347f05bfa22150c66bc52"
+    },
+    {
+      "path": "tests/router.test.cjs",
+      "bytes": 5477,
+      "sha256": "0c84dbd1cb569a381184760c504c55452cab341540bdbab588b9c38cf0c67bdd"
+    },
+    {
+      "path": "先看这里.txt",
+      "bytes": 2819,
+      "sha256": "39c7aff9e19f050dc8fe1629245a5d7bfe7e70dd64d50926bbe3ad03484df0d1"
+    },
+    {
+      "path": "启动健康管家.bat",
+      "bytes": 238,
+      "sha256": "282b999fd53a9cdaeaef965ea98e8aef9e34f80dab48c208538d0cc175236e53"
+    },
+    {
+      "path": "测试DeepSeek连接.bat",
+      "bytes": 196,
+      "sha256": "9449d13ac3d79ba4d0a3cee27a400c40bc8f7bcb671772a474cceb5229dd982a"
+    },
+    {
+      "path": "配置DeepSeek.bat",
+      "bytes": 355,
+      "sha256": "6a9a0a10b8c15abd210da97ff6ee2a20239475254772a7217959b68b7b5d2043"
+    }
+  ],
+  "excluded": [
+    ".git",
+    "node_modules",
+    "server/.env",
+    "server/data and runtime locks/state",
+    "browser binaries/libraries",
+    "historical audit output and old patch files"
+  ],
+  "snapshot_path": "/workspace/releases/health-manager-2.1.1-freeze-20261121-ddc60b1093bd",
+  "source_path": "/workspace/releases/health-manager-2.1.1-freeze-20261121-ddc60b1093bd/source",
+  "published": false,
+  "git_tag_created": false
+}

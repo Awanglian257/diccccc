@@ -1,0 +1,17 @@
+{
+  "after_sha256": {
+    "server/agent-router.js": "1f736c48786621b75d00d14c7702c11fad60eae490898cbcc3cd280c8b47e734",
+    "server/agent-state-store.cjs": "cc8a86920ad3212e6585ca95f5a38540e8ea7d9af79b9d8789f4df48bac5d238",
+    "server/.env.example": "51baa07ce5218c574e89d2c16656afce94a6b18a82ab6bb0482a6d96d52499b5",
+    ".gitignore": "63a27e1336cdf6b49a2f5cfcfe94befd45964149674f403dc2704ad3010f1d0e",
+    "tests/phase2-independent.cjs": "c4c9d1e6649cd1c67357b110ea58bef8a064f1c0d05aacfb205c74c6a1b983ba",
+    "tests/restart-recovery.cjs": "7c504f2d47951710cb914ffdd47fbb671484e97219fe58c2f51be486a951b12a",
+    "tests/restart-worker.cjs": "c546cdadf75f6b80833f8cada9750504cd0ff071dbb347f05bfa22150c66bc52",
+    "tests/agent-state-store.test.cjs": "1db0df9b1d8a911f0b0efdea0a5278cb43de57ae43207f88a262162fab0ecd5b"
+  },
+  "unchanged_this_round": {
+    "agent-core.js": true,
+    "agent-ui.js": true,
+    "index.html": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "source_before": {
+    "agent-core.js": "2030c516aa1674c8da1a51849f032c6ea6dec98ff8c2f90310a82e37013443c6",
+    "agent-ui.js": "8ed55497fe3bb8d86d2dd2051109daa2751f66c5a282b5e354307f7e94f27ef6",
+    "index.html": "63d980c4ecbb92ea7b022e64e5bcaa41e70ba5114f625e2bf4f93e51492b1490",
+    "server/agent-router.js": "22de8b917095baf801c441dff05ec453da4cb9aea36adc7aadfc21e108c42c39"
+  },
+  "source_after": {
+    "agent-core.js": "557f1e1982769c166e68c2196323feab08f46a90944988dcebafb6da1d7efee7",
+    "agent-ui.js": "d4dce424ba98a98e85eb80bc4e5bfdfc9cd78952e758ebd7290b2b8edf7214b8",
+    "index.html": "e1c5f67518ba19e0c531d43ffd03488fb4e5fd1e6d34ac38ddec0cee10d0a11e",
+    "server/agent-router.js": "0312794e6778debd98a2979e304ff6c9a1eacdc03a0979be219ca4e8b6b5a922"
+  },
+  "unrelated_sources_unchanged": {
+    "agent-storage.js": true,
+    "package.json": true,
+    "server/deepseek-model.cjs": true
+  },
+  "original_tracked_tests_unchanged": true,
+  "embedded_modules_match": true
+}

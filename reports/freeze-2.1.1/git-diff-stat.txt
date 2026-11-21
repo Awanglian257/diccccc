@@ -1,0 +1,10 @@
+ .gitignore                   |   2 +
+ agent-core.js                |  26 +++++--
+ agent-ui.js                  | 100 ++++++++++++++++++++------
+ index.html                   | 164 ++++++++++++++++++++++++++++++++++---------
+ package.json                 |   5 +-
+ server/.env.example          |   3 +
+ server/agent-router.js       |  29 +++++---
+ server/deepseek-model.cjs    |  10 +--
+ tests/phase2-independent.cjs |   6 +-
+ 9 files changed, 268 insertions(+), 77 deletions(-)

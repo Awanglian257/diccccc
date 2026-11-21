@@ -1,0 +1,238 @@
+{
+  "mode": "isolated browser local engine; all /api requests blocked; no real API",
+  "unexpected_api_requests": [
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health",
+    "http://127.0.0.1:44197/api/ai/health"
+  ],
+  "results": [
+    {
+      "id": "P01-confirm-and-reload",
+      "status": "PASS",
+      "expected": "确认后AGENT_PLANS与兼容周计划均持久化；实际记录不增加",
+      "actual": {
+        "pass": true,
+        "planCount": 1,
+        "weekExists": true,
+        "actualCount": 0,
+        "confirmed_at": "2026-11-21T08:43:12.632Z"
+      }
+    },
+    {
+      "id": "P02-reject",
+      "status": "PASS",
+      "expected": "拒绝待确认计划不写正式计划、兼容计划、实际记录",
+      "actual": {
+        "pass": true,
+        "task": "cancelled",
+        "plans": 0,
+        "week": null,
+        "actual": 0
+      }
+    },
+    {
+      "id": "P03-cancel-before-confirm",
+      "status": "PASS",
+      "expected": "先取消再确认不能落盘",
+      "actual": {
+        "pass": true,
+        "task": "cancelled",
+        "plans": 0,
+        "actual": 0
+      }
+    },
+    {
+      "id": "P04-all-storage-fails",
+      "status": "PASS",
+      "expected": "写入失败不能显示计划已保存或完成持久化",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "week": null,
+        "task": "needs_confirmation",
+        "notices": []
+      }
+    },
+    {
+      "id": "P05-selective-plan-storage-fails",
+      "status": "PASS",
+      "expected": "正式计划集合失败时不能另存兼容计划并显示成功",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "weekExists": false,
+        "task": "needs_confirmation",
+        "notices": []
+      }
+    },
+    {
+      "id": "P06-double-confirm",
+      "status": "PASS",
+      "expected": "并发双击确认最多保存一次计划",
+      "actual": {
+        "pass": true,
+        "plans": 1,
+        "actual": 0
+      }
+    },
+    {
+      "id": "P07-cancel-during-confirm",
+      "status": "PASS",
+      "expected": "确认等待工具时取消后不保存计划",
+      "actual": {
+        "pass": true,
+        "task": "cancelled",
+        "plans": 0,
+        "week": null,
+        "actual": 0
+      }
+    },
+    {
+      "id": "P08-calendar-draft-isolation",
+      "status": "PASS",
+      "expected": "已确认计划入日历仍是aiPlan，统计与TDEE不读取",
+      "actual": {
+        "pass": true,
+        "draftRows": 84,
+        "actual": 0,
+        "totals": {
+          "kcal": 0,
+          "p": 0,
+          "f": 0,
+          "c": 0,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 0,
+          "complete": true
+        },
+        "estimate": {
+          "ok": false,
+          "reason": "有效记录不足 12 天（当前 0 天）",
+          "initial": 2757.0625,
+          "usedDays": 0,
+          "completeDays": 0,
+          "weightPoints": 0,
+          "spanDays": 0,
+          "avgIntake": 0,
+          "weightChange": null,
+          "weeklyChange": null,
+          "tdee": null,
+          "confidence": null,
+          "reasons": [],
+          "from": "2026-10-25",
+          "to": "2026-11-21"
+        }
+      }
+    },
+    {
+      "id": "P09-dismiss-calendar-confirm",
+      "status": "PASS",
+      "expected": "取消加入日历确认不写日历，不撤销此前已确认计划",
+      "actual": {
+        "pass": true,
+        "plans": 1,
+        "diary": {},
+        "actual": 0
+      }
+    },
+    {
+      "id": "P10-calendar-write-fails",
+      "status": "PASS",
+      "expected": "日历写入失败不显示加入草稿成功",
+      "actual": {
+        "pass": true,
+        "diary": {},
+        "notices": [
+          "保存失败，请检查浏览器存储空间或设置",
+          "保存失败，计划未加入日历，请重试"
+        ]
+      }
+    },
+    {
+      "id": "P11-stale-during-await",
+      "status": "PASS",
+      "expected": "确认请求等待期间上下文变化后应阻止旧结果持久化",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "task": "needs_confirmation",
+        "weight": 79.9
+      }
+    },
+    {
+      "id": "P12-reject-preserves-previous-plan",
+      "status": "PASS",
+      "expected": "拒绝新草稿不会覆盖之前已确认计划",
+      "actual": {
+        "pass": true,
+        "oldPlanPreserved": true,
+        "oldCompatibilityPlanPreserved": true,
+        "actual": 0
+      }
+    },
+    {
+      "id": "P13-explicit-actual-conversion",
+      "status": "PASS",
+      "expected": "仅用户明确将某个草稿条目标为实际后才计入摄入",
+      "actual": {
+        "pass": true,
+        "initial": 0,
+        "actual": 1,
+        "totals": {
+          "kcal": 523.9,
+          "p": 11.7,
+          "f": 1.4,
+          "c": 117,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 1,
+          "complete": true
+        },
+        "usedDays": 1
+      }
+    },
+    {
+      "id": "P14-cancel-reload",
+      "status": "PASS",
+      "expected": "取消后刷新不会恢复为已确认计划或实际摄入",
+      "actual": {
+        "pass": true,
+        "plans": 0,
+        "week": null,
+        "actual": 0,
+        "history": "cancelled"
+      }
+    }
+  ]
+}

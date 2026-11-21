@@ -1,0 +1,110 @@
+{
+  "mode": "real child process SIGKILL + restart; no real API; no UI simulation",
+  "results": [
+    {
+      "id": "RR01-normal-submit-restart",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561
+      ],
+      "state_file": "/tmp/hm-restart-zybLN8/state.json"
+    },
+    {
+      "id": "RR02-success-response-discarded-restart",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575
+      ],
+      "state_file": "/tmp/hm-restart-AfIkaQ/state.json"
+    },
+    {
+      "id": "RR03-unconfirmed-draft-restart",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575,
+        29582,
+        29589
+      ],
+      "state_file": "/tmp/hm-restart-OkERVi/state.json"
+    },
+    {
+      "id": "RR04-running-task-interrupted",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575,
+        29582,
+        29589,
+        29596,
+        29603
+      ],
+      "state_file": "/tmp/hm-restart-yUYTcq/state.json"
+    },
+    {
+      "id": "RR05-repeat-confirmation-after-restart",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575,
+        29582,
+        29589,
+        29596,
+        29603,
+        29610,
+        29617
+      ],
+      "state_file": "/tmp/hm-restart-kHYEyu/state.json"
+    },
+    {
+      "id": "RR06-prepared-query-and-retry-after-restart",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575,
+        29582,
+        29589,
+        29596,
+        29603,
+        29610,
+        29617,
+        29624,
+        29631
+      ],
+      "state_file": "/tmp/hm-restart-Jz0jAW/state.json"
+    },
+    {
+      "id": "RR07-durable-integrity-and-no-raw-token",
+      "status": "PASS",
+      "pids": [
+        29553,
+        29561,
+        29568,
+        29575,
+        29582,
+        29589,
+        29596,
+        29603,
+        29610,
+        29617,
+        29624,
+        29631,
+        29638,
+        29645
+      ],
+      "state_file": "/tmp/hm-restart-t9TvC7/state.json"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "snapshot_id": "health-manager-2.1.1-freeze-20261121-ddc60b1093bd",
+  "source_files_verified": 59,
+  "all_snapshot_sources_match_worktree": true,
+  "historical_evidence_hashes_unchanged": true,
+  "automated_summary_preserved": {
+    "pass": 198,
+    "fail": 0,
+    "blocked": 1,
+    "skip": 0
+  },
+  "manual_acceptance": {
+    "ENV-Firefox": "MANUAL_PASS",
+    "provenance": "user report; not automation"
+  },
+  "additional_node_verification": {
+    "pass": 79,
+    "fail": 0,
+    "not_added_to_prior_total": true
+  },
+  "new_p0_p1_found": false,
+  "freeze_recommendation": "RECOMMEND_FREEZE_WITH_DOCUMENTED_SCOPE",
+  "bundle_manifest_sha256": "8a9aca57b4903d1587f4f6cec590acfaddef684ffb949c12fa42c0263efc18c4",
+  "source_tree_sha256": "ddc60b1093bdfdca659fde65197b93fce97af01cfab248bb9fb7952e19baa86e",
+  "published": false,
+  "pushed": false,
+  "git_tag_created": false
+}

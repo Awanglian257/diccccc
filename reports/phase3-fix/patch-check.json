@@ -1,0 +1,7 @@
+{
+  "check": "patch applies to audited HEAD",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "sha256": "7eccea0fbdef319d9148c1927e6493aeb021addefcfa7923381aa3c6e29b5a5a"
+}

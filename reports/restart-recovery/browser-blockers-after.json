@@ -1,0 +1,16 @@
+{
+  "root": "/workspace/github/diccccc-phase2",
+  "at": "2026-11-21T09:26:47.357Z",
+  "results": [
+    {
+      "id": "ENV-Firefox",
+      "status": "BLOCKED",
+      "reason": "browserType.launch: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - <launching> /workspace/browser-runtime/firefox-1538/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-kFiAMk -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=30077\u001b[22m\n\u001b[2m  - [pid=30077][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=30077][err] Fontconfig error: No writable cache directories\u001b[22m\n\u001b[2m  - [pid=30077][err] [30113] Sandbox: writing /proc/self/uid_map: EROFS\u001b[22m\n\u001b[2m  - [pid=30077][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=0.403186) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt\u001b[22m\n"
+    },
+    {
+      "id": "ENV-WebKit",
+      "status": "BLOCKED",
+      "reason": "browserType.launch: \n╔══════════════════════════════════════════════════════╗\n║ Host system is missing dependencies to run browsers. ║\n║ Missing libraries:                                   ║\n║     libcairo-script-interpreter.so.2                 ║\n║     libhidapi-hidraw.so.0                            ║\n║     libGLESv2.so.2                                   ║\n╚══════════════════════════════════════════════════════╝"
+    }
+  ]
+}

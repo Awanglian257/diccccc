@@ -11,7 +11,10 @@
     "test:real": "node tests/real-api.cjs",
     "check:deepseek": "node server/deepseek-check.cjs",
     "test:phase2": "node tests/phase2-regression.cjs",
-    "test:acceptance": "node tests/phase2-independent.cjs"
+    "test:acceptance": "node tests/phase2-independent.cjs",
+    "test:phase3:unit": "node --test tests/phase3-confirm.test.cjs tests/phase3-storage.test.cjs tests/phase3-http.test.cjs tests/phase3-cache.test.cjs",
+    "test:phase3:browser": "node tests/phase3-persistence.cjs",
+    "test:phase3:original": "node tests/phase3-original.cjs"
   },
   "engines": {
     "node": ">=20.19"

@@ -12,7 +12,7 @@ async function modelLoop({kind,input,context,task,callTool},controller){
  const key=String(process.env.DEEPSEEK_API_KEY||'').trim();if(!key)throw new Core.AgentError('AI_NOT_CONFIGURED','未配置真实模型');
  const agent=kind==='nutrition'||kind==='semantic'?'Nutrition':kind==='metabolism'?'Metabolism':kind==='behavior'||kind==='memory'?'Behavior':'Planning';
  const names=Core.AGENTS[agent].filter(name=>!['create_plan_draft','save_user_preference_with_confirmation'].includes(name));
- const limits=modelLimits(kind),cache=new Map();let workCount=0;task.model_limits={...limits};
+ const limits=modelLimits(kind),cache=new Map(),mealCache=new Map();let workCount=0;task.model_limits={...limits};
  if(agent==='Planning')names.push('calculate_plan_nutrition');
  const schemas={...Core.toolSchemas,calculate_plan_nutrition:batchSchema()};
  const tools=names.map(name=>({type:'function',function:{name,description:'受控工具 '+name+'；严格遵守参数Schema，先查来源，再计算数值。',parameters:schemas[name]}}));
@@ -37,7 +37,7 @@ async function modelLoop({kind,input,context,task,callTool},controller){
     const name=call.function?.name;if(!names.includes(name))throw new Core.AgentError('TOOL_PERMISSION','模型请求未授权工具，已拒绝');
     let result,startedExecution=false;
     try{let args;try{args=JSON.parse(call.function.arguments);}catch{throw new Core.AgentError('SCHEMA','工具参数必须是严格JSON对象');}Core.schemaCheck(args,schemas[name]);
-     const signature=name+':'+canonical(args);
+     const revision=canonical(context),signature=name+':'+revision+':'+canonical(args);
      if(cache.has(signature)){
       result={...cache.get(signature),cache:{hit:true,note:'复用本任务中同参数的已完成工具结果，未重复执行'}};
       task.steps.push({id:Core.ID('cached'),agent,tool:name,status:'completed',at:new Date().toISOString(),summary:'复用已验证结果（缓存命中，未重复执行）',cached:true});
@@ -46,12 +46,12 @@ async function modelLoop({kind,input,context,task,callTool},controller){
       if(name==='calculate_plan_nutrition'){
        if(new Set(args.days.map(d=>d.date)).size!==args.days.length)throw new Core.AgentError('SCHEMA','批量计算的日期不能重复');
        for(const day of args.days){if(!Core.validDate(day.date))throw new Core.AgentError('SCHEMA','批量计算日期无效');if(new Set(day.meals.map(m=>m.slot)).size!==day.meals.length)throw new Core.AgentError('SCHEMA','同一天的餐次不能重复');}
-       const required=args.days.reduce((n,d)=>n+d.meals.length,0);if(workCount+required>limits.work)throw new Core.AgentError('CALL_LIMIT','本次批量计算将超过模型阶段实际工具预算，已停止');
+       const warm=new Map(mealCache),mealKey=items=>canonical(context.foods)+':nutrition-v1:'+canonical(items);const required=args.days.reduce((n,d)=>n+d.meals.length,0),misses=args.days.reduce((n,d)=>n+d.meals.filter(m=>!warm.has(mealKey(m.items))).length,0);if(workCount+misses>limits.work)throw new Core.AgentError('CALL_LIMIT','本次批量计算将超过模型阶段实际工具预算，已停止');
        const days=[];const week={kcal:0,protein:0,fat:0,carb:0};
-       for(const day of args.days){const meals=[],total={kcal:0,protein:0,fat:0,carb:0};for(const meal of day.meals){const n=await invoke('calculate_meal_nutrition',{items:meal.items});const prices=input.constraints?.prices||{},times=input.constraints?.prep_times||{},cost=meal.items.every(i=>Number.isFinite(prices[i.food_id])&&prices[i.food_id]>=0&&prices[i.food_id]<=500)?Math.round(meal.items.reduce((sum,i)=>sum+prices[i.food_id]*i.grams/100,0)*10)/10:null,prep=meal.items.every(i=>Number.isFinite(times[i.food_id])&&times[i.food_id]>=0&&times[i.food_id]<=240)?meal.items.reduce((sum,i)=>sum+times[i.food_id],0):null;meals.push({slot:meal.slot,items:meal.items,nutrition_totals:n.data.totals,cost,prep_minutes:prep});for(const key of Object.keys(total))total[key]+=n.data.totals[key];}for(const key of Object.keys(total)){total[key]=Math.round(total[key]*10)/10;week[key]+=total[key];}days.push({date:day.date,meals,nutrition_totals:total});}
+       for(const day of args.days){const meals=[],total={kcal:0,protein:0,fat:0,carb:0};for(const meal of day.meals){const key=mealKey(meal.items),hit=warm.get(key);let n;if(hit){n=Core.clone(hit.result);task.steps.push({id:Core.ID('cached-meal'),agent,tool:'calculate_meal_nutrition',status:'completed',at:new Date().toISOString(),cached:true,cache_source:hit.source,summary:'复用本任务前一批次同食物版本、同份量的已验证营养结果'});}else{n=await invoke('calculate_meal_nutrition',{items:meal.items});if(n.success!==true||!n.data?.totals)throw new Core.AgentError('NUTRITION','营养计算失败，不缓存失败结果');mealCache.set(key,{result:Core.clone(n),source:task.steps.at(-1)?.id||Core.ID('calculation')});}const prices=input.constraints?.prices||{},times=input.constraints?.prep_times||{},cost=meal.items.every(i=>Number.isFinite(prices[i.food_id])&&prices[i.food_id]>=0&&prices[i.food_id]<=500)?Math.round(meal.items.reduce((sum,i)=>sum+prices[i.food_id]*i.grams/100,0)*10)/10:null,prep=meal.items.every(i=>Number.isFinite(times[i.food_id])&&times[i.food_id]>=0&&times[i.food_id]<=240)?meal.items.reduce((sum,i)=>sum+times[i.food_id],0):null;meals.push({slot:meal.slot,items:meal.items,nutrition_totals:n.data.totals,cost,prep_minutes:prep});for(const key of Object.keys(total))total[key]+=n.data.totals[key];}for(const key of Object.keys(total)){total[key]=Math.round(total[key]*10)/10;week[key]+=total[key];}days.push({date:day.date,meals,nutrition_totals:total});}
        for(const key of Object.keys(week))week[key]=Math.round(week[key]*10)/10;
        result={success:true,data:{days,nutrition_totals:week,note:'这是确定性营养计算，预算、忌口、价格、时间和完整计划仍需Guardian最终审核'},error_code:null,warnings:[],source:'后端批量分发到已注册的calculate_meal_nutrition工具',timestamp:new Date().toISOString()};
-       task.steps.push({id:Core.ID('batch'),agent,tool:name,status:'completed',at:new Date().toISOString(),summary:'批量计算 '+required+' 餐；每一餐均实际调用营养计算工具'});
+       task.steps.push({id:Core.ID('batch'),agent,tool:name,status:'completed',at:new Date().toISOString(),summary:'批量核算 '+required+' 餐；实际计算 '+misses+' 餐，精确缓存复用 '+(required-misses)+' 餐'});
       }else result=await invoke(name,args);
       cache.set(signature,result);
      }

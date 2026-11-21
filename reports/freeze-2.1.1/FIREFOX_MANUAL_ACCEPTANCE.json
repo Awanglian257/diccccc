@@ -1,0 +1,15 @@
+{
+  "id": "ENV-Firefox",
+  "product_version": "2.1.1",
+  "reported_at": "2026-11-21T17:41:42.420026+08:00",
+  "automated_status": "BLOCKED",
+  "manual_acceptance_status": "MANUAL_PASS",
+  "evidence_type": "user_report",
+  "verbatim_user_statement": "Firefox 浏览器人工验收现已完成并通过。",
+  "independently_reexecuted": false,
+  "browser_version": null,
+  "operating_system": null,
+  "actual_test_time": null,
+  "attachments": [],
+  "note": "用户未提供上述细项；不编造。使用当前对话确认作为人工验收依据，不修改历史自动化结果。"
+}
