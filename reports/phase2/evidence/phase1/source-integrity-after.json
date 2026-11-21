@@ -1,0 +1,14 @@
+{
+  "release": {
+    "files_checked": 43,
+    "changed_or_missing": []
+  },
+  "development": {
+    "files_checked": 90,
+    "changed_or_missing": []
+  },
+  "hosted": {
+    "files_checked": 8,
+    "changed_or_missing": []
+  }
+}

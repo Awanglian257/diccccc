@@ -1,0 +1,47 @@
+[
+  {
+    "file": "README.md",
+    "kind": "modified",
+    "sha256": "a1ae274c578d3037d8fee5b5d9fce423034675512059f39a7c42dd7eec709ca4"
+  },
+  {
+    "file": "agent-ui.js",
+    "kind": "modified",
+    "sha256": "0fe252bde7c666253f0262c2fc8a8705ef30885e25c11aa711a6d87da8443ab9"
+  },
+  {
+    "file": "agent-core.js",
+    "kind": "modified",
+    "sha256": "9689d9c6022dbb2674b308b038f95f2ba62706d2835229b5f85b6a28deaaeda4"
+  },
+  {
+    "file": "package.json",
+    "kind": "modified",
+    "sha256": "a95ac53ae13bc15663e4ba856401bee8f37adcd7bdf908b791f1f39d01ef0de5"
+  },
+  {
+    "file": "index.html",
+    "kind": "modified",
+    "sha256": "f83a2ab85aa131e4492b9f44fade609418acafb1389f301109baeefd92bc07f1"
+  },
+  {
+    "file": "package-lock.json",
+    "kind": "added",
+    "sha256": "16e0e5d8aac632ed8081d13553a13c6c5e405d8a5ba40df04b27eaed4e8b7ed7"
+  },
+  {
+    "file": "tests/phase2-independent.cjs",
+    "kind": "added",
+    "sha256": "6a07941bf7f4447a5dd91d42d0300299b88e014d47760568e5ef69f642ab3de9"
+  },
+  {
+    "file": "tests/phase2-regression.cjs",
+    "kind": "added",
+    "sha256": "5a357187067d74e139388757c48d75b07d2e87ad5ae0ffd0679208f99be03bb6"
+  },
+  {
+    "file": "tests/evaluate.cjs",
+    "kind": "modified",
+    "sha256": "606d2fb78de80a64571d99d2f6b87b46ef08d8f1b0199a4d09e4af572ab26e10"
+  }
+]

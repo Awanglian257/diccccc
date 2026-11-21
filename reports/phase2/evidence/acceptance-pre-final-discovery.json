@@ -1,0 +1,859 @@
+{
+  "root": "/workspace/reports/phase2/clean-install",
+  "at": "2026-11-21T04:29:41.744Z",
+  "results": [
+    {
+      "id": "V01",
+      "bug": "B01",
+      "status": "PASS",
+      "evidence": {
+        "unchanged": true
+      }
+    },
+    {
+      "id": "V02",
+      "bug": "B02",
+      "status": "PASS",
+      "evidence": {
+        "rejected": [
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "id": "V03",
+      "bug": "B03",
+      "status": "PASS",
+      "evidence": {
+        "rice": {
+          "name": "米饭(熟)",
+          "amount": 1,
+          "unit": "碗",
+          "state": "熟重",
+          "grams": 150,
+          "kcal": 174,
+          "p": 3.9,
+          "f": 0.5,
+          "c": 38.9,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        },
+        "noodle": {
+          "name": "面条(煮)",
+          "amount": 1,
+          "unit": "碗",
+          "state": "熟重",
+          "grams": 200,
+          "kcal": 220,
+          "p": 7.8,
+          "f": 0.8,
+          "c": 45.6,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        },
+        "oil": {
+          "name": "植物油",
+          "amount": 1,
+          "unit": "勺",
+          "state": "熟重",
+          "grams": 10,
+          "kcal": 90,
+          "p": 0,
+          "f": 10,
+          "c": 0,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        },
+        "sugar": {
+          "name": "白砂糖",
+          "amount": 1,
+          "unit": "勺",
+          "state": "熟重",
+          "grams": 5,
+          "kcal": 20,
+          "p": 0,
+          "f": 0,
+          "c": 5,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        },
+        "oats": {
+          "name": "燕麦片(干)",
+          "amount": 1,
+          "unit": "勺",
+          "state": "熟重",
+          "grams": null,
+          "kcal": null,
+          "p": null,
+          "f": null,
+          "c": null,
+          "unknown": true,
+          "needsGrams": true,
+          "est": false,
+          "note": "没有可靠的勺换算，请称重后改用 g"
+        }
+      }
+    },
+    {
+      "id": "V04",
+      "bug": "B04",
+      "status": "PASS",
+      "evidence": {
+        "concurrentClickCount": 20,
+        "firstWrites": 1,
+        "explicitSecondWrites": 2
+      }
+    },
+    {
+      "id": "V05",
+      "bug": "B05",
+      "status": "PASS",
+      "evidence": [
+        {
+          "date": "1899-12-31",
+          "stored": false,
+          "error": "日期超出可记录范围：1900-01-01 至 2200-12-31",
+          "agent": false
+        },
+        {
+          "date": "2201-01-01",
+          "stored": false,
+          "error": "日期超出可记录范围：1900-01-01 至 2200-12-31",
+          "agent": false
+        },
+        {
+          "date": "2026-02-30",
+          "stored": false,
+          "error": "请选择真实存在的日历日期",
+          "agent": false
+        },
+        {
+          "date": "1900-01-01",
+          "stored": true,
+          "error": "",
+          "agent": true
+        },
+        {
+          "date": "2200-12-31",
+          "stored": true,
+          "error": "",
+          "agent": true
+        },
+        {
+          "date": "2024-02-29",
+          "stored": true,
+          "error": "",
+          "agent": true
+        }
+      ]
+    },
+    {
+      "id": "V06",
+      "bug": "B06",
+      "status": "PASS",
+      "evidence": {
+        "e": {
+          "meal": "lunch",
+          "name": "披萨",
+          "kcal": 800,
+          "p": null,
+          "f": null,
+          "c": null,
+          "qty": 1,
+          "unit": "份",
+          "cat": "custom",
+          "macroUnknown": true
+        },
+        "s": {
+          "kcal": 800,
+          "p": 0,
+          "f": 0,
+          "c": 0,
+          "veg": 0,
+          "unknown": 1,
+          "unknownKcal": 0,
+          "macroUnknown": 1,
+          "total": 1,
+          "complete": false
+        }
+      }
+    },
+    {
+      "id": "V07",
+      "bug": "B07",
+      "status": "PASS",
+      "evidence": {
+        "removed": {
+          "tdee": 2757.0625,
+          "source": "initial",
+          "cal": null,
+          "stale": true,
+          "staleReason": "校准依据记录已变化或缺少依据指纹，需重新校准",
+          "oldCal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:27:46.591Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "calibrationState": "historical"
+        },
+        "restored": {
+          "tdee": 2151,
+          "source": "calibrated",
+          "cal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:27:46.591Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "stale": false,
+          "calibrationState": "current"
+        },
+        "modified": {
+          "tdee": 2757.0625,
+          "source": "initial",
+          "cal": null,
+          "stale": true,
+          "staleReason": "校准依据记录已变化或缺少依据指纹，需重新校准",
+          "oldCal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:27:46.591Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "calibrationState": "historical"
+        },
+        "recalibrated": {
+          "ok": true,
+          "cal": {
+            "tdee": 2172,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:27:46.593Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整记录\",\"kcal\":2400,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2121,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,121 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "est": {
+            "ok": true,
+            "reason": "",
+            "initial": 2757.0625,
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2121,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "tdee": 2172,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,121 千卡/天，体重变化 −0.1 kg"
+            ],
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "weightSd": 0,
+            "weightTrend": "stable"
+          }
+        },
+        "current": {
+          "tdee": 2172,
+          "source": "calibrated",
+          "cal": {
+            "tdee": 2172,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:27:46.593Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整记录\",\"kcal\":2400,\"p\":100,\"f\":65,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整记录\",\"kcal\":2100,\"p\":100,\"f\":65,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2121,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,121 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "stale": false,
+          "calibrationState": "current"
+        }
+      }
+    },
+    {
+      "id": "V08",
+      "bug": "B08",
+      "status": "PASS",
+      "evidence": {
+        "withoutBefore": "cut",
+        "without": {
+          "start": "2026-07-24",
+          "stage": "cut"
+        },
+        "withBefore": "cut",
+        "with": {
+          "start": "2026-07-24",
+          "stage": "cut"
+        }
+      }
+    },
+    {
+      "id": "V09",
+      "bug": "B09",
+      "status": "PASS",
+      "evidence": {
+        "exit": 0,
+        "keys": [
+          "executed_at",
+          "mode",
+          "dataset",
+          "experiments",
+          "limitations",
+          "safety",
+          "metrics"
+        ]
+      }
+    },
+    {
+      "id": "S01",
+      "bug": "B01/B02",
+      "status": "PASS",
+      "evidence": {
+        "errors": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "aggregate": true
+      }
+    },
+    {
+      "id": "S02",
+      "bug": "B01/B02",
+      "status": "PASS",
+      "evidence": {
+        "customAndInventoryRejected": true
+      }
+    },
+    {
+      "id": "S03",
+      "bug": "B06",
+      "status": "PASS",
+      "evidence": {
+        "unchanged": {
+          "meal": "dinner",
+          "name": "鸡胸肉",
+          "foodId": "chicken",
+          "grams": 100,
+          "kcal": 165,
+          "p": 31,
+          "f": 3.6,
+          "c": 0
+        },
+        "changed": {
+          "meal": "dinner",
+          "name": "鸡胸肉",
+          "kcal": 200,
+          "p": null,
+          "f": null,
+          "c": null,
+          "qty": 1,
+          "unit": "份",
+          "cat": "custom",
+          "macroUnknown": true
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "bug": "data-isolation",
+      "status": "PASS",
+      "evidence": {
+        "total": {
+          "kcal": 500,
+          "p": 20,
+          "f": 10,
+          "c": 60,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 1,
+          "complete": true
+        },
+        "tdee": {
+          "ok": false,
+          "reason": "有效记录不足 12 天（当前 1 天）",
+          "initial": 2757.0625,
+          "usedDays": 1,
+          "completeDays": 1,
+          "weightPoints": 0,
+          "spanDays": 0,
+          "avgIntake": 500,
+          "weightChange": null,
+          "weeklyChange": null,
+          "tdee": null,
+          "confidence": null,
+          "reasons": [],
+          "from": "2026-10-25",
+          "to": "2026-11-21"
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "bug": "data-delete",
+      "status": "PASS",
+      "evidence": {
+        "kcal": 0,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "veg": 0,
+        "unknown": 0,
+        "unknownKcal": 0,
+        "macroUnknown": 0,
+        "total": 0,
+        "complete": true
+      }
+    },
+    {
+      "id": "S06",
+      "bug": "quota",
+      "status": "PASS",
+      "evidence": {
+        "simulation": "Storage.setItem throws QuotaExceededError",
+        "saved": false,
+        "unchanged": true,
+        "total": 0
+      }
+    },
+    {
+      "id": "S07",
+      "bug": "large-history",
+      "status": "PASS",
+      "evidence": {
+        "saved": true,
+        "days": 3650,
+        "kcal": 2100,
+        "elapsed_ms": 41.60000000009313,
+        "bytes": 233601
+      }
+    },
+    {
+      "id": "S08",
+      "bug": "timezone-midnight",
+      "status": "PASS",
+      "evidence": [
+        {
+          "zone": "UTC",
+          "actual": "2026-11-20"
+        },
+        {
+          "zone": "Asia/Shanghai",
+          "actual": "2026-11-21"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "bug": "timezone-migration",
+      "status": "FAIL",
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:41325/\", waiting until \"load\"\u001b[22m\n\n    at fresh (/workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:8:35)\n    at /workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:29:56\n    at check (/workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:7:93)\n    at /workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:29:7"
+    },
+    {
+      "id": "S10",
+      "bug": "DST",
+      "status": "PASS",
+      "evidence": {
+        "date": "2026-03-15",
+        "stage": 1
+      }
+    },
+    {
+      "id": "S11",
+      "bug": "refresh-running",
+      "status": "FAIL",
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:41325/\", waiting until \"load\"\u001b[22m\n\n    at fresh (/workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:8:35)\n    at /workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:31:53\n    at check (/workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:7:93)\n    at /workspace/reports/phase2/clean-install/tests/phase2-independent.cjs:31:7"
+    },
+    {
+      "id": "S12",
+      "bug": "restart-service",
+      "status": "PASS",
+      "evidence": {
+        "status": 401,
+        "code": "SESSION",
+        "simulation": "close server, clear process-local sessions, create fresh server; actual child-process restart is separately tested"
+      }
+    },
+    {
+      "id": "S13",
+      "bug": "B08-explicit-restart",
+      "status": "PASS",
+      "evidence": {
+        "cancelPreserved": true,
+        "confirmedRestart": true,
+        "historyPreserved": true
+      }
+    },
+    {
+      "id": "S14",
+      "bug": "B07-exclusions-expiry",
+      "status": "PASS",
+      "evidence": {
+        "draft": {
+          "tdee": 2151,
+          "source": "calibrated",
+          "cal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:29:31.965Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "stale": false,
+          "calibrationState": "current"
+        },
+        "weightChange": {
+          "tdee": 2757.0625,
+          "source": "initial",
+          "cal": null,
+          "stale": true,
+          "staleReason": "校准依据记录已变化或缺少依据指纹，需重新校准",
+          "oldCal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T04:29:31.965Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "calibrationState": "historical"
+        },
+        "expired": {
+          "tdee": 2757.0625,
+          "source": "initial",
+          "cal": null,
+          "stale": true,
+          "staleReason": "校准已超过 60 天，建议重新校准",
+          "oldCal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-09-21T04:29:31.968Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "evidenceFingerprint": "[{\"2026-11-08\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-09\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-10\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-11\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-12\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-13\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-14\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-15\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-16\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-17\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-18\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-19\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-20\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}],\"2026-11-21\":[{\"name\":\"完整\",\"kcal\":2100,\"p\":100,\"f\":60,\"c\":250}]},{\"2026-11-06\":80.1,\"2026-11-09\":80.08,\"2026-11-12\":80.06,\"2026-11-15\":80.04,\"2026-11-18\":80.02,\"2026-11-21\":80}]",
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 14,
+            "completeDays": 14,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 14 天有记录，其中 14 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "calibrationState": "expired"
+        }
+      }
+    },
+    {
+      "id": "S15",
+      "bug": "legacy-corruption",
+      "status": "PASS",
+      "evidence": {
+        "kcal": 0,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "veg": 0,
+        "unknown": 1,
+        "unknownKcal": 1,
+        "macroUnknown": 1,
+        "total": 1,
+        "complete": false,
+        "validationError": "kcal须为不小于 0且不超过 10000 的有限数值"
+      }
+    },
+    {
+      "id": "S16",
+      "bug": "process-restart",
+      "status": "PASS",
+      "evidence": {
+        "actualChildProcessRestart": true,
+        "status": 401
+      }
+    },
+    {
+      "id": "S17",
+      "bug": "B02-legacy-aggregate",
+      "status": "PASS",
+      "evidence": {
+        "kcal": 36000,
+        "p": 400,
+        "f": 200,
+        "c": 400,
+        "veg": 0,
+        "unknown": 0,
+        "unknownKcal": 1,
+        "macroUnknown": 1,
+        "total": 4,
+        "complete": false,
+        "validationError": "当日合计超出记录上限，请检查数量和单位"
+      }
+    },
+    {
+      "id": "S18",
+      "bug": "B07-legacy-calibration",
+      "status": "PASS",
+      "evidence": {
+        "tdee": 2757.0625,
+        "source": "initial",
+        "cal": null,
+        "stale": true,
+        "staleReason": "校准依据记录已变化或缺少依据指纹，需重新校准",
+        "oldCal": {
+          "tdee": 2200,
+          "profileKey": "male|24|175|1.55|none",
+          "at": "2026-11-21T04:29:36.166Z",
+          "weight": 80
+        },
+        "calibrationState": "historical"
+      }
+    },
+    {
+      "id": "S19",
+      "bug": "B01-backfill",
+      "status": "PASS",
+      "evidence": {
+        "before": "{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":100,\"p\":null,\"f\":null,\"c\":null}]}",
+        "after": "{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":100,\"p\":null,\"f\":null,\"c\":null}]}"
+      }
+    },
+    {
+      "id": "S20",
+      "bug": "B01-template",
+      "status": "PASS",
+      "evidence": {
+        "invalidTemplateNotSaved": true
+      }
+    },
+    {
+      "id": "S21",
+      "bug": "B02-custom-atomicity",
+      "status": "PASS",
+      "evidence": {
+        "diaryBefore": "{\"2026-11-21\":[{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000}]}",
+        "diaryAfter": "{\"2026-11-21\":[{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000}]}",
+        "foodsBefore": null,
+        "foodsAfter": null
+      }
+    },
+    {
+      "id": "ENV-Firefox",
+      "status": "BLOCKED",
+      "reason": "浏览器二进制未安装",
+      "executable": "/home/agent/.cache/ms-playwright/firefox-1538/firefox/firefox"
+    },
+    {
+      "id": "ENV-WebKit",
+      "status": "BLOCKED",
+      "reason": "浏览器二进制未安装",
+      "executable": "/home/agent/.cache/ms-playwright/webkit-2336/pw_run.sh"
+    }
+  ]
+}

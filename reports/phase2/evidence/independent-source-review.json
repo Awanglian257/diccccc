@@ -1,0 +1,122 @@
+{
+  "method": "实际源码路径复核；独立脚本在干净副本断言持久化和统计。非第三方人工认证。",
+  "write_gate": "saveDiary → diaryValidationError → nutritionEntryError",
+  "callsites": [
+    {
+      "line": 3251,
+      "text": "function saveProfile(r, options){"
+    },
+    {
+      "line": 3326,
+      "text": "function saveDiary(d){"
+    },
+    {
+      "line": 4373,
+      "text": "pushEntry(date, {"
+    },
+    {
+      "line": 5351,
+      "text": "if(!pushEntry(es.date, entry))return;"
+    },
+    {
+      "line": 5409,
+      "text": "if(!pushEntry(es.date,entry))return;"
+    },
+    {
+      "line": 5415,
+      "text": "function pushEntry(iso, entry){"
+    },
+    {
+      "line": 5419,
+      "text": "return saveDiary(d);"
+    },
+    {
+      "line": 5423,
+      "text": "if (d[iso]){ d[iso].splice(idx,1); if (!d[iso].length) delete d[iso]; saveDiary(d); }"
+    },
+    {
+      "line": 5573,
+      "text": "if(!pushEntry(iso, entry))return;"
+    },
+    {
+      "line": 5660,
+      "text": "saveDiary(d);"
+    },
+    {
+      "line": 6644,
+      "text": "saveProfile(r);"
+    },
+    {
+      "line": 6647,
+      "text": "saveProfile(r);"
+    },
+    {
+      "line": 6656,
+      "text": "var plan=buildPlan(profile.inp);saveProfile(plan,{restart:true});render(plan);renderCalendar();"
+    },
+    {
+      "line": 6865,
+      "text": "saveDiary(planDiary);"
+    },
+    {
+      "line": 6950,
+      "text": "saveDiary(d);"
+    },
+    {
+      "line": 7504,
+      "text": "if(!saveDiary(diary)){error.textContent='保存失败，请检查输入或存储空间';error.hidden=false;return;}"
+    },
+    {
+      "line": 7548,
+      "text": "saveDiary(diary);"
+    },
+    {
+      "line": 7987,
+      "text": "diary[date]=(diary[date]||[]).concat(rows);saveDiary(diary);if(JSON.stringify(loadDiary())!==JSON.stringify(diary))throw new Error('本机存储失败，未确认写入');t.local_committed=true;"
+    },
+    {
+      "line": 8005,
+      "text": "saveDiary(diary);renderCalendar();appNotice('计划已作为草稿加入日历，未计入实际摄入');"
+    }
+  ],
+  "direct_diary_write": [
+    {
+      "line": 3329,
+      "text": "var value=JSON.stringify(d);lsSet('hm_diary',value);"
+    }
+  ],
+  "verified_invariants": {
+    "shared_write_guard": [
+      "V01",
+      "V02",
+      "S01",
+      "S02",
+      "S19",
+      "S20",
+      "S21"
+    ],
+    "nutrition_identity": [
+      "V06",
+      "S03"
+    ],
+    "plan_actual_separation": [
+      "S04",
+      "original-browser planning test"
+    ],
+    "calibration_evidence": [
+      "V07",
+      "S14",
+      "S18"
+    ],
+    "delete_statistics": [
+      "S05"
+    ],
+    "profile_start": [
+      "V08",
+      "S13"
+    ],
+    "clean_evaluate": [
+      "V09"
+    ]
+  }
+}

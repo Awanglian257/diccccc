@@ -1,0 +1,875 @@
+{
+  "executed_at": "2026-11-21T03:37:25.413Z",
+  "timezone": "Asia/Shanghai",
+  "results": [
+    {
+      "id": "A01",
+      "title": "空记餐表单不写入",
+      "status": "passed",
+      "pass": true,
+      "actual": 0
+    },
+    {
+      "id": "A02",
+      "title": "饮食新增、修改、删除及统计联动",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "added": 200,
+        "edited": 300,
+        "removed": {
+          "kcal": 0,
+          "p": 0,
+          "f": 0,
+          "c": 0,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 0,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "A03",
+      "title": "组合餐负数重量应拒绝",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "fieldValid": false,
+        "entries": [
+          {
+            "meal": "lunch",
+            "name": "组合餐：审查测试餐",
+            "qty": 1,
+            "unit": "份",
+            "grams": 0,
+            "kcal": 0,
+            "p": 0,
+            "f": 0,
+            "c": 0,
+            "cat": "combo",
+            "combo": true,
+            "items": [
+              {
+                "name": "米饭",
+                "amount": 0,
+                "unit": "g",
+                "state": "熟重",
+                "grams": 0,
+                "kcal": 0,
+                "p": 0,
+                "f": 0,
+                "c": 0,
+                "unknown": false,
+                "est": false,
+                "note": ""
+              }
+            ],
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "oil": 0,
+            "sauce": 0,
+            "warn": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "A04",
+      "title": "组合餐超大重量应拒绝",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "entries": [
+          {
+            "meal": "lunch",
+            "name": "组合餐：审查测试餐",
+            "qty": 1,
+            "unit": "份",
+            "grams": 0,
+            "kcal": 1160000000000,
+            "p": 26000000000,
+            "f": 3000000000,
+            "c": 259000000000,
+            "cat": "combo",
+            "combo": true,
+            "items": [
+              {
+                "name": "米饭",
+                "amount": 1000000000000,
+                "unit": "g",
+                "state": "熟重",
+                "grams": 1000000000000,
+                "kcal": 1160000000000,
+                "p": 26000000000,
+                "f": 3000000000,
+                "c": 259000000000,
+                "unknown": false,
+                "est": false,
+                "note": ""
+              }
+            ],
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "oil": 0,
+            "sauce": 0,
+            "warn": ""
+          }
+        ],
+        "totals": {
+          "kcal": 1160000000000,
+          "p": 26000000000,
+          "f": 3000000000,
+          "c": 259000000000,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 1,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "A05",
+      "title": "组合餐单位应按所选单位换算",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "portion": {
+          "u": "碗",
+          "g": 150
+        },
+        "spoon": {
+          "name": "米饭",
+          "amount": 1,
+          "unit": "勺",
+          "state": "熟重",
+          "grams": 150,
+          "kcal": 174,
+          "p": 3.9,
+          "f": 0.5,
+          "c": 38.9,
+          "unknown": false,
+          "est": false,
+          "note": ""
+        },
+        "bowl": {
+          "name": "米饭",
+          "amount": 1,
+          "unit": "碗",
+          "state": "熟重",
+          "grams": 150,
+          "kcal": 174,
+          "p": 3.9,
+          "f": 0.5,
+          "c": 38.9,
+          "unknown": false,
+          "est": false,
+          "note": ""
+        }
+      }
+    },
+    {
+      "id": "A06",
+      "title": "组合餐连续提交不应重复写入同次表单",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "count": 2,
+        "entries": [
+          {
+            "meal": "lunch",
+            "name": "组合餐：审查测试餐",
+            "qty": 1,
+            "unit": "份",
+            "grams": 0,
+            "kcal": 116,
+            "p": 2.6,
+            "f": 0.3,
+            "c": 25.9,
+            "cat": "combo",
+            "combo": true,
+            "items": [
+              {
+                "name": "米饭",
+                "amount": 100,
+                "unit": "g",
+                "state": "熟重",
+                "grams": 100,
+                "kcal": 116,
+                "p": 2.6,
+                "f": 0.3,
+                "c": 25.9,
+                "unknown": false,
+                "est": false,
+                "note": ""
+              }
+            ],
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "oil": 0,
+            "sauce": 0,
+            "warn": ""
+          },
+          {
+            "meal": "lunch",
+            "name": "组合餐：审查测试餐",
+            "qty": 1,
+            "unit": "份",
+            "grams": 0,
+            "kcal": 116,
+            "p": 2.6,
+            "f": 0.3,
+            "c": 25.9,
+            "cat": "combo",
+            "combo": true,
+            "items": [
+              {
+                "name": "米饭",
+                "amount": 100,
+                "unit": "g",
+                "state": "熟重",
+                "grams": 100,
+                "kcal": 116,
+                "p": 2.6,
+                "f": 0.3,
+                "c": 25.9,
+                "unknown": false,
+                "est": false,
+                "note": ""
+              }
+            ],
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "oil": 0,
+            "sauce": 0,
+            "warn": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "A07",
+      "title": "组合餐日期边界应与快记1900~2200限制一致",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "persisted": [
+          {
+            "meal": "lunch",
+            "name": "组合餐：审查测试餐",
+            "qty": 1,
+            "unit": "份",
+            "grams": 0,
+            "kcal": 116,
+            "p": 2.6,
+            "f": 0.3,
+            "c": 25.9,
+            "cat": "combo",
+            "combo": true,
+            "items": [
+              {
+                "name": "米饭",
+                "amount": 100,
+                "unit": "g",
+                "state": "熟重",
+                "grams": 100,
+                "kcal": 116,
+                "p": 2.6,
+                "f": 0.3,
+                "c": 25.9,
+                "unknown": false,
+                "est": false,
+                "note": ""
+              }
+            ],
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "oil": 0,
+            "sauce": 0,
+            "warn": ""
+          }
+        ],
+        "date": "1899-01-01"
+      },
+      "note": "1899 is outside quick meal accepted range; date validity check differs between forms"
+    },
+    {
+      "id": "A08",
+      "title": "新建快记热量非法值由原生表单拦截",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "count": 0,
+        "valid": false
+      }
+    },
+    {
+      "id": "A09",
+      "title": "编辑已匹配食物不应沿用旧食物宏量营养",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "entry": {
+          "meal": "lunch",
+          "name": "披萨",
+          "kcal": 800,
+          "p": 31,
+          "f": 3.6,
+          "c": 0,
+          "grams": 100,
+          "foodId": "chicken",
+          "cat": "meat"
+        },
+        "totals": {
+          "kcal": 800,
+          "p": 31,
+          "f": 3.6,
+          "c": 0,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 1,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "A10",
+      "title": "计划草稿不计入摄入和TDEE有效天数",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "totals": {
+          "kcal": 500,
+          "p": 20,
+          "f": 10,
+          "c": 60,
+          "veg": 0,
+          "unknown": 0,
+          "unknownKcal": 0,
+          "macroUnknown": 0,
+          "total": 1,
+          "complete": true
+        },
+        "estimate": {
+          "ok": false,
+          "reason": "有效记录不足 12 天（当前 1 天）",
+          "initial": 2757.0625,
+          "usedDays": 1,
+          "completeDays": 1,
+          "weightPoints": 0,
+          "spanDays": 0,
+          "avgIntake": 500,
+          "weightChange": null,
+          "weeklyChange": null,
+          "tdee": null,
+          "confidence": null,
+          "reasons": [],
+          "from": "2026-10-25",
+          "to": "2026-11-21"
+        },
+        "count": 1
+      }
+    },
+    {
+      "id": "A11",
+      "title": "没有历史数据不反推TDEE",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "ok": false,
+        "reason": "有效记录不足 12 天（当前 0 天）",
+        "initial": 2757.0625,
+        "usedDays": 0,
+        "completeDays": 0,
+        "weightPoints": 0,
+        "spanDays": 0,
+        "avgIntake": 0,
+        "weightChange": null,
+        "weeklyChange": null,
+        "tdee": null,
+        "confidence": null,
+        "reasons": [],
+        "from": "2026-10-25",
+        "to": "2026-11-21"
+      }
+    },
+    {
+      "id": "A12",
+      "title": "TDEE公式核算",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "bmr": 1778.75,
+        "tdee": 2757.0625
+      }
+    },
+    {
+      "id": "A13",
+      "title": "删除校准所依赖饮食后应停止使用不再成立的校准",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "before": {
+          "ok": true,
+          "cal": {
+            "tdee": 2151,
+            "initial": 2757.0625,
+            "at": "2026-11-21T03:37:19.781Z",
+            "profileKey": "male|24|175|1.55|none",
+            "weight": 80,
+            "bmr": 1778.75,
+            "profile": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "act": 1.55,
+              "special": "none"
+            },
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "usedDays": 12,
+            "completeDays": 12,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "weightSd": 0,
+            "confidence": "中",
+            "reasons": [
+              "近 12 天有记录，其中 12 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ]
+          },
+          "est": {
+            "ok": true,
+            "reason": "",
+            "initial": 2757.0625,
+            "usedDays": 12,
+            "completeDays": 12,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": -0.1,
+            "weeklyChange": -0.05,
+            "tdee": 2151,
+            "confidence": "中",
+            "reasons": [
+              "近 12 天有记录，其中 12 天热量完整",
+              "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+              "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+            ],
+            "from": "2026-10-25",
+            "to": "2026-11-21",
+            "weightSd": 0,
+            "weightTrend": "stable"
+          }
+        },
+        "after": {
+          "estimate": {
+            "ok": false,
+            "reason": "有效记录不足 12 天（当前 11 天）",
+            "initial": 2757.0625,
+            "usedDays": 11,
+            "completeDays": 11,
+            "weightPoints": 6,
+            "spanDays": 15,
+            "avgIntake": 2100,
+            "weightChange": null,
+            "weeklyChange": null,
+            "tdee": null,
+            "confidence": null,
+            "reasons": [],
+            "from": "2026-10-25",
+            "to": "2026-11-21"
+          },
+          "effective": {
+            "tdee": 2151,
+            "source": "calibrated",
+            "cal": {
+              "tdee": 2151,
+              "initial": 2757.0625,
+              "at": "2026-11-21T03:37:19.781Z",
+              "profileKey": "male|24|175|1.55|none",
+              "weight": 80,
+              "bmr": 1778.75,
+              "profile": {
+                "sex": "male",
+                "age": 24,
+                "height": 175,
+                "act": 1.55,
+                "special": "none"
+              },
+              "from": "2026-10-25",
+              "to": "2026-11-21",
+              "usedDays": 12,
+              "completeDays": 12,
+              "weightPoints": 6,
+              "spanDays": 15,
+              "avgIntake": 2100,
+              "weightChange": -0.1,
+              "weeklyChange": -0.05,
+              "weightSd": 0,
+              "confidence": "中",
+              "reasons": [
+                "近 12 天有记录，其中 12 天热量完整",
+                "体重 6 个点，跨度 15 天（趋势 平稳，残差标准差 0 kg）",
+                "平均摄入 2,100 千卡/天，体重变化 −0.1 kg"
+              ]
+            },
+            "stale": false
+          },
+          "totals": {
+            "kcal": 0,
+            "p": 0,
+            "f": 0,
+            "c": 0,
+            "veg": 0,
+            "unknown": 0,
+            "unknownKcal": 0,
+            "macroUnknown": 0,
+            "total": 0,
+            "complete": true
+          }
+        }
+      }
+    },
+    {
+      "id": "A14",
+      "title": "非法日历日期不会从存储读入",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "diary": {
+          "2026-11-20": [
+            {
+              "name": "合法日期",
+              "kcal": 1
+            }
+          ]
+        },
+        "weights": {}
+      }
+    },
+    {
+      "id": "A15",
+      "title": "食物前后端目录一致",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "frontend": 156,
+        "backend": 156,
+        "differences": []
+      }
+    },
+    {
+      "id": "A16",
+      "title": "组合餐未知食材不被当作已知0",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "items": [
+          {
+            "name": "未知星球菜",
+            "amount": 100,
+            "unit": "g",
+            "state": "熟重",
+            "grams": null,
+            "kcal": null,
+            "p": null,
+            "f": null,
+            "c": null,
+            "unknown": true,
+            "est": false,
+            "note": "本地库未收录"
+          }
+        ],
+        "oil": 0,
+        "sauce": 0,
+        "kcal": 0,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "unknownKcal": 1,
+        "macroUnknown": 1,
+        "estCount": 0
+      }
+    },
+    {
+      "id": "A17",
+      "title": "体重负数及超大数不会入库",
+      "status": "passed",
+      "pass": true,
+      "actual": {}
+    },
+    {
+      "id": "A18",
+      "title": "体重趋势按日期排序且能更新",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "weight": "79 kg",
+        "points": "9.00,9.00 117.00,38.00 171.00,67.00",
+        "text": "近 3 次 · -1.0 kg"
+      }
+    },
+    {
+      "id": "A19",
+      "title": "阶段会根据日期推进",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "index": 1,
+        "stages": 5,
+        "stage": {
+          "key": "cut",
+          "name": "减脂期",
+          "emoji": "🔥",
+          "kcal": 2260,
+          "m": {
+            "p": 144,
+            "f": 62.77777777777778,
+            "c": 279.75,
+            "pPct": 25.486725663716815,
+            "fPct": 25,
+            "cPct": 49.51327433628319
+          },
+          "week": 18,
+          "p": {
+            "inp": {
+              "sex": "male",
+              "age": 24,
+              "height": 175,
+              "weight": 80,
+              "waist": 0,
+              "target": 70,
+              "targetDate": "",
+              "act": 1.55,
+              "special": "none"
+            },
+            "bmi": 26.122448979591837,
+            "target": 70,
+            "requestedTarget": 70,
+            "toLose": 10,
+            "toGain": 0,
+            "direction": "lose",
+            "rate": 0.6,
+            "gainRate": 0.35,
+            "tdee": 2757.0625,
+            "initialTdee": 2757.0625,
+            "tdeeEff": 2757.0625,
+            "bmr": 1778.75,
+            "floor": 1778.75,
+            "baseIntake": 2260,
+            "weight": 80,
+            "sex": "male",
+            "safetyStatus": "adjust",
+            "restricted": false,
+            "riskLevel": "low",
+            "riskBlocked": false,
+            "riskRawTarget": 2257.0625,
+            "riskReasons": [
+              "数据基本完整，未发现明显风险。"
+            ],
+            "stages": [
+              {
+                "key": "adapt",
+                "weeks": 5,
+                "loss": 1,
+                "startW": 80,
+                "endW": 79,
+                "planRate": 0.5,
+                "originalWeeks": 2,
+                "safeKcal": 2510
+              },
+              {
+                "key": "cut",
+                "weeks": 19,
+                "loss": 8.5,
+                "startW": 79,
+                "endW": 70.5,
+                "planRate": 0.7083333333333334,
+                "originalWeeks": 12,
+                "safeKcal": 2260
+              },
+              {
+                "key": "plateau",
+                "weeks": 2,
+                "loss": 0,
+                "startW": 70.5,
+                "endW": 70.5,
+                "planRate": 0,
+                "originalWeeks": 2,
+                "safeKcal": 2460
+              },
+              {
+                "key": "solidify",
+                "weeks": 4,
+                "loss": 0.5,
+                "startW": 70.5,
+                "endW": 70,
+                "planRate": 0.16666666666666666,
+                "originalWeeks": 3,
+                "safeKcal": 2610
+              },
+              {
+                "key": "maintain",
+                "weeks": 0,
+                "loss": 0,
+                "startW": 70,
+                "endW": 70,
+                "planRate": 0,
+                "originalWeeks": 0,
+                "safeKcal": 2760
+              }
+            ],
+            "start": "2026-07-24"
+          },
+          "stage": {
+            "key": "cut",
+            "weeks": 19,
+            "loss": 8.5,
+            "startW": 79,
+            "endW": 70.5,
+            "planRate": 0.7083333333333334,
+            "originalWeeks": 12,
+            "safeKcal": 2260
+          },
+          "byWeight": false,
+          "progress": null,
+          "curW": 80,
+          "tdee": 2757.0625,
+          "tdeeSource": "initial",
+          "safety": {
+            "status": "adjust",
+            "rawTarget": 2257.0625,
+            "recommendedTarget": 2260,
+            "reasons": [
+              "TDEE 仍为公式估算值，尚未用你的记录校准，目标仅作参考"
+            ],
+            "canAutoPlan": true,
+            "flags": {
+              "bmi": 26.122448979591837,
+              "deficit": 500,
+              "maxDeficit": 551,
+              "rate": 0.7083333333333334,
+              "rateCap": 0.8
+            }
+          },
+          "risk": {
+            "level": "low",
+            "blocked": false,
+            "reasons": [
+              "数据基本完整，未发现明显风险。"
+            ],
+            "actions": [],
+            "flags": {},
+            "targetDate": "",
+            "days": null,
+            "requiredWeekly": null,
+            "rawTarget": 2257.0625,
+            "rules": {
+              "maxTargetGainKg": 30,
+              "reviewWeeklyLossKg": 1,
+              "reviewWeeklyLossPct": 0.01,
+              "hardWeeklyLossKg": 1.5,
+              "hardWeeklyLossPct": 0.02,
+              "reviewWeeklyGainKg": 0.5,
+              "hardWeeklyGainKg": 0.75,
+              "reviewDeficitRatio": 0.25,
+              "reviewDeficitKcal": 750,
+              "hardDeficitRatio": 0.4,
+              "hardDeficitKcal": 1000
+            }
+          },
+          "eta": {
+            "rangeStart": "2027-01-24",
+            "rangeEnd": "2027-05-09",
+            "weeks": 16.666666666666668,
+            "weeklyRate": 0.6,
+            "source": "plan",
+            "confidence": "低",
+            "caveat": "尚无体重记录，只能按计划速度粗估，可信度有限",
+            "text": "约 2027-01-24 ~ 2027-05-09（按计划速度粗略估计，基于当前数据；尚无体重记录，只能按计划速度粗估，可信度有限）"
+          },
+          "rawKcal": 2257.0625,
+          "planRate": 0.7083333333333334,
+          "direction": "lose"
+        }
+      }
+    },
+    {
+      "id": "A20",
+      "title": "重复保存相同基准不应悄悄重置阶段起点",
+      "status": "failed",
+      "pass": false,
+      "actual": {
+        "before": {
+          "start": "2026-07-24",
+          "index": 1
+        },
+        "after": {
+          "start": "2026-11-21",
+          "index": 0
+        }
+      }
+    },
+    {
+      "id": "A21",
+      "title": "健康报告可以生成且有导出内容",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "length": 1221,
+        "opened": true,
+        "containsTdee": true
+      }
+    },
+    {
+      "id": "A22",
+      "title": "语音输入不为日期增加入口",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "fields": 4,
+        "voice": 0
+      }
+    },
+    {
+      "id": "A23",
+      "title": "窄屏320px组合餐无横向溢出",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "width": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "id": "A24",
+      "title": "缺失宏量数据不会当成营养完整",
+      "status": "passed",
+      "pass": true,
+      "actual": {
+        "kcal": 500,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "veg": 0,
+        "unknown": 1,
+        "unknownKcal": 0,
+        "macroUnknown": 1,
+        "total": 1,
+        "complete": false
+      }
+    }
+  ],
+  "scriptErrors": []
+}

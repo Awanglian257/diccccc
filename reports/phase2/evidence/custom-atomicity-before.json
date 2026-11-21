@@ -1,0 +1,12 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:26:26.011Z",
+  "results": [
+    {
+      "id": "S21",
+      "bug": "B02-custom-atomicity",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '[{\"name\":\"不应保存的餐\",\"unit\":\"份\",\"kcal\":4000,\"p\":null,\"f\":null,\"c\":null,\"cat\":\"custom\",\"state\":\"edible\",\"src\":\"用户自定义\"}]'\n- null\n\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:47:648\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:47:1"
+    }
+  ]
+}

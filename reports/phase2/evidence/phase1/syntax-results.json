@@ -1,0 +1,182 @@
+[
+  {
+    "file": "agent-ui.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "agent-core.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/server.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/test.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/agent-router.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/legacy-tdee.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/voice-and-home.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/friendly-ui.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/home-meals-layout.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/button-art.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/glass-theme.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "frontend-source/health-gallery.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/start.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/deepseek-model.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "server/deepseek-check.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/model-limits.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/core.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/fixtures.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/compact-records.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/export-foods.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/refine.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/router.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/browser.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/model-schema.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/deepseek-check.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/evaluate.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "tests/real-api.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-0",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-1",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-2",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-3",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-4",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-5",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-6",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-7",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "index.html:inline-8",
+    "passed": true,
+    "error": ""
+  }
+]

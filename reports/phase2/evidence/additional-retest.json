@@ -1,0 +1,57 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:25:00.781Z",
+  "results": [
+    {
+      "id": "S09",
+      "bug": "timezone-migration",
+      "status": "PASS",
+      "evidence": {
+        "dates": [
+          "2026-11-20"
+        ],
+        "kcal": 300
+      }
+    },
+    {
+      "id": "S11",
+      "bug": "refresh-running",
+      "status": "PASS",
+      "evidence": {
+        "task": {
+          "id": "interrupted-task",
+          "kind": "planning",
+          "status": "cancelled",
+          "created_at": "2026-11-21T04:24:58.062Z",
+          "steps": [],
+          "calls": 0,
+          "error": {
+            "code": "PAGE_INTERRUPTED",
+            "message": "页面已刷新，旧任务未恢复；请重新处理并确认。未自动写入记录或计划。"
+          },
+          "updated_at": "2026-11-21T04:24:58.309Z"
+        },
+        "actual": 0,
+        "plans": 0
+      }
+    },
+    {
+      "id": "S17",
+      "bug": "B02-legacy-aggregate",
+      "status": "PASS",
+      "evidence": {
+        "kcal": 36000,
+        "p": 400,
+        "f": 200,
+        "c": 400,
+        "veg": 0,
+        "unknown": 0,
+        "unknownKcal": 1,
+        "macroUnknown": 1,
+        "total": 4,
+        "complete": false,
+        "validationError": "当日合计超出记录上限，请检查数量和单位"
+      }
+    }
+  ]
+}

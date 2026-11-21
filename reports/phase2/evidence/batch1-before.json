@@ -1,0 +1,16 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:15:58.748Z",
+  "results": [
+    {
+      "id": "B03",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: 米饭没有可靠勺换算，必须待补克重\n\n150 !== null\n\n    at Object.B03 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:10:291)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    },
+    {
+      "id": "B06",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'chicken'\n- undefined\n\n    at Object.B06 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:11:319)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "health-manager-agent-upgrade",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node start.cjs",
+    "test": "node --test test.js ../tests/core.test.cjs ../tests/router.test.cjs ../tests/deepseek-check.test.cjs ../tests/model-schema.test.cjs ../tests/model-limits.test.cjs",
+    "test:browser": "node ../tests/browser.cjs",
+    "evaluate": "node ../tests/evaluate.cjs",
+    "test:real": "node ../tests/real-api.cjs",
+    "check:deepseek": "node deepseek-check.cjs"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

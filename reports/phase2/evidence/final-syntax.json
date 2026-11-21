@@ -1,0 +1,192 @@
+[
+  {
+    "file": "/workspace/releases/health-manager-full/agent-ui.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/agent-core.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/start.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/server.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/deepseek-model.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/test.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/agent-router.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/legacy-tdee.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/server/deepseek-check.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/voice-and-home.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/friendly-ui.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/home-meals-layout.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/button-art.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/glass-theme.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/frontend-source/health-gallery.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/model-limits.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/core.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/fixtures.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/compact-records.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/export-foods.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/refine.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/router.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/browser.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/phase2-independent.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/phase2-regression.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/model-schema.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/deepseek-check.test.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/evaluate.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/releases/health-manager-full/tests/real-api.cjs",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-0.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-1.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-2.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-3.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-4.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-5.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-6.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-7.js",
+    "passed": true,
+    "error": ""
+  },
+  {
+    "file": "/workspace/reports/phase2/syntax/inline-8.js",
+    "passed": true,
+    "error": ""
+  }
+]

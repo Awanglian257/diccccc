@@ -1,0 +1,134 @@
+{
+  "application_version": "2.1.1",
+  "phase1_version_identical": true,
+  "phase1_files_checked": {
+    "release": 43,
+    "development": 90,
+    "hosted": 8
+  },
+  "new_functional_test_cases": 41,
+  "new_test_breakdown": {
+    "bug_regression": 9,
+    "independent_original_bug_reproductions": 9,
+    "additional_acceptance": 23
+  },
+  "final_case_counts": {
+    "PASS": 159,
+    "FAIL": 0,
+    "SKIP": 3,
+    "BLOCKED": 8
+  },
+  "total_cases": 170,
+  "syntax_checks": {
+    "passed": 38,
+    "failed": 0
+  },
+  "command_results": [
+    {
+      "name": "final-original",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 1.764,
+      "log": "/workspace/reports/phase2/evidence/final-original.log"
+    },
+    {
+      "name": "final-evaluate",
+      "command": [
+        "npm",
+        "run",
+        "evaluate"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 2.638,
+      "log": "/workspace/reports/phase2/evidence/final-evaluate.log"
+    },
+    {
+      "name": "final-browser",
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 17.265,
+      "log": "/workspace/reports/phase2/evidence/final-browser.log"
+    },
+    {
+      "name": "final-regression",
+      "command": [
+        "npm",
+        "run",
+        "test:phase2"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 13.827,
+      "log": "/workspace/reports/phase2/evidence/final-regression.log"
+    },
+    {
+      "name": "final-independent",
+      "command": [
+        "npm",
+        "run",
+        "test:acceptance"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 130.775,
+      "log": "/workspace/reports/phase2/evidence/final-independent.log"
+    },
+    {
+      "name": "original-probes",
+      "command": [
+        "node",
+        "/workspace/reports/phase2/original-probes/probes.cjs"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 19.494,
+      "log": "/workspace/reports/phase2/evidence/original-probes.log"
+    },
+    {
+      "name": "original-model-anomalies",
+      "command": [
+        "node",
+        "/workspace/reports/phase2/original-probes/model-anomalies.cjs"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "seconds": 1.09,
+      "log": "/workspace/reports/phase2/evidence/original-model-anomalies.log"
+    },
+    {
+      "name": "final-independent-bounded",
+      "command": [
+        "npm",
+        "run",
+        "test:acceptance"
+      ],
+      "cwd": "/workspace/reports/phase2/clean-install",
+      "exit_code": 0,
+      "log": "/workspace/reports/phase2/evidence/final-independent.log",
+      "note": "浏览器启动/导航设置15秒上限并保证清理；业务断言未改变。首次Firefox启动人工终止记录另存。"
+    }
+  ],
+  "quality_gates": {
+    "nine_bugs_reproduced_before": true,
+    "nine_bugs_independently_verified": true,
+    "original_local_regressions_passed": true,
+    "clean_npm_ci_passed": true,
+    "new_high_priority_regression_found": false,
+    "local_repair_acceptance": "PASS",
+    "unrestricted_crossplatform_and_real_model_acceptance": "BLOCKED",
+    "packaged_archive_runtime_verified": true
+  },
+  "scope": "Linux local package and isolated synthetic data; no deployment; API mocked/offline",
+  "evidence_root": "/workspace/reports/phase2/evidence",
+  "artifact_verification_evidence": "evidence/artifact-checks.json"
+}

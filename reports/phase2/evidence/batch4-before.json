@@ -1,0 +1,16 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:19:02.754Z",
+  "results": [
+    {
+      "id": "B05",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at Object.B05 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:15:128)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    },
+    {
+      "id": "B09",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Error: ENOENT: no such file or directory, open '/tmp/health-evaluate-Bxfbds/docs/evaluation-results.json'\n    at Object.writeFileSync (node:fs:2482:20)\n    at /tmp/health-evaluate-Bxfbds/tests/evaluate.cjs:14:5 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/tmp/health-evaluate-Bxfbds/docs/evaluation-results.json'\n}\n\n\n1 !== 0\n\n    at Object.B09 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:18:329)\n    at /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:515"
+    }
+  ]
+}

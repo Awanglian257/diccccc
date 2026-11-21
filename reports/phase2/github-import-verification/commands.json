@@ -1,0 +1,41 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit_code": 0,
+    "seconds": 2.692
+  },
+  {
+    "name": "regression",
+    "command": [
+      "npm",
+      "run",
+      "test:phase2"
+    ],
+    "exit_code": 0,
+    "seconds": 13.067
+  },
+  {
+    "name": "browser",
+    "command": [
+      "npm",
+      "run",
+      "test:browser"
+    ],
+    "exit_code": 0,
+    "seconds": 17.08
+  },
+  {
+    "name": "evaluate",
+    "command": [
+      "npm",
+      "run",
+      "evaluate"
+    ],
+    "exit_code": 0,
+    "seconds": 2.296
+  }
+]

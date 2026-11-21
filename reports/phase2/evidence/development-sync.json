@@ -1,0 +1,14 @@
+{
+  "synced_directory": "/workspace/work/agent-upgrade",
+  "files": [
+    "index.html",
+    "agent-core.js",
+    "agent-ui.js",
+    "package.json",
+    "package-lock.json",
+    "tests/evaluate.cjs",
+    "tests/phase2-independent.cjs",
+    "tests/phase2-regression.cjs"
+  ],
+  "hosted_directory_modified": false
+}

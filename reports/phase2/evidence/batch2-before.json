@@ -1,0 +1,21 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:16:37.622Z",
+  "results": [
+    {
+      "id": "B01",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '{\"2026-11-21\":[{\"meal\":\"lunch\",\"name\":\"组合餐：回归组合餐\",\"qty\":1,\"unit\":\"份\",\"grams\":0,\"kcal\":0,\"p\":0,\"f\":0,\"c\":0,\"cat\":\"combo\",\"combo\":true,\"items\":[{\"name\":\"米饭\",\"amount\":0,\"unit\":\"g\",\"state\":\"熟重\",\"grams\":0,\"kcal\":0,\"p\":0,\"f\":0,\"c\":0,\"unknown\":false,\"est\":false,\"note\":\"\"}],\"unknownKcal\":0,\"macroUnknown\":0,\"oil\":0,\"sauce\":0,\"warn\":\"\"}]}'\n- null\n\n    at Object.B01 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:12:141)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    },
+    {
+      "id": "B02",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at Object.B02 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:13:94)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    },
+    {
+      "id": "B04",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n3 !== 1\n\n    at Object.B04 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:14:117)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "name": "final-original",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 1.764,
+    "log": "/workspace/reports/phase2/evidence/final-original.log"
+  },
+  {
+    "name": "final-evaluate",
+    "command": [
+      "npm",
+      "run",
+      "evaluate"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 2.638,
+    "log": "/workspace/reports/phase2/evidence/final-evaluate.log"
+  },
+  {
+    "name": "final-browser",
+    "command": [
+      "npm",
+      "run",
+      "test:browser"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 17.265,
+    "log": "/workspace/reports/phase2/evidence/final-browser.log"
+  },
+  {
+    "name": "final-regression",
+    "command": [
+      "npm",
+      "run",
+      "test:phase2"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 13.827,
+    "log": "/workspace/reports/phase2/evidence/final-regression.log"
+  },
+  {
+    "name": "final-independent",
+    "command": [
+      "npm",
+      "run",
+      "test:acceptance"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 130.775,
+    "log": "/workspace/reports/phase2/evidence/final-independent.log"
+  },
+  {
+    "name": "original-probes",
+    "command": [
+      "node",
+      "/workspace/reports/phase2/original-probes/probes.cjs"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 19.494,
+    "log": "/workspace/reports/phase2/evidence/original-probes.log"
+  },
+  {
+    "name": "original-model-anomalies",
+    "command": [
+      "node",
+      "/workspace/reports/phase2/original-probes/model-anomalies.cjs"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "seconds": 1.09,
+    "log": "/workspace/reports/phase2/evidence/original-model-anomalies.log"
+  },
+  {
+    "name": "final-independent-bounded",
+    "command": [
+      "npm",
+      "run",
+      "test:acceptance"
+    ],
+    "cwd": "/workspace/reports/phase2/clean-install",
+    "exit_code": 0,
+    "log": "/workspace/reports/phase2/evidence/final-independent.log",
+    "note": "浏览器启动/导航设置15秒上限并保证清理；业务断言未改变。首次Firefox启动人工终止记录另存。"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:28:31.596Z",
+  "results": [
+    {
+      "id": "S22",
+      "bug": "B03-unknown-food-unit",
+      "status": "PASS",
+      "evidence": {
+        "unknownUnitRequiresGrams": true
+      }
+    }
+  ]
+}

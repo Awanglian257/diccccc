@@ -1,0 +1,22 @@
+{
+  "name": "health-manager-agent-upgrade",
+  "version": "2.1.1",
+  "private": true,
+  "description": "健康管家：青蓝主题、语音录入与 DeepSeek 本地后端",
+  "scripts": {
+    "start": "node server/start.cjs",
+    "test": "node --test server/test.js tests/core.test.cjs tests/router.test.cjs tests/deepseek-check.test.cjs tests/model-schema.test.cjs tests/model-limits.test.cjs",
+    "test:browser": "node tests/browser.cjs",
+    "evaluate": "node tests/evaluate.cjs",
+    "test:real": "node tests/real-api.cjs",
+    "check:deepseek": "node server/deepseek-check.cjs",
+    "test:phase2": "node tests/phase2-regression.cjs",
+    "test:acceptance": "node tests/phase2-independent.cjs"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

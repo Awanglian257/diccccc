@@ -1,0 +1,11 @@
+{
+  "index.html": true,
+  "agent-core.js": true,
+  "agent-ui.js": true,
+  "package.json": true,
+  "package-lock.json": true,
+  "tests/evaluate.cjs": true,
+  "tests/phase2-independent.cjs": true,
+  "tests/phase2-regression.cjs": true,
+  "README.md": true
+}

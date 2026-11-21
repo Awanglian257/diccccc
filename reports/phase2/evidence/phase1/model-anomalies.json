@@ -1,0 +1,23 @@
+[
+  {
+    "id": "M01",
+    "scenario": "模型空内容",
+    "expected": "SCHEMA",
+    "actual": "SCHEMA",
+    "passed": true
+  },
+  {
+    "id": "M02",
+    "scenario": "模型非法JSON",
+    "expected": "SCHEMA",
+    "actual": "SCHEMA",
+    "passed": true
+  },
+  {
+    "id": "M03",
+    "scenario": "上游超时",
+    "expected": "AI_TIMEOUT",
+    "actual": "AI_TIMEOUT",
+    "passed": true
+  }
+]

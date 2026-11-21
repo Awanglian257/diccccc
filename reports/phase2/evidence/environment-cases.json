@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ENV-REAL_API",
+    "status": "BLOCKED",
+    "reason": "本轮没有真实 API Key 与真实付费请求的明确授权；未调用 DeepSeek"
+  },
+  {
+    "id": "ENV-WINDOWS",
+    "status": "BLOCKED",
+    "reason": "当前为 Linux，无 Windows 实机"
+  },
+  {
+    "id": "ENV-MACOS",
+    "status": "BLOCKED",
+    "reason": "当前为 Linux，无 macOS 实机"
+  },
+  {
+    "id": "ENV-NODE20",
+    "status": "BLOCKED",
+    "reason": "当前仅 Node 24.22.1，未安装 Node 20.19 下限运行时"
+  },
+  {
+    "id": "ENV-REAL_MIC_DEVICE",
+    "status": "BLOCKED",
+    "reason": "无真实麦克风及实体手机，未检验真实识别服务"
+  },
+  {
+    "id": "ENV-PHYSICAL_PRINT",
+    "status": "BLOCKED",
+    "reason": "没有真实打印/PDF 阅读器版式验收环境；报告内容生成有回归测试"
+  },
+  {
+    "id": "SCOPE-ONLINE_DEPLOYMENT",
+    "status": "SKIP",
+    "reason": "本轮修复和验收针对本地程序，未发布或验收线上站点"
+  },
+  {
+    "id": "SCOPE-FULL_PENTEST_STRESS",
+    "status": "SKIP",
+    "reason": "有历史数据及并发点击测试，不等于完整渗透测试或生产压力测试"
+  },
+  {
+    "id": "SCOPE-MULTI_INSTANCE",
+    "status": "SKIP",
+    "reason": "当前服务为单进程内存会话设计，未配置多实例持久化恢复"
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "exit_code": 1,
+  "stdout": "\n> health-manager-agent-upgrade@2.1.0 evaluate\n> node tests/evaluate.cjs\n\n",
+  "stderr": "Error: ENOENT: no such file or directory, open '/workspace/audit-20261121/pristine-package/docs/evaluation-results.json'\n    at Object.writeFileSync (node:fs:2482:20)\n    at /workspace/audit-20261121/pristine-package/tests/evaluate.cjs:14:5 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/workspace/audit-20261121/pristine-package/docs/evaluation-results.json'\n}\nnpm notice\nnpm notice New major version of npm available! 11.9.0 -> 12.2.3\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3\nnpm notice To update run: npm install -g npm@12.2.3\nnpm notice\n"
+}

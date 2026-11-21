@@ -1,0 +1,34 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:26:47.681Z",
+  "results": [
+    {
+      "id": "S19",
+      "bug": "B01-backfill",
+      "status": "PASS",
+      "evidence": {
+        "before": "{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":100,\"p\":null,\"f\":null,\"c\":null}]}",
+        "after": "{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":100,\"p\":null,\"f\":null,\"c\":null}]}"
+      }
+    },
+    {
+      "id": "S20",
+      "bug": "B01-template",
+      "status": "PASS",
+      "evidence": {
+        "invalidTemplateNotSaved": true
+      }
+    },
+    {
+      "id": "S21",
+      "bug": "B02-custom-atomicity",
+      "status": "PASS",
+      "evidence": {
+        "diaryBefore": "{\"2026-11-21\":[{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000}]}",
+        "diaryAfter": "{\"2026-11-21\":[{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000},{\"name\":\"已有\",\"kcal\":9000}]}",
+        "foodsBefore": null,
+        "foodsAfter": null
+      }
+    }
+  ]
+}

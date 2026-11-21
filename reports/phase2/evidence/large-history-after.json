@@ -1,0 +1,28 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:29:24.563Z",
+  "results": [
+    {
+      "id": "S07",
+      "bug": "large-history",
+      "status": "PASS",
+      "evidence": {
+        "saved": true,
+        "days": 3650,
+        "kcal": 2100,
+        "elapsed_ms": 76.5,
+        "bytes": 233601,
+        "reload_ms": 2379
+      }
+    },
+    {
+      "id": "S23",
+      "bug": "large-history-read-amplification",
+      "status": "PASS",
+      "evidence": {
+        "streak": 100,
+        "reads": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,854 @@
+[
+  {
+    "bug_id": "B01",
+    "description": "负数食物重量",
+    "severity": "P2",
+    "original_reproduction": "组合餐输入米饭 -100g 并记入；补录负热量；保存负数模板。",
+    "before_expected_behavior": "阻止写入，保留原始数据。",
+    "before_actual_behavior": "重量静默改成0并写入；补录负值变null；负数模板可保存。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B01",
+    "independent_case": "V01",
+    "additional_cases": [
+      "S01",
+      "S02",
+      "S19",
+      "S20"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "nutritionEntryError",
+      "diaryValidationError",
+      "saveDiary",
+      "comboItemNutrition",
+      "addCustomEntry",
+      "backfillEntry",
+      "saveCombos"
+    ],
+    "after_behavior": "统一范围校验与持久化前验证；补录和模板同样拒绝。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch2-before.json",
+      "/workspace/reports/phase2/evidence/batch2-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch2-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch2-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V01"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 2586,
+        "function": "nutritionEntryError"
+      },
+      {
+        "file": "index.html",
+        "line": 2606,
+        "function": "diaryValidationError"
+      },
+      {
+        "file": "index.html",
+        "line": 3326,
+        "function": "saveDiary"
+      },
+      {
+        "file": "index.html",
+        "line": 5488,
+        "function": "comboItemNutrition"
+      },
+      {
+        "file": "index.html",
+        "line": 5355,
+        "function": "addCustomEntry"
+      },
+      {
+        "file": "index.html",
+        "line": 5642,
+        "function": "backfillEntry"
+      },
+      {
+        "file": "index.html",
+        "line": 5437,
+        "function": "saveCombos"
+      }
+    ]
+  },
+  {
+    "bug_id": "B02",
+    "description": "组合餐数值上限",
+    "severity": "P2",
+    "original_reproduction": "组合餐输入1e12g，或保存非有限数、超限当日合计。",
+    "before_expected_behavior": "拒绝单项与合计异常数据，不能标成完整营养。",
+    "before_actual_behavior": "保存1.16e12千卡且complete=true。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B02",
+    "independent_case": "V02",
+    "additional_cases": [
+      "S01",
+      "S15",
+      "S17",
+      "S21"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "foodNumberError",
+      "nutritionEntryError",
+      "diaryValidationError",
+      "saveDiary",
+      "todayTotals",
+      "addCustomEntry"
+    ],
+    "after_behavior": "有限数/单项/合计校验；旧异常合计标待补；失败自定义餐不另存食物库。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch2-before.json",
+      "/workspace/reports/phase2/evidence/batch2-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch2-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch2-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V02"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 2581,
+        "function": "foodNumberError"
+      },
+      {
+        "file": "index.html",
+        "line": 2586,
+        "function": "nutritionEntryError"
+      },
+      {
+        "file": "index.html",
+        "line": 2606,
+        "function": "diaryValidationError"
+      },
+      {
+        "file": "index.html",
+        "line": 3326,
+        "function": "saveDiary"
+      },
+      {
+        "file": "index.html",
+        "line": 4794,
+        "function": "todayTotals"
+      },
+      {
+        "file": "index.html",
+        "line": 5355,
+        "function": "addCustomEntry"
+      }
+    ]
+  },
+  {
+    "bug_id": "B03",
+    "description": "单位错误共用克重",
+    "severity": "P1",
+    "original_reproduction": "比较1勺与1碗米饭、米饭与面条的1碗、油与糖的1勺、无换算食物。",
+    "before_expected_behavior": "按食物和单位独立查表；无明确依据时要求克重。",
+    "before_actual_behavior": "米饭任意非g单位都用150g。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B03",
+    "independent_case": "V03",
+    "additional_cases": [
+      "S22"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "foodUnitConversion",
+      "comboItemNutrition",
+      "addComboToDiary"
+    ],
+    "after_behavior": "只复用既有明确单一单位参考份量；米饭勺/歧义单位/未知食材单位要求g；份量标估算。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch1-before.json",
+      "/workspace/reports/phase2/evidence/batch1-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch1-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch1-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V03"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 2561,
+        "function": "foodUnitConversion"
+      },
+      {
+        "file": "index.html",
+        "line": 5488,
+        "function": "comboItemNutrition"
+      },
+      {
+        "file": "index.html",
+        "line": 5552,
+        "function": "addComboToDiary"
+      }
+    ]
+  },
+  {
+    "bug_id": "B04",
+    "description": "重复提交",
+    "severity": "P2",
+    "original_reproduction": "同一组合餐表单连续点击，随后明确再记一份。",
+    "before_expected_behavior": "同次只保存一次，显式再次录入可保存同食物。",
+    "before_actual_behavior": "相同表单连续保存两条。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B04",
+    "independent_case": "V04",
+    "additional_cases": [],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "addComboToDiary",
+      "newComboSubmission"
+    ],
+    "after_behavior": "忙状态禁用按钮、成功表单指纹、明确反馈、再记一份重置令牌。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch2-before.json",
+      "/workspace/reports/phase2/evidence/batch2-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch2-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch2-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V04"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 5552,
+        "function": "addComboToDiary"
+      },
+      {
+        "file": "index.html",
+        "line": 5551,
+        "function": "newComboSubmission"
+      }
+    ]
+  },
+  {
+    "bug_id": "B05",
+    "description": "日期范围不一致",
+    "severity": "P3",
+    "original_reproduction": "1899-01-01记组合餐；检查闰日、不存在日期与上下边界。",
+    "before_expected_behavior": "统一1900-01-01至2200-12-31；分开日历无效与超范围提示。",
+    "before_actual_behavior": "组合餐接受1899年，快记拒绝。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B05",
+    "independent_case": "V05",
+    "additional_cases": [],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html",
+      "agent-core.js"
+    ],
+    "fixed_functions": [
+      "recordDateError",
+      "diaryValidationError",
+      "editQuickMeal",
+      "saveWeight",
+      "HealthAgents.validDate"
+    ],
+    "after_behavior": "共享recordDateError及持久化日期校验；Agent validDate同步范围；日期控件设边界。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch4-before.json",
+      "/workspace/reports/phase2/evidence/batch4-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch4-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch4-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V05"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 3336,
+        "function": "recordDateError"
+      },
+      {
+        "file": "index.html",
+        "line": 2606,
+        "function": "diaryValidationError"
+      },
+      {
+        "file": "index.html",
+        "line": 7458,
+        "function": "editQuickMeal"
+      },
+      {
+        "file": "index.html",
+        "line": 3365,
+        "function": "saveWeight"
+      },
+      {
+        "file": "agent-core.js",
+        "line": 4,
+        "function": "HealthAgents.validDate"
+      }
+    ]
+  },
+  {
+    "bug_id": "B06",
+    "description": "编辑保留旧营养",
+    "severity": "P1",
+    "original_reproduction": "鸡胸肉165千卡改为披萨800千卡；另测仅改餐次与仅改热量。",
+    "before_expected_behavior": "重新计算或清理不可信字段，缺失营养不能complete。",
+    "before_actual_behavior": "披萨仍foodId=chicken，p31/f3.6/c0，grams100，complete=true。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B06",
+    "independent_case": "V06",
+    "additional_cases": [
+      "S03"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "editQuickMeal"
+    ],
+    "after_behavior": "自由文字无法可靠重算时清空宏量营养，删除旧foodId/grams及来源；非营养编辑保留原数据。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch1-before.json",
+      "/workspace/reports/phase2/evidence/batch1-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch1-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch1-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V06"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 7458,
+        "function": "editQuickMeal"
+      }
+    ]
+  },
+  {
+    "bug_id": "B07",
+    "description": "旧TDEE依据失效",
+    "severity": "P2",
+    "original_reproduction": "完整历史校准后删除/修改/恢复饮食、修改体重、加草稿，再校准。",
+    "before_expected_behavior": "依据变更应失效；历史、过期、当前估计分开。",
+    "before_actual_behavior": "剩11天时仍source=calibrated、stale=false。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B07",
+    "independent_case": "V07",
+    "additional_cases": [
+      "S14",
+      "S18"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "calibrationFingerprint",
+      "calibrationFresh",
+      "effectiveTDEE",
+      "recalibrateTDEE"
+    ],
+    "after_behavior": "校准窗口内实际记录和体重确定性快照指纹；证据变更标historical，时效失效标expired，当前为current。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch3-before.json",
+      "/workspace/reports/phase2/evidence/batch3-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch3-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch3-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V07"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 3403,
+        "function": "calibrationFingerprint"
+      },
+      {
+        "file": "index.html",
+        "line": 3412,
+        "function": "calibrationFresh"
+      },
+      {
+        "file": "index.html",
+        "line": 3430,
+        "function": "effectiveTDEE"
+      },
+      {
+        "file": "index.html",
+        "line": 3545,
+        "function": "recalibrateTDEE"
+      }
+    ]
+  },
+  {
+    "bug_id": "B08",
+    "description": "普通保存重置阶段",
+    "severity": "P2",
+    "original_reproduction": "旧计划起点保存相同基准；有/无近期体重；取消和确认重新开始。",
+    "before_expected_behavior": "普通保存保留起点；独立明确确认才重启。",
+    "before_actual_behavior": "起点改成当天，日期阶段从1回到0。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B08",
+    "independent_case": "V08",
+    "additional_cases": [
+      "S13"
+    ],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "saveProfile",
+      "btnRestartPlan click handler"
+    ],
+    "after_behavior": "saveProfile默认保留start；独立重启按钮解释影响、经确认重置日期，保留历史。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch3-before.json",
+      "/workspace/reports/phase2/evidence/batch3-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch3-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch3-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V08"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 3251,
+        "function": "saveProfile"
+      },
+      {
+        "file": "index.html",
+        "line": 6653,
+        "function": "btnRestartPlan click handler"
+      }
+    ]
+  },
+  {
+    "bug_id": "B09",
+    "description": "评估输出目录缺失",
+    "severity": "P3",
+    "original_reproduction": "干净副本无docs，直接独立执行npm run evaluate。",
+    "before_expected_behavior": "自动创建目录，原输出格式不变。",
+    "before_actual_behavior": "ENOENT，进程退出1。",
+    "automation_scripts": [
+      "tests/phase2-regression.cjs",
+      "tests/phase2-independent.cjs"
+    ],
+    "development_case": "B09",
+    "independent_case": "V09",
+    "additional_cases": [],
+    "status": "VERIFIED",
+    "fixed_files": [
+      "tests/evaluate.cjs"
+    ],
+    "fixed_functions": [
+      "tests/evaluate.cjs top-level evaluation"
+    ],
+    "after_behavior": "写输出前mkdirSync recursive；两套不同干净副本测试退出0并核对输出字段。",
+    "after_test_result": {
+      "regression": "PASS",
+      "independent": "PASS"
+    },
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/batch4-before.json",
+      "/workspace/reports/phase2/evidence/batch4-after.json",
+      "/workspace/reports/phase2/evidence/final-regression.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "phase1/TEST_AUDIT_REPORT.md"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "batch4-before.json",
+        "result": "FAIL"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "batch4-after.json"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "V09"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "tests/evaluate.cjs",
+        "line": 14,
+        "function": "tests/evaluate.cjs top-level evaluation"
+      }
+    ]
+  },
+  {
+    "bug_id": "N01",
+    "description": "夏令时阶段边界偏移",
+    "severity": "P2",
+    "status": "VERIFIED",
+    "original_reproduction": "纽约2026-03-08至03-15跨夏令时，第7个日历日检查阶段。",
+    "before_expected_behavior": "阶段按日历日推进。",
+    "before_actual_behavior": "阶段仍0，延迟一天。",
+    "after_behavior": "本地日历日期映射UTC日序，阶段1。",
+    "automation_scripts": [
+      "tests/phase2-independent.cjs"
+    ],
+    "independent_case": "S10",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "stageIndexByDate",
+      "currentStage"
+    ],
+    "after_test_result": "PASS",
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/additional-before.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "additional-before.json"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "additional-before.json"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "source-changes.patch"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "S10"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 4524,
+        "function": "stageIndexByDate"
+      },
+      {
+        "file": "index.html",
+        "line": 4555,
+        "function": "currentStage"
+      }
+    ]
+  },
+  {
+    "bug_id": "N02",
+    "description": "刷新后中断任务仍显示运行",
+    "severity": "P2",
+    "status": "VERIFIED",
+    "original_reproduction": "存储running任务后刷新，检查任务摘要。",
+    "before_expected_behavior": "明确中断，不自动应用。",
+    "before_actual_behavior": "仍显示running。",
+    "after_behavior": "未完成摘要转cancelled，保存PAGE_INTERRUPTED原因。",
+    "automation_scripts": [
+      "tests/phase2-independent.cjs"
+    ],
+    "independent_case": "S11",
+    "fixed_files": [
+      "index.html",
+      "agent-ui.js"
+    ],
+    "fixed_functions": [
+      "initAgentUpgrade"
+    ],
+    "after_test_result": "PASS",
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/additional-before.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "additional-before.json"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "additional-before.json"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "source-changes.patch"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "S11"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 8010,
+        "function": "initAgentUpgrade"
+      }
+    ]
+  },
+  {
+    "bug_id": "N03",
+    "description": "连续历史统计重复解析导致刷新超时",
+    "severity": "P2",
+    "status": "VERIFIED",
+    "original_reproduction": "100天连续记录统计读取次数；3650天历史刷新。",
+    "before_expected_behavior": "线性处理，避免每一天重读全量历史。",
+    "before_actual_behavior": "每个连续日都重新解析日记；大规模刷新超过30秒。",
+    "after_behavior": "仅读取一次，3650天刷新通过15秒上限测试。",
+    "automation_scripts": [
+      "tests/phase2-independent.cjs"
+    ],
+    "independent_case": "S23",
+    "fixed_files": [
+      "index.html"
+    ],
+    "fixed_functions": [
+      "computeStreak"
+    ],
+    "after_test_result": "PASS",
+    "evidence_paths": [
+      "/workspace/reports/phase2/evidence/large-history-before.json",
+      "/workspace/reports/phase2/evidence/final-independent.json"
+    ],
+    "history": [
+      {
+        "status": "OPEN",
+        "evidence": "large-history-before.json"
+      },
+      {
+        "status": "IN_PROGRESS",
+        "evidence": "large-history-before.json"
+      },
+      {
+        "status": "FIXED",
+        "evidence": "source-changes.patch"
+      },
+      {
+        "status": "VERIFIED",
+        "evidence": "final-independent.json",
+        "case": "S23"
+      }
+    ],
+    "fix_locations": [
+      {
+        "file": "index.html",
+        "line": 5705,
+        "function": "computeStreak"
+      }
+    ]
+  }
+]

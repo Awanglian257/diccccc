@@ -1,0 +1,85 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:16:33.768Z",
+  "results": [
+    {
+      "id": "B03",
+      "status": "PASS",
+      "evidence": {
+        "bowl": {
+          "name": "米饭",
+          "amount": 1,
+          "unit": "碗",
+          "state": "熟重",
+          "grams": 150,
+          "kcal": 174,
+          "p": 3.9,
+          "f": 0.5,
+          "c": 38.9,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        },
+        "spoon": {
+          "name": "米饭",
+          "amount": 1,
+          "unit": "勺",
+          "state": "熟重",
+          "grams": null,
+          "kcal": null,
+          "p": null,
+          "f": null,
+          "c": null,
+          "unknown": true,
+          "needsGrams": true,
+          "est": false,
+          "note": "没有可靠的勺换算，请称重后改用 g"
+        },
+        "noodle": {
+          "name": "面条",
+          "amount": 1,
+          "unit": "碗",
+          "state": "熟重",
+          "grams": 200,
+          "kcal": 220,
+          "p": 7.8,
+          "f": 0.8,
+          "c": 45.6,
+          "unknown": false,
+          "est": true,
+          "note": "参考份量估算，建议称重"
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "status": "PASS",
+      "evidence": {
+        "entry": {
+          "meal": "lunch",
+          "name": "披萨",
+          "kcal": 800,
+          "p": null,
+          "f": null,
+          "c": null,
+          "cat": "custom",
+          "qty": 1,
+          "unit": "份",
+          "macroUnknown": true
+        },
+        "totals": {
+          "kcal": 800,
+          "p": 0,
+          "f": 0,
+          "c": 0,
+          "veg": 0,
+          "unknown": 1,
+          "unknownKcal": 0,
+          "macroUnknown": 1,
+          "total": 1,
+          "complete": false
+        }
+      }
+    }
+  ]
+}

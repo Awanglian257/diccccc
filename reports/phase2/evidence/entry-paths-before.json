@@ -1,0 +1,18 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:25:57.429Z",
+  "results": [
+    {
+      "id": "S19",
+      "bug": "B01-backfill",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":null,\"p\":null,\"f\":null,\"c\":null,\"macroUnknown\":true}]}'\n- '{\"2026-11-21\":[{\"name\":\"待补\",\"kcal\":100,\"p\":null,\"f\":null,\"c\":null}]}'\n\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:45:378\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:45:1"
+    },
+    {
+      "id": "S20",
+      "bug": "B01-template",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:46:128\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:46:1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:29:01.987Z",
+  "results": [
+    {
+      "id": "S23",
+      "bug": "large-history-read-amplification",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: 连续天数统计不应为每一天重新读取整份历史：102\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:49:393\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:49:1"
+    }
+  ]
+}

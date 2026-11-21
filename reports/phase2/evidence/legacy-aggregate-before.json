@@ -1,0 +1,12 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:23:55.784Z",
+  "results": [
+    {
+      "id": "S17",
+      "bug": "B02-legacy-aggregate",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:43:250\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:43:1"
+    }
+  ]
+}

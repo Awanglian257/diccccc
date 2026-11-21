@@ -1,0 +1,11 @@
+[
+  "README.md",
+  "agent-ui.js",
+  "agent-core.js",
+  "package.json",
+  "index.html",
+  "package-lock.json",
+  "tests/phase2-independent.cjs",
+  "tests/phase2-regression.cjs",
+  "tests/evaluate.cjs"
+]

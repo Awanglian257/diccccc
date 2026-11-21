@@ -1,0 +1,16 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:17:58.783Z",
+  "results": [
+    {
+      "id": "B07",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to:\n\n'calibrated'\n    at Object.B07 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:16:788)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    },
+    {
+      "id": "B08",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '2026-11-21'\n- '2026-07-24'\n        ^\n\n    at Object.B08 (/workspace/releases/health-manager-full/tests/phase2-regression.cjs:17:482)\n    at async /workspace/releases/health-manager-full/tests/phase2-regression.cjs:20:500"
+    }
+  ]
+}

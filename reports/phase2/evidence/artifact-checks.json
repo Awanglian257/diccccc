@@ -1,0 +1,86 @@
+{
+  "archive": "/workspace/output/health-manager-phase2-fixed.zip",
+  "archive_sha256": "17ec1848bbe17d00b271e9ceda68253f6117f8cf10350a3e8e790d15524df7b1",
+  "bytes": 7227036,
+  "manifest_files_verified": 55,
+  "manifest_mismatches": [],
+  "secret_env_files": 0,
+  "commands": [
+    {
+      "name": "archive-npm-ci",
+      "command": [
+        "npm",
+        "ci",
+        "--offline",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--cache",
+        "/workspace/reports/phase2/npm-cache"
+      ],
+      "exit_code": 0,
+      "seconds": 0.654
+    },
+    {
+      "name": "archive-unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "seconds": 1.984
+    },
+    {
+      "name": "archive-evaluate",
+      "command": [
+        "npm",
+        "run",
+        "evaluate"
+      ],
+      "exit_code": 0,
+      "seconds": 2.717
+    }
+  ],
+  "server_smoke": {
+    "frontend_status": 200,
+    "frontend_bytes": 9621593,
+    "health_status": 200
+  },
+  "standalone_html": "/workspace/output/health-manager-phase2.html",
+  "html_sha256": "f83a2ab85aa131e4492b9f44fade609418acafb1389f301109baeefd92bc07f1",
+  "note": "归档重复回归不再次计入独立用例数量；系统Chromium是既有系统依赖。",
+  "prior_executed_archive_sha256": "14a6b197293747aa50c3cab539c500fa959a14c43925125bd367e893d2fd2f9c",
+  "final_metadata_repack_runtime_files_identical_to_executed_archive": [
+    "agent-ui.js",
+    "agent-core.js",
+    "index.html",
+    "server/start.cjs",
+    "server/server.js",
+    "server/deepseek-model.cjs",
+    "server/test.js",
+    "server/agent-router.js",
+    "server/legacy-tdee.js",
+    "server/deepseek-check.cjs",
+    "frontend-source/voice-and-home.js",
+    "frontend-source/friendly-ui.js",
+    "frontend-source/home-meals-layout.js",
+    "frontend-source/button-art.js",
+    "frontend-source/glass-theme.js",
+    "frontend-source/health-gallery.js",
+    "tests/model-limits.test.cjs",
+    "tests/core.test.cjs",
+    "tests/fixtures.cjs",
+    "tests/compact-records.cjs",
+    "tests/export-foods.cjs",
+    "tests/refine.cjs",
+    "tests/router.test.cjs",
+    "tests/browser.cjs",
+    "tests/phase2-independent.cjs",
+    "tests/phase2-regression.cjs",
+    "tests/model-schema.test.cjs",
+    "tests/deepseek-check.test.cjs",
+    "tests/evaluate.cjs",
+    "tests/real-api.cjs"
+  ],
+  "metadata_note": "最终仅同步报告元数据并重新封装；全部运行代码与已解压运行验收的归档逐字节一致，重新验证所有封装文件哈希。"
+}

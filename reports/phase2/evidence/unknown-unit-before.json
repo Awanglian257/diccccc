@@ -1,0 +1,12 @@
+{
+  "root": "/workspace/releases/health-manager-full",
+  "at": "2026-11-21T04:28:19.618Z",
+  "results": [
+    {
+      "id": "S22",
+      "bug": "B03-unknown-food-unit",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at /workspace/releases/health-manager-full/tests/phase2-independent.cjs:48:231\n    at async check (/workspace/releases/health-manager-full/tests/phase2-independent.cjs:7:87)\n    at async /workspace/releases/health-manager-full/tests/phase2-independent.cjs:48:1"
+    }
+  ]
+}
