@@ -1,11 +1,12 @@
 from heapq import heappop, heappush
 
 
-def tree(grid, pins, weights, reverse=False):
+def tree(grid, pins, weights, reverse=False, root=None):
     """Attach the next pin by minimum-cost contact with the existing tree."""
     remaining = set(pins)
-    root = max(remaining) if reverse else min(remaining)
-    remaining.remove(root)
+    if root is None:
+        root = max(remaining) if reverse else min(remaining)
+    remaining.discard(root)
     vertices = {root}
     edges = []
     coords = grid.coords

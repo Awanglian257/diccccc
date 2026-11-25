@@ -50,12 +50,23 @@ def solve(grid, variant="E", rounds=None, penalty=18., thermal=None):
             usage[slot] += delta
             counts[grid.bin[slot]] += delta
 
-    def construct(n, slot, reverse=False):
+    def planar(pins, reverse, improve):
+        edges = tree(grid,pins,weights,reverse)
+        if improve and len(pins) == 3:
+            xs,ys,zs = zip(*(grid.coords[p] for p in pins))
+            junction = grid.node((sorted(xs)[1],sorted(ys)[1],zs[0]))
+            if junction not in pins and grid.component[junction] == grid.component[pins[0]]:
+                alt = tree(grid,pins,weights,reverse,junction)
+                if sum(weights[e] for e in alt) < sum(weights[e] for e in edges):
+                    return alt
+        return edges
+
+    def construct(n, slot, reverse=False, improve=False):
         groups = grid.groups[n]
         if slot is None:
-            return tree(grid,groups[0],weights,reverse),None
+            return planar(groups[0],reverse,improve),None
         a,b = sorted(grid.ends[slot])
-        return tree(grid,[*groups[0],a],weights,reverse)+tree(grid,[*groups[1],b],weights,reverse),slot
+        return planar([*groups[0],a],reverse,improve)+planar([*groups[1],b],reverse,improve),slot
 
     def quality(route, heat_value):
         edges,slot = route
@@ -113,7 +124,8 @@ def solve(grid, variant="E", rounds=None, penalty=18., thermal=None):
                     ranked = sorted(available, key=lambda row: row[0]+.05*row[1]-coefficient*score_for(row[2]))
                     options.extend(s for _,_,s in ranked[:3] if s not in options)
             for option in options:
-                route = construct(n,option,bool(iteration % 2) and variant in {"E","cold"})
+                improve = variant in {"E","cold"}
+                route = construct(n,option,improve and bool(iteration % 2),improve)
                 value = quality(route,score_for(option))
                 if value > score:
                     best,score = route,value
