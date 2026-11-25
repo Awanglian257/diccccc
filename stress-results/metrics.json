@@ -1,0 +1,12 @@
+{
+  "legal": true,
+  "resources_ok": true,
+  "wirelength": 8863,
+  "total_overflow": 0,
+  "max_overflow": 0,
+  "overflow_edges": 0,
+  "congestion_score": 100.0,
+  "heat_score": 93.49511238532648,
+  "seconds": 5.546119895000004,
+  "memory_mb": 41.32421875
+}

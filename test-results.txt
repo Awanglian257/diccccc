@@ -1,0 +1,10 @@
+test_assignment_can_move_previous_owner (test_project.ProjectTests.test_assignment_can_move_previous_owner) ... ok
+test_graph_and_tree (test_project.ProjectTests.test_graph_and_tree) ... ok
+test_rectangular_grid_capacity_and_single_pin (test_project.ProjectTests.test_rectangular_grid_capacity_and_single_pin) ... ok
+test_repeated_edges_and_disconnected_parts (test_project.ProjectTests.test_repeated_edges_and_disconnected_parts) ... ok
+test_score_and_duplicate_keys (test_project.ProjectTests.test_score_and_duplicate_keys) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+OK
