@@ -18,7 +18,10 @@
 \titlespacing*{\subsection}{0pt}{9pt}{4pt}
 \titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
 \setlength{\parindent}{2em}
-\setlength{\parskip}{3pt}
+\setlength{\parskip}{0pt}
+\linespread{1}
+\pagestyle{plain}
+\pagenumbering{arabic}
 \setlength{\emergencystretch}{4em}\sloppy
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
@@ -87,9 +90,9 @@ TSV 按 6
 计长，单位由赛题统一规定。多个引脚重合时，接到那个顶点即可。热图给定的是空间需求权重，评价时把同一热格内的
 TSV 数与需求值逐格比较。计时从求解程序启动到退出。
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表1　集合、参数及变量\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表1　集合、参数及变量\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
@@ -369,7 +372,7 @@ TSV 槽位占用，依照题目公式算分。公开结果还与原版评分器�
 \begin{center}
 \includegraphics[width=5.11811in,height=2.62125in]{assets/image4.png}
 
-{\fontsize{10.5}{13}\selectfont 图1　容量匹配、成树、重布与验证流程}
+{\fontsize{12}{14.4}\selectfont 图1　容量匹配、成树、重布与验证流程}
 \end{center}
 
 
@@ -390,9 +393,9 @@ TSV 槽位占用，依照题目公式算分。公开结果还与原版评分器�
 \subsection{5.2
 官方成绩及误差来源}\label{ux5b98ux65b9ux6210ux7ee9ux53caux8befux5deeux6765ux6e90}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表2　官方评分器运行结果\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表2　官方评分器运行结果\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
@@ -430,7 +433,7 @@ Q2\_H1 & 9704 & 0/0 & 54.66 & 6.16 & 31.5 & 64.27 \\
 Q2\_H2 & 9552 & 0/0 & 97.79 & 10.70 & 50.5 & 78.97 \\
 \end{longtable}\endgroup
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表2及摘要保留原始官评轮次的成绩。专项核验再次执行原版评分器，记录单独保存，耗时变化会影响时间分。表2中，两个二维公开例分别比参考线长多 0.82\% 和 1.26\%，双层公开例分别多\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表2及摘要保留原始官评轮次的成绩。专项核验再次执行原版评分器，记录单独保存，耗时变化会影响时间分。表2中，两个二维公开例分别比参考线长多 0.82\% 和 1.26\%，双层公开例分别多\end{center}
 9.34\% 和 9.69\%。四个公开例均无溢出，两个双层例分别布置了 130 和 295 个
 TSV。二维隐藏例 Q1\_H2 的三条边各溢出 1
 单位，其余七例均无溢出。八例都通过合法性检查和资源限制。Q2\_H1
@@ -440,9 +443,9 @@ TSV。二维隐藏例 Q1\_H2 的三条边各溢出 1
 \subsection{5.3
 算法对照与路线图}\label{ux7b97ux6cd5ux5bf9ux7167ux4e0eux8defux7ebfux56fe}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表3　各算法公开算例本地综合分\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表3　各算法公开算例本地综合分\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
@@ -482,7 +485,7 @@ B 把四例总溢出由 63、120、45、108 降为
 \begin{center}
 \includegraphics[width=5.51181in,height=2.20472in]{assets/image5.png}
 
-{\fontsize{10.5}{13}\selectfont 图2　公开算例本地运行时间与算法得分}
+{\fontsize{12}{14.4}\selectfont 图2　公开算例本地运行时间与算法得分}
 \end{center}
 
 
@@ -490,7 +493,7 @@ B 把四例总溢出由 63、120、45、108 降为
 \begin{center}
 \includegraphics[width=4.33071in,height=3.09336in]{assets/image6.png}
 
-{\fontsize{10.5}{13}\selectfont 图3　Q1\_P1 线长前十二个网络的路径与引脚}
+{\fontsize{12}{14.4}\selectfont 图3　Q1\_P1 线长前十二个网络的路径与引脚}
 \end{center}
 
 
@@ -498,7 +501,7 @@ B 把四例总溢出由 63、120、45、108 降为
 \begin{center}
 \includegraphics[width=5.51181in,height=2.44969in]{assets/image7.png}
 
-{\fontsize{10.5}{13}\selectfont 图4　Q2\_P2 两芯粒的 GCell 容量利用率}
+{\fontsize{12}{14.4}\selectfont 图4　Q2\_P2 两芯粒的 GCell 容量利用率}
 \end{center}
 
 
@@ -510,7 +513,7 @@ TSV。图4显示每个网格单元相邻平面边中最大的需求容量比，�
 \begin{center}
 \includegraphics[width=4.33071in,height=3.09336in]{assets/image8.png}
 
-{\fontsize{10.5}{13}\selectfont 图5　Q2\_P2 的十二条较长网络与跨层连接}
+{\fontsize{12}{14.4}\selectfont 图5　Q2\_P2 的十二条较长网络与跨层连接}
 \end{center}
 
 
@@ -538,7 +541,7 @@ TSV。图4显示每个网格单元相邻平面边中最大的需求容量比，�
 \begin{center}
 \includegraphics[width=5.51181in,height=1.65354in]{assets/image9.png}
 
-{\fontsize{10.5}{13}\selectfont 图6　热权重、拥塞惩罚和重布轮次的独立敏感性实验}
+{\fontsize{12}{14.4}\selectfont 图6　热权重、拥塞惩罚和重布轮次的独立敏感性实验}
 \end{center}
 
 
@@ -564,9 +567,9 @@ TSV、\(7\times5\) 热图及禁边。固定随机种子 202611，算法在 5.55
 
 总溢出为零只能说明容量没有被突破。若很多边恰好满载，新增一条网络仍可能让局部拥塞。为同时观察这两点，表4读取四份公开输入和对应算法输出，对正容量平面边区分已用、满载和超载。满载指需求等于容量，超载指需求大于容量，两列互斥。
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表4　初始等权算法和综合算法的平面通道占用\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表4　初始等权算法和综合算法的平面通道占用\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
@@ -615,7 +618,7 @@ Q2\_P2 & E & 8753 & 4018 & 130 & 0 \\
 这个下降量随原溢出 \(o\) 增大，也随容量 \(c_e\)
 减小而增大。重布中优先访问溢出大的网络，可尽快试探能否解除这些冲突。若一条新路径减少本边拥塞，却在另一条容量更小的边上增加溢出，最终仍以全局的拥塞分和线长分判断。
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表4的综合算法在四例中均已消除超载。满载边依然存在，这与图4中的高利用率位置相符。若实际设计要求预留备用容量，应另设通道余量目标，并用新的目标重新验证。\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表4的综合算法在四例中均已消除超载。满载边依然存在，这与图4中的高利用率位置相符。若实际设计要求预留备用容量，应另设通道余量目标，并用新的目标重新验证。\end{center}
 
 \subsection{8.2
 双层热格的布置差异}\label{ux53ccux5c42ux70edux683cux7684ux5e03ux7f6eux5deeux5f02}
@@ -627,9 +630,9 @@ Q2\_P2 & E & 8753 & 4018 & 130 & 0 \\
 Q2\_P2，把冷方案与综合方案的 TSV
 边端点按公式投影到热格，再统计每格的槽位使用次数。格坐标从零开始。差值表示综合方案相对于冷方案的使用次数变化。
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表5　Q2\_P2 各热格需求与 TSV 计数\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表5　Q2\_P2 各热格需求与 TSV 计数\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
@@ -727,9 +730,9 @@ ACM, 111--117, 1995.
 
 \subsection{附录1　变量与代码对应}\label{ux9644ux5f551-ux53d8ux91cfux4e0eux4ee3ux7801ux5bf9ux5e94}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表6　变量和约束的程序表示\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表6　变量和约束的程序表示\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
@@ -770,9 +773,9 @@ metrics.json，文中的坐标和槽位迁移小例用于说明原理。工具�
 
 \subsubsection{附录4.1　Q1\_P1}\label{ux9644ux5f554.1-q1_p1}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表7　Q1\_P1 本地实验记录\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表7　Q1\_P1 本地实验记录\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
@@ -823,9 +826,9 @@ $\gamma$=32 & 1598 & 0 & 100.00 & --- & 0.224 & 10.88 & 98.09 \\
 
 \subsubsection{附录4.2　Q1\_P2}\label{ux9644ux5f554.2-q1_p2}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表8　Q1\_P2 本地实验记录\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表8　Q1\_P2 本地实验记录\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
@@ -873,9 +876,9 @@ $\gamma$=32 & 3787 & 0 & 100.00 & --- & 0.500 & 13.75 & 97.30 \\
 
 \subsubsection{附录4.3　Q2\_P1}\label{ux9644ux5f554.3-q2_p1}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表9　Q2\_P1 本地实验记录\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表9　Q2\_P1 本地实验记录\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
@@ -920,13 +923,13 @@ $\lambda$=4.0 & 3332 & 0 & 100.00 & 97.47 & 1.840 & 17.80 & 81.02 \\
 \end{longtable}\endgroup
 
 配置 thermal
-\begin{center}\fontsize{10.5}{13}\selectfont 表示搜索时使用的热权重。所有配置结束后都按相同的官方权重计算综合分。\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表示搜索时使用的热权重。所有配置结束后都按相同的官方权重计算综合分。\end{center}
 
 \subsubsection{附录4.4　Q2\_P2}\label{ux9644ux5f554.4-q2_p2}
 
-\begin{center}\fontsize{10.5}{13}\selectfont 表10　Q2\_P2 本地实验记录\end{center}
+\begin{center}\fontsize{12}{14.4}\selectfont 表10　Q2\_P2 本地实验记录\end{center}
 
-\begingroup\fontsize{10.5}{13}\selectfont\begin{longtable}[]{@{}
+\begingroup\fontsize{12}{14.4}\selectfont\begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
